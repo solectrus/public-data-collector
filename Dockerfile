@@ -1,0 +1,47 @@
+FROM ruby:4.0.7-alpine AS builder
+RUN apk add --no-cache build-base
+
+WORKDIR /public-data-collector
+COPY Gemfile* /public-data-collector/
+# The config goes to /usr/local/bundle, which the final stage copies. Build
+# and run time then use the same groups, which `bundle exec` requires.
+RUN bundle config set path /usr/local/bundle && \
+    bundle config set frozen true && \
+    bundle config set without 'development test' && \
+    bundle install -j4 --retry 3 && \
+    bundle clean --force
+
+FROM ruby:4.0.7-alpine
+LABEL org.opencontainers.image.authors="georg@ledermann.dev"
+LABEL org.opencontainers.image.description="Collects prices and values from public sources: electricity, petrol, diesel, heating oil and gas"
+
+# Add tzdata to get correct timezone
+RUN apk add --no-cache tzdata
+
+# Create non-root user
+RUN addgroup -g 1000 -S app && \
+    adduser -u 1000 -S app -G app
+
+# Move build arguments to environment variables
+ARG BUILDTIME
+ENV BUILDTIME=${BUILDTIME}
+
+ARG VERSION
+ENV VERSION=${VERSION}
+
+ARG REVISION
+ENV REVISION=${REVISION}
+
+# Git-describe version (e.g. v0.10.1-3-g2d8f177), which - unlike VERSION -
+# is a real version on branch builds, too. Used by HELIOS to show the version.
+ARG COMMIT_VERSION
+ENV COMMIT_VERSION=${COMMIT_VERSION}
+
+WORKDIR /public-data-collector
+
+COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
+COPY --chown=app:app . /public-data-collector/
+
+USER app
+
+ENTRYPOINT ["bundle", "exec", "lib/main.rb"]
