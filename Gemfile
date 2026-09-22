@@ -11,6 +11,12 @@ gem 'influxdb-client'
 # CSV Reading and Writing (https://github.com/ruby/csv)
 gem 'csv'
 
+# An XML toolkit for Ruby, used to read the sheets of an XLSX file. (https://github.com/ruby/rexml)
+gem 'rexml'
+
+# Reads and writes ZIP files, which is what an XLSX file is. (https://github.com/rubyzip/rubyzip)
+gem 'rubyzip'
+
 # Provides a simple logging utility for outputting messages. (https://github.com/ruby/logger)
 gem 'logger'
 

@@ -1,0 +1,1158 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - SOLECTRUS/Public-Data-Collector (+https://github.com/solectrus/public-data-collector)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Host:
+      - energy.ec.europa.eu
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/html; charset=UTF-8
+      Content-Length:
+      - '103265'
+      Connection:
+      - keep-alive
+      Date:
+      - Wed, 23 Sep 2026 04:44:31 GMT
+      X-Age:
+      - '49843'
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Expires:
+      - Sun, 19 Nov 1978 05:00:00 GMT
+      Accept-Ranges:
+      - bytes
+      X-Fpfis:
+      - 21167915 20961992
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload;
+      Cache-Control:
+      - public, max-age=300, s-maxage=300
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 6a8b4e42a027cbd05cd98334ae57a3ac.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - FRA60-P14
+      X-Amz-Cf-Id:
+      - sFmaLJlWGSuesZ-hQXT7rrXFNEDhTlIBfEB8UDpibPIXgSmT2ZaOxA==
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\">\n
+        \ <head>\n    <meta charset=\"utf-8\" />\n<meta name=\"description\" content=\"Information
+        and maps showing weekly updates on prices of petroleum products in all EU
+        countries.\" />\n<meta name=\"keywords\" content=\"database\" />\n<link rel=\"canonical\"
+        href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en\"
+        />\n<meta property=\"og:determiner\" content=\"auto\" />\n<meta property=\"og:site_name\"
+        content=\"Energy\" />\n<meta property=\"og:type\" content=\"website\" />\n<meta
+        property=\"og:url\" content=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en\"
+        />\n<meta property=\"og:title\" content=\"Weekly Oil Bulletin\" />\n<meta
+        property=\"og:description\" content=\"Information and maps showing weekly
+        updates on prices of petroleum products in all EU countries.\" />\n<meta property=\"og:image\"
+        content=\"https://energy.ec.europa.eu/profiles/contrib/ewcms/modules/ewcms_seo/assets/images/ec-socialmedia-fallback.png\"
+        />\n<meta property=\"og:image:alt\" content=\"Energy\" />\n<meta name=\"twitter:card\"
+        content=\"summary_large_image\" />\n<meta name=\"twitter:description\" content=\"Information
+        and maps showing weekly updates on prices of petroleum products in all EU
+        countries.\" />\n<meta name=\"twitter:title\" content=\"Weekly Oil Bulletin\"
+        />\n<meta name=\"twitter:image\" content=\"https://energy.ec.europa.eu/profiles/contrib/ewcms/modules/ewcms_seo/assets/images/ec-socialmedia-fallback.png\"
+        />\n<meta name=\"twitter:image:alt\" content=\"Energy\" />\n<meta http-equiv=\"X-UA-Compatible\"
+        content=\"IE=edge,chrome=1\" />\n<meta name=\"Generator\" content=\"Drupal
+        11 (https://www.drupal.org)\" />\n<meta name=\"MobileOptimized\" content=\"width\"
+        />\n<meta name=\"HandheldFriendly\" content=\"true\" />\n<meta name=\"viewport\"
+        content=\"width=device-width, initial-scale=1.0\" />\n<script type=\"module\"
+        src=\"/themes/contrib/oe_theme/dist/duet/duet/duet.esm.js\"></script>\n<script
+        type=\"application/json\">{\"service\":\"preview\",\"position\":\"before\"}</script>\n<script
+        type=\"application/ld+json\">{\n    \"@context\": \"https:\\/\\/schema.org\",\n
+        \   \"@type\": \"BreadcrumbList\",\n    \"itemListElement\": [\n        {\n
+        \           \"@type\": \"ListItem\",\n            \"position\": 1,\n            \"item\":
+        {\n                \"@id\": \"https:\\/\\/energy.ec.europa.eu\\/index_en\",\n
+        \               \"name\": \"Home\"\n            }\n        },\n        {\n
+        \           \"@type\": \"ListItem\",\n            \"position\": 2,\n            \"item\":
+        {\n                \"@id\": \"https:\\/\\/energy.ec.europa.eu\\/data-and-analysis_en\",\n
+        \               \"name\": \"Data and analysis\"\n            }\n        },\n
+        \       {\n            \"@type\": \"ListItem\",\n            \"position\":
+        3,\n            \"item\": {\n                \"@id\": \"https:\\/\\/energy.ec.europa.eu\\/data-and-analysis\\/weekly-oil-bulletin_en\",\n
+        \               \"name\": \"Weekly Oil Bulletin\"\n            }\n        }\n
+        \   ]\n}</script>\n<script type=\"application/ld+json\">{\n    \"@context\":
+        \"https:\\/\\/schema.org\",\n    \"@type\": \"CreativeWork\",\n    \"name\":
+        \"Weekly Oil Bulletin\",\n    \"description\": \"The Commission\\u0027s Oil
+        Bulletin presents weekly consumer prices for petroleum products in EU countries.\",\n
+        \   \"url\": \"https:\\/\\/energy.ec.europa.eu\\/data-and-analysis\\/weekly-oil-bulletin\",\n
+        \   \"about\": [\n        {\n            \"@type\": \"DefinedTerm\",\n            \"name\":
+        \"database\",\n            \"inDefinedTermSet\": {\n                \"@type\":
+        \"DefinedTermSet\",\n                \"name\": \"Digital Europa Thesaurus\",\n
+        \               \"alternateName\": \"DET\",\n                \"url\": \"http:\\/\\/publications.europa.eu\\/resource\\/dataset\\/det\",\n
+        \               \"description\": \"Multilingual thesaurus for digital Europe
+        covering EU policy areas.\",\n                \"publisher\": {\n                    \"@type\":
+        \"GovernmentOrganization\",\n                    \"name\": \"Publications
+        Office of the European Union\",\n                    \"url\": \"http:\\/\\/publications.europa.eu\\/resource\\/authority\\/corporate-body\\/PUBL\"\n
+        \               }\n            },\n            \"@id\": \"http:\\/\\/data.europa.eu\\/uxp\\/4821\"\n
+        \       }\n    ],\n    \"publisher\": [\n        {\n            \"@type\":
+        [\n                \"GovernmentOrganization\",\n                \"DefinedTerm\"\n
+        \           ],\n            \"identifier\": {\n                \"@type\":
+        \"PropertyValue\",\n                \"propertyID\": \"http:\\/\\/publications.europa.eu\\/resource\\/authority\\/corporate-body\",\n
+        \               \"value\": \"ENER\",\n                \"url\": \"http:\\/\\/publications.europa.eu\\/resource\\/authority\\/corporate-body\\/ENER\"\n
+        \           },\n            \"name\": \"Directorate-General for Energy\",\n
+        \           \"alternateName\": \"DG Energy\",\n            \"inDefinedTermSet\":
+        {\n                \"@type\": \"DefinedTermSet\",\n                \"name\":
+        \"Corporate body\",\n                \"url\": \"http:\\/\\/publications.europa.eu\\/resource\\/authority\\/corporate-body\",\n
+        \               \"description\": \"Authority table for EU corporate bodies
+        and organizations\",\n                \"publisher\": {\n                    \"@type\":
+        \"GovernmentOrganization\",\n                    \"name\": \"Publications
+        Office of the European Union\",\n                    \"url\": \"http:\\/\\/publications.europa.eu\\/resource\\/authority\\/corporate-body\\/PUBL\"\n
+        \               }\n            },\n            \"@id\": \"http:\\/\\/publications.europa.eu\\/resource\\/authority\\/corporate-body\\/ENER\"\n
+        \       }\n    ],\n    \"author\": [\n        {\n            \"@type\": [\n
+        \               \"GovernmentOrganization\",\n                \"DefinedTerm\"\n
+        \           ],\n            \"identifier\": {\n                \"@type\":
+        \"PropertyValue\",\n                \"propertyID\": \"http:\\/\\/publications.europa.eu\\/resource\\/authority\\/corporate-body\",\n
+        \               \"value\": \"DG17\",\n                \"url\": \"http:\\/\\/publications.europa.eu\\/resource\\/authority\\/corporate-body\\/DG17\"\n
+        \           },\n            \"name\": \"Directorate-General for Energy\",\n
+        \           \"inDefinedTermSet\": {\n                \"@type\": \"DefinedTermSet\",\n
+        \               \"name\": \"Corporate body\",\n                \"url\": \"http:\\/\\/publications.europa.eu\\/resource\\/authority\\/corporate-body\",\n
+        \               \"description\": \"Authority table for EU corporate bodies
+        and organizations\",\n                \"publisher\": {\n                    \"@type\":
+        \"GovernmentOrganization\",\n                    \"name\": \"Publications
+        Office of the European Union\",\n                    \"url\": \"http:\\/\\/publications.europa.eu\\/resource\\/authority\\/corporate-body\\/PUBL\"\n
+        \               }\n            },\n            \"@id\": \"http:\\/\\/publications.europa.eu\\/resource\\/authority\\/corporate-body\\/DG17\"\n
+        \       }\n    ]\n}</script>\n<link rel=\"icon\" href=\"/themes/contrib/oe_theme/images/favicons/ec/favicon.ico\"
+        type=\"image/vnd.microsoft.icon\" />\n<link rel=\"alternate\" hreflang=\"en\"
+        href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en\"
+        />\n<link rel=\"icon\" href=\"/themes/contrib/oe_theme/images/favicons/ec/favicon.svg\"
+        type=\"image/svg+xml\" />\n<link rel=\"apple-touch-icon\" href=\"/themes/contrib/oe_theme/images/favicons/ec/favicon.png\"
+        />\n\n    <title>Weekly Oil Bulletin</title>\n    <link rel=\"stylesheet\"
+        media=\"all\" href=\"/sites/default/files/css/css_SAcmhjbHoFXJgwqUovJl5izJQEl6U9L2sA2JTo8Zimc.css?delta=0&amp;language=en&amp;theme=ewcms_theme&amp;include=eJxFyUEKwCAMBMAPCXlSUFkwYIyYheLvS0-9zGXwdE_BpzJi0nYJKAcc0sN3LCzqtHbquYr-7z62WPIm4dJq4gWS5B4w\"
+        />\n<link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_66s3LJJiizfJ7ipBYcAAOSKrYccOX3q8LkiHxK2kEBA.css?delta=1&amp;language=en&amp;theme=ewcms_theme&amp;include=eJxFyUEKwCAMBMAPCXlSUFkwYIyYheLvS0-9zGXwdE_BpzJi0nYJKAcc0sN3LCzqtHbquYr-7z62WPIm4dJq4gWS5B4w\"
+        />\n<link rel=\"stylesheet\" media=\"print\" href=\"/sites/default/files/css/css_o59uAC1LVBkQVdR0VBDZsFv7rtKo9Y8GUXstjVSYboc.css?delta=2&amp;language=en&amp;theme=ewcms_theme&amp;include=eJxFyUEKwCAMBMAPCXlSUFkwYIyYheLvS0-9zGXwdE_BpzJi0nYJKAcc0sN3LCzqtHbquYr-7z62WPIm4dJq4gWS5B4w\"
+        />\n<link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_G8vP2z52HOg1vymzSXfC1iRnhnIqL-gANGhg8pd-2uc.css?delta=3&amp;language=en&amp;theme=ewcms_theme&amp;include=eJxFyUEKwCAMBMAPCXlSUFkwYIyYheLvS0-9zGXwdE_BpzJi0nYJKAcc0sN3LCzqtHbquYr-7z62WPIm4dJq4gWS5B4w\"
+        />\n<link rel=\"stylesheet\" media=\"print\" href=\"/sites/default/files/css/css_ImUyktz8L_SlplmvtxyzZ3R6cdCR-JpHBI4AHYKFIFE.css?delta=4&amp;language=en&amp;theme=ewcms_theme&amp;include=eJxFyUEKwCAMBMAPCXlSUFkwYIyYheLvS0-9zGXwdE_BpzJi0nYJKAcc0sN3LCzqtHbquYr-7z62WPIm4dJq4gWS5B4w\"
+        />\n<link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_2hLj7cQq_Q1NBiiKLNVlKGiRLZtezSiHUe6jTrW0i8o.css?delta=5&amp;language=en&amp;theme=ewcms_theme&amp;include=eJxFyUEKwCAMBMAPCXlSUFkwYIyYheLvS0-9zGXwdE_BpzJi0nYJKAcc0sN3LCzqtHbquYr-7z62WPIm4dJq4gWS5B4w\"
+        />\n<link rel=\"stylesheet\" media=\"print\" href=\"/sites/default/files/css/css_s4N06TBKRRenXbs5k2GodtS27CbAwjPij-JhONIWsH4.css?delta=6&amp;language=en&amp;theme=ewcms_theme&amp;include=eJxFyUEKwCAMBMAPCXlSUFkwYIyYheLvS0-9zGXwdE_BpzJi0nYJKAcc0sN3LCzqtHbquYr-7z62WPIm4dJq4gWS5B4w\"
+        />\n\n    \n  </head>\n  <body data-ecl-auto-init=\"Tooltip\" class=\"language-en
+        ecl-typography path-node page-node-type-oe-page\">\n          <a\n  href=\"#main-content\"\n
+        \ class=\"ecl-link ecl-link--primary ecl-skip-link\"\n   id=\"skip-id\"\n>Skip
+        to main content</a>\n\n        <div id=\"cck_here\"></div>    <script type=\"application/json\">{\"utility\":\"globan\",\"theme\":\"light\",\"logo\":true,\"link\":true,\"mode\":false}</script>\n\n
+        \     <div class=\"dialog-off-canvas-main-canvas\" data-off-canvas-main-canvas>\n
+        \         <header\n  class=\"ecl-site-header ecl-site-header-with-logo-l ecl-site-header--has-menu\"\n
+        \ data-ecl-auto-init=\"SiteHeader\"\n>\n  \n    <div class=\"ecl-site-header__header\">\n
+        \       <div class=\"ecl-site-header__inner\">\n      <div class=\"ecl-site-header__background\">\n
+        \       <div class=\"ecl-site-header__header\">\n          <div class=\"ecl-site-header__container
+        ecl-container\">\n            <div class=\"ecl-site-header__top\" data-ecl-site-header-top>\n
+        \                   <a\n    class=\"ecl-link ecl-link--standalone ecl-site-header__logo-link\"\n
+        \   href=\"https://commission.europa.eu/index_en\"\n    aria-label=\"Home
+        - European Commission\"\n    data-aria-label-en=\"Home - European Commission\"\n
+        \ >\n                                <picture\n  class=\"ecl-picture ecl-site-header__picture\"\n
+        \  title=\"European&#x20;Commission\"\n><source \n                  srcset=\"/themes/contrib/oe_theme/dist/ec/images/logo/positive/logo-ec--en.svg\"\n
+        \                         media=\"(min-width: 996px)\"\n                      ><img
+        \n              class=\"ecl-site-header__logo-image ecl-site-header__logo-image--l\"\n
+        \             src=\"/themes/contrib/oe_theme/dist/ec/images/logo/logo-ec--mute.svg\"\n
+        \             alt=\"European Commission logo\"\n          ></picture>  </a>\n\n\n
+        \             <div class=\"ecl-site-header__action\">\n                  <div
+        class=\"ecl-site-header__language\"><a\n    class=\"ecl-button ecl-button--tertiary
+        ecl-button--neutral ecl-site-header__language-selector\"\n    href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en\"\n
+        \   data-ecl-language-selector\n    role=\"button\"\n    aria-label=\"Change
+        language, current language is English - en\"\n      aria-controls=\"language-list-overlay\"\n
+        \   ><span class=\"ecl-site-header__language-icon\"><span \n  class=\"wt-icon--global
+        ecl-icon ecl-icon--m ecl-site-header__icon ecl-icon--global\"\n  aria-hidden=\"false\"\n
+        \  title=\"en\" role=\"img\"></span></span>en</a><div class=\"ecl-site-header__language-container\"
+        id=\"language-list-overlay\" hidden data-ecl-language-list-overlay aria-labelledby=\"ecl-site-header__language-title\"
+        role=\"dialog\"><div class=\"ecl-site-header__language-header\"><div\n        class=\"ecl-site-header__language-title\"\n
+        \       id=\"ecl-site-header__language-title\"\n      >Select your language</div><button\n
+        \ class=\"ecl-button ecl-button--tertiary ecl-button--neutral ecl-site-header__language-close
+        ecl-button--icon-only\"\n  type=\"submit\"\n   data-ecl-language-list-close\n><span
+        class=\"ecl-button__container\"><span class=\"ecl-button__label\" data-ecl-label=\"true\">Close</span><span
+        \n  class=\"wt-icon--close ecl-icon ecl-icon--m ecl-button__icon ecl-icon--close\"\n
+        \ aria-hidden=\"true\"\n   data-ecl-icon></span></span></button></div><div\n
+        \     class=\"ecl-site-header__language-content\"\n      data-ecl-language-list-content\n
+        \   ><div class=\"ecl-site-header__language-category\" data-ecl-language-list-eu><ul
+        class=\"ecl-site-header__language-list\" translate=\"no\"><li class=\"ecl-site-header__language-item\"><a\n
+        \ href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_bg\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"bg\"\n><span class=\"ecl-site-header__language-link-code\">bg</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"bg\">български</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_es\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"es\"\n><span class=\"ecl-site-header__language-link-code\">es</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"es\">español</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_cs\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"cs\"\n><span class=\"ecl-site-header__language-link-code\">cs</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"cs\">čeština</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_da\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"da\"\n><span class=\"ecl-site-header__language-link-code\">da</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"da\">dansk</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_de\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"de\"\n><span class=\"ecl-site-header__language-link-code\">de</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"de\">Deutsch</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_et\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"et\"\n><span class=\"ecl-site-header__language-link-code\">et</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"et\">eesti</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_el\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"el\"\n><span class=\"ecl-site-header__language-link-code\">el</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"el\">ελληνικά</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link ecl-site-header__language-link--active\"\n
+        \  hreflang=\"en\"\n><span class=\"ecl-site-header__language-link-code\">en</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"en\">English</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_fr\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"fr\"\n><span class=\"ecl-site-header__language-link-code\">fr</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"fr\">français</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_ga\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"ga\"\n><span class=\"ecl-site-header__language-link-code\">ga</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"ga\">Gaeilge</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_hr\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"hr\"\n><span class=\"ecl-site-header__language-link-code\">hr</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"hr\">hrvatski</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_it\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"it\"\n><span class=\"ecl-site-header__language-link-code\">it</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"it\">italiano</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_lv\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"lv\"\n><span class=\"ecl-site-header__language-link-code\">lv</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"lv\">latviešu</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_lt\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"lt\"\n><span class=\"ecl-site-header__language-link-code\">lt</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"lt\">lietuvių</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_hu\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"hu\"\n><span class=\"ecl-site-header__language-link-code\">hu</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"hu\">magyar</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_mt\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"mt\"\n><span class=\"ecl-site-header__language-link-code\">mt</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"mt\">Malti</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_nl\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"nl\"\n><span class=\"ecl-site-header__language-link-code\">nl</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"nl\">Nederlands</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_pl\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"pl\"\n><span class=\"ecl-site-header__language-link-code\">pl</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"pl\">polski</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_pt\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"pt\"\n><span class=\"ecl-site-header__language-link-code\">pt</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"pt\">português</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_ro\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"ro\"\n><span class=\"ecl-site-header__language-link-code\">ro</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"ro\">română</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_sk\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"sk\"\n><span class=\"ecl-site-header__language-link-code\">sk</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"sk\">slovenčina</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_sl\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"sl\"\n><span class=\"ecl-site-header__language-link-code\">sl</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"sl\">slovenščina</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_fi\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"fi\"\n><span class=\"ecl-site-header__language-link-code\">fi</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"fi\">suomi</span></a></li><li
+        class=\"ecl-site-header__language-item\"><a\n  href=\"https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_sv\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-site-header__language-link\"\n
+        \  hreflang=\"sv\"\n><span class=\"ecl-site-header__language-link-code\">sv</span><span
+        class=\"ecl-site-header__language-link-label\" lang=\"sv\">svenska</span></a></li></ul></div></div></div></div>\n<div
+        class=\"ecl-site-header__search-container\" role=\"search\">\n  <a\n    class=\"ecl-button
+        ecl-button--tertiary ecl-button--neutral ecl-site-header__search-toggle\"\n
+        \   href=\"\"\n    data-ecl-search-toggle=\"true\"\n    aria-controls=\"\"\n
+        \   aria-expanded=\"false\"\n  ><span \n  class=\"wt-icon--search ecl-icon
+        ecl-icon--s ecl-site-header__icon ecl-icon--search\"\n  aria-hidden=\"true\"\n
+        \  role=\"img\"></span></a>\n  <script type=\"application/json\">{\"service\":\"search\",\"version\":\"2.0\",\"form\":\".ecl-search-form\",\"filters\":{\"scope\":{\"sites\":[{\"selected\":true,\"name\":\"Energy\",\"id\":[\"comm-ewcms-energy\"]}]}}}</script>\n<form\n
+        \ class=\"ecl-search-form ecl-site-header__search\"\n  role=\"search\"\n   class=\"oe-search-search-form\"
+        data-drupal-selector=\"oe-search-search-form\" action=\"/data-and-analysis/weekly-oil-bulletin_en\"
+        method=\"post\" id=\"oe-search-search-form\" accept-charset=\"UTF-8\" data-ecl-search-form\n><div
+        class=\"ecl-form-group\"><label\n                  for=\"edit-keys\"\n            id=\"edit-keys-label\"\n
+        \         class=\"ecl-form-label ecl-search-form__label\"\n    >Search</label><input\n
+        \     id=\"edit-keys\"\n      class=\"ecl-text-input ecl-text-input--m ecl-search-form__text-input
+        form-search ecl-search-form__text-input\"\n      name=\"keys\"\n        type=\"search\"\n
+        \           \n  ></div><button\n  class=\"ecl-button ecl-button--tertiary
+        ecl-search-form__button ecl-search-form__button ecl-button--icon-only\"\n
+        \ type=\"submit\"\n  \n><span class=\"ecl-button__container\"><span \n  class=\"wt-icon--search
+        ecl-icon ecl-icon--m ecl-button__icon ecl-icon--search\"\n  aria-hidden=\"true\"\n
+        \  data-ecl-icon></span><span class=\"ecl-button__label\" data-ecl-label=\"true\">Search</span></span></button><input
+        autocomplete=\"off\" data-drupal-selector=\"form-0bytvlpyqnb2kv2lvnjgxgmgzvovoy36ga1c-c7ybei\"
+        type=\"hidden\" name=\"form_build_id\" value=\"form-0bytvlpyqnb2KV2lvNJGXGMgZvovoY36gA1C_c7yBeI\"
+        /><input data-drupal-selector=\"edit-oe-search-search-form\" type=\"hidden\"
+        name=\"form_id\" value=\"oe_search_search_form\" /></form>\n  \n</div>\n\n\n
+        \             </div>\n            </div>\n          </div>\n        </div>\n
+        \     </div>\n    </div>\n  \n  </div>\n      <div>\n    <div id=\"block-machinetranslation\">\n
+        \ \n    \n      <div class=\"ecl-lang-select-page ecl-u-pv-m ecl-u-d-none\"
+        id=\"etrans-block\">\n  <div class=\"ecl-container\">\n    <div class=\"webtools-etrans--wrapper\">\n
+        \     <div id=\"webtools-etrans\"></div>\n      <div class=\"webtools-etrans--message\">\n
+        \       <div\n  class=\"ecl-notification ecl-notification--info\"\n  data-ecl-notification\n
+        \ role=\"alert\"\n  data-ecl-auto-init=\"Notification\"\n><span \n  class=\"wt-icon--information
+        ecl-icon ecl-icon--m ecl-notification__icon ecl-icon--information\"\n  aria-hidden=\"false\"\n
+        \ ></span><div class=\"ecl-notification__content\"><div class=\"ecl-notification__description\">&nbsp;</div></div></div>
+        \     </div>\n    </div>\n  </div>\n</div>\n<div class=\"ecl-lang-select-page
+        ecl-u-pv-m ecl-u-d-none\" id=\"no-etrans-block\">\n  <div class=\"ecl-container\">\n
+        \   <div class=\"webtools-etrans--wrapper\">\n      <div id=\"webtools-etrans\"></div>\n
+        \     <div class=\"webtools-etrans--message\">\n        <div\n  class=\"ecl-notification
+        ecl-notification--warning\"\n  data-ecl-notification\n  role=\"alert\"\n  data-ecl-auto-init=\"Notification\"\n><span
+        \n  class=\"wt-icon--information ecl-icon ecl-icon--m ecl-notification__icon
+        ecl-icon--information\"\n  aria-hidden=\"false\"\n  ></span><div class=\"ecl-notification__content\"><div
+        class=\"ecl-notification__description\">&nbsp;</div></div></div>      </div>\n
+        \   </div>\n  </div>\n</div>\n\n  </div>\n\n  </div>\n\n  \n          <div
+        class=\"ecl-site-header__banner\">\n      <div class=\"ecl-container\">\n
+        \                 <div class=\"ecl-site-header__site-name\">Energy</div>\n
+        \                     </div>\n    </div>\n      <div id=\"block-ewcms-theme-horizontal-menu\">\n
+        \ \n    \n      <div style=\"height: 0\">&nbsp;</div><div class=\"ewcms-horizontal-menu\">\n\n
+        \     \n      \n      \n                    \n      \n      \n      \n                    \n
+        \     \n                  \n            \n                                  \n
+        \           \n                                  \n            \n                                  \n
+        \           \n                                  \n            \n                                  \n
+        \           \n                                  \n            \n                      \n
+        \     \n          \n      \n                  \n            \n                                  \n
+        \           \n                                  \n            \n                                  \n
+        \           \n                                  \n            \n                                  \n
+        \           \n                                  \n            \n                      \n
+        \     \n          \n      \n                  \n            \n                                  \n
+        \           \n                                  \n            \n                                  \n
+        \           \n                                  \n            \n                      \n
+        \     \n          \n      \n                  \n            \n                                  \n
+        \           \n                                  \n            \n                                  \n
+        \           \n                      \n      \n          \n      \n      \n
+        \     \n                    \n      \n      \n      \n                    \n
+        \         <nav\n  class=\"ecl-menu\"\n  data-ecl-menu\n  data-ecl-menu-max-lines=\"2\"\n
+        \ data-ecl-auto-init=\"Menu\"\n      data-ecl-menu-label-open=\"Menu\"\n        data-ecl-menu-label-close=\"Close\"\n
+        \   role=\"navigation\" aria-label=\"Site&#x20;navigation\"\n><div class=\"ecl-menu__overlay\"></div><div
+        class=\"ecl-container ecl-menu__container\"><button\n  class=\"ecl-button
+        ecl-button--tertiary ecl-button--neutral ecl-menu__open ecl-button--icon-only\"\n
+        \ type=\"button\"\n   data-ecl-menu-open aria-expanded=\"false\"\n><span class=\"ecl-button__container\"><span
+        \n  class=\"wt-icon--hamburger ecl-icon ecl-icon--m ecl-button__icon ecl-icon--hamburger\"\n
+        \ aria-hidden=\"true\"\n   data-ecl-icon></span><span \n  class=\"wt-icon--close
+        ecl-icon ecl-icon--m ecl-button__icon ecl-icon--close\"\n  aria-hidden=\"true\"\n
+        \  data-ecl-icon></span><span class=\"ecl-button__label\" data-ecl-label=\"true\">Menu</span></span></button><section
+        class=\"ecl-menu__inner\" data-ecl-menu-inner aria-label=\"Menu\"><header
+        class=\"ecl-menu__inner-header\"><button\n  class=\"ecl-button ecl-button--tertiary
+        ecl-menu__close ecl-button--icon-only\"\n  type=\"submit\"\n   data-ecl-menu-close\n><span
+        class=\"ecl-button__container\"><span class=\"ecl-button__label\" data-ecl-label=\"true\">Close</span><span
+        \n  class=\"wt-icon--close ecl-icon ecl-icon--m ecl-button__icon ecl-icon--close\"\n
+        \ aria-hidden=\"true\"\n   data-ecl-icon></span></span></button><div class=\"ecl-menu__title\">Menu</div><button\n
+        \ class=\"ecl-button ecl-button--tertiary ecl-menu__back\"\n  type=\"submit\"\n
+        \  data-ecl-menu-back\n><span class=\"ecl-button__container\"><span \n  class=\"wt-icon--corner-arrow
+        ecl-icon ecl-icon--xs ecl-icon--rotate-270 ecl-button__icon ecl-icon--corner-arrow\"\n
+        \ aria-hidden=\"true\"\n   data-ecl-icon></span><span class=\"ecl-button__label\"
+        data-ecl-label=\"true\">Back</span></span></button></header><button\n  class=\"ecl-button
+        ecl-button--tertiary ecl-menu__item ecl-menu__items-previous ecl-button--icon-only\"\n
+        \ type=\"button\"\n   data-ecl-menu-items-previous tabindex=\"-1\"\n><span
+        class=\"ecl-button__container\"><span \n  class=\"wt-icon--corner-arrow ecl-icon
+        ecl-icon--s ecl-icon--rotate-270 ecl-button__icon ecl-icon--corner-arrow\"\n
+        \ aria-hidden=\"true\"\n   data-ecl-icon></span><span class=\"ecl-button__label\"
+        data-ecl-label=\"true\">Previous items</span></span></button><button\n  class=\"ecl-button
+        ecl-button--tertiary ecl-menu__item ecl-menu__items-next ecl-button--icon-only\"\n
+        \ type=\"button\"\n   data-ecl-menu-items-next tabindex=\"-1\"\n><span class=\"ecl-button__container\"><span
+        \n  class=\"wt-icon--corner-arrow ecl-icon ecl-icon--s ecl-icon--rotate-90
+        ecl-button__icon ecl-icon--corner-arrow\"\n  aria-hidden=\"true\"\n   data-ecl-icon></span><span
+        class=\"ecl-button__label\" data-ecl-label=\"true\">Next items</span></span></button><ul
+        class=\"ecl-menu__list\" data-ecl-menu-list><li class=\"ecl-menu__item\" data-ecl-menu-item
+        id=\"ecl-menu-item-ecl-menu-1321615578-0\"><a\n  href=\"/index_en\"\n  class=\"ecl-link
+        ecl-link--standalone ecl-menu__link\"\n   data-untranslated-label=\"Home\"
+        data-active-path=\"&#x2F;\" data-ecl-menu-link id=\"ecl-menu-item-ecl-menu-1321615578-0-link\"\n>Home</a></li><li
+        class=\"ecl-menu__item\" data-ecl-menu-item id=\"ecl-menu-item-ecl-menu-1321615578-1\"><a\n
+        \ href=\"/topics_en\"\n  class=\"ecl-link ecl-link--standalone ecl-menu__link\"\n
+        \  data-untranslated-label=\"Topics\" data-active-path=\"&#x2F;node&#x2F;6486\"
+        data-ecl-menu-link id=\"ecl-menu-item-ecl-menu-1321615578-1-link\"\n>Topics</a></li><li
+        class=\"ecl-menu__item ecl-menu__item--has-children\" data-ecl-menu-item data-ecl-has-children
+        aria-haspopup data-expanded=\"false\" id=\"ecl-menu-item-ecl-menu-1321615578-2\"><a\n
+        \ href=\"/strategy_en\"\n  class=\"ecl-link ecl-link--standalone ecl-menu__link\"\n
+        \  data-untranslated-label=\"Strategy\" data-active-path=\"&#x2F;node&#x2F;6526\"
+        data-ecl-menu-link id=\"ecl-menu-item-ecl-menu-1321615578-2-link\"\n>Strategy</a><button\n
+        \ class=\"ecl-button ecl-button--tertiary ecl-button--m ecl-button--neutral
+        ecl-menu__button-caret\"\n  type=\"button\"\n   data-ecl-menu-caret aria-label=\"Access&#x20;item&#x27;s&#x20;children\"
+        aria-describedby=\"ecl-menu-item-ecl-menu-1321615578-2-link\" aria-expanded=\"false\"\n><span
+        class=\"ecl-button__container\"><span \n  class=\"wt-icon--corner-arrow ecl-icon
+        ecl-icon--xs ecl-icon--rotate-180 ecl-button__icon ecl-icon--corner-arrow\"\n
+        \ aria-hidden=\"true\"\n   data-ecl-icon></span></span></button><div\n    class=\"ecl-menu__mega\"\n
+        \   data-ecl-menu-mega\n  ><ul class=\"ecl-menu__sublist\"><li\n        class=\"ecl-menu__subitem\"\n
+        \       data-ecl-menu-subitem\n      ><a\n  href=\"/strategy/affordable-energy_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Affordable&#x20;energy&#x20;\"
+        data-active-path=\"&#x2F;node&#x2F;6449\"\n>Affordable energy </a></li><li\n
+        \       class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n      ><a\n
+        \ href=\"/strategy/accelerateeu-strengthen-eu-energy-resilience_en\"\n  class=\"ecl-link
+        ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"AccelerateEU&#x20;to&#x20;strengthen&#x20;EU&#x20;energy&#x20;resilience\"
+        data-active-path=\"&#x2F;node&#x2F;7146\"\n>AccelerateEU to strengthen EU
+        energy resilience</a></li><li\n        class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n
+        \     ><a\n  href=\"/strategy/repowereu-phase-out-russian-energy-imports_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"REPowerEU&#x20;&#x2013;&#x20;phase&#x20;out&#x20;of&#x20;Russian&#x20;energy&#x20;imports&#x20;\"
+        data-active-path=\"&#x2F;node&#x2F;6588\"\n>REPowerEU – phase out of Russian
+        energy imports </a></li><li\n        class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n
+        \     ><a\n  href=\"/strategy/energy-union_en\"\n  class=\"ecl-link ecl-link--standalone
+        ecl-menu__sublink\"\n   data-untranslated-label=\"Energy&#x20;union\" data-active-path=\"&#x2F;node&#x2F;6261\"\n>Energy
+        union</a></li><li\n        class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n
+        \     ><a\n  href=\"https://commission.europa.eu/topics/competitiveness_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"EU&#x20;competitiveness&#x20;and&#x20;energy\"
+        data-active-path=\"&#x2F;node&#x2F;6431\"\n>EU competitiveness and energy</a></li><li\n
+        \       class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n      ><a\n
+        \ href=\"https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/european-green-deal/energy-and-green-deal_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Energy&#x20;and&#x20;the&#x20;Green&#x20;Deal&#x20;\"
+        data-active-path=\"&#x2F;node&#x2F;6308\"\n>Energy and the Green Deal </a></li><li\n
+        \       class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n      ><a\n
+        \ href=\"/strategy/equality-platform-energy-sector_en\"\n  class=\"ecl-link
+        ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Equality&#x20;platform&#x20;for&#x20;the&#x20;energy&#x20;sector\"
+        data-active-path=\"&#x2F;node&#x2F;4632\"\n>Equality platform for the energy
+        sector</a></li><li class=\"ecl-menu__subitem ecl-menu__see-all\"><a\n  href=\"/strategy_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-menu__sublink\"\n
+        \ \n><span \n      class=\"ecl-link__label\">See all</span><span \n  class=\"wt-icon--arrow-left
+        ecl-icon ecl-icon--xs ecl-icon--rotate-180 ecl-link__icon ecl-icon--arrow-left\"\n
+        \ aria-hidden=\"true\"\n  ></span></a></li></ul></div></li><li class=\"ecl-menu__item
+        ecl-menu__item--has-children\" data-ecl-menu-item data-ecl-has-children aria-haspopup
+        data-expanded=\"false\" id=\"ecl-menu-item-ecl-menu-1321615578-3\"><a\n  href=\"/data-and-analysis_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__link\"\n   data-untranslated-label=\"Data&#x20;and&#x20;analysis\"
+        data-active-path=\"&#x2F;node&#x2F;6525\" data-ecl-menu-link id=\"ecl-menu-item-ecl-menu-1321615578-3-link\"\n>Data
+        and analysis</a><button\n  class=\"ecl-button ecl-button--tertiary ecl-button--m
+        ecl-button--neutral ecl-menu__button-caret\"\n  type=\"button\"\n   data-ecl-menu-caret
+        aria-label=\"Access&#x20;item&#x27;s&#x20;children\" aria-describedby=\"ecl-menu-item-ecl-menu-1321615578-3-link\"
+        aria-expanded=\"false\"\n><span class=\"ecl-button__container\"><span \n  class=\"wt-icon--corner-arrow
+        ecl-icon ecl-icon--xs ecl-icon--rotate-180 ecl-button__icon ecl-icon--corner-arrow\"\n
+        \ aria-hidden=\"true\"\n   data-ecl-icon></span></span></button><div\n    class=\"ecl-menu__mega\"\n
+        \   data-ecl-menu-mega\n  ><ul class=\"ecl-menu__sublist\"><li\n        class=\"ecl-menu__subitem\"\n
+        \       data-ecl-menu-subitem\n      ><a\n  href=\"/data-and-analysis/weekly-oil-bulletin_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Weekly&#x20;Oil&#x20;Bulletin\"
+        data-active-path=\"&#x2F;node&#x2F;4206\"\n>Weekly Oil Bulletin</a></li><li\n
+        \       class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n      ><a\n
+        \ href=\"/data-and-analysis/market-analysis_en\"\n  class=\"ecl-link ecl-link--standalone
+        ecl-menu__sublink\"\n   data-untranslated-label=\"Market&#x20;analysis\" data-active-path=\"&#x2F;node&#x2F;5330\"\n>Market
+        analysis</a></li><li\n        class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n
+        \     ><a\n  href=\"/data-and-analysis/energy-prices-and-costs-europe_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Energy&#x20;prices&#x20;and&#x20;costs&#x20;in&#x20;Europe\"
+        data-active-path=\"&#x2F;node&#x2F;6275\"\n>Energy prices and costs in Europe</a></li><li\n
+        \       class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n      ><a\n
+        \ href=\"/data-and-analysis/energy-modelling_en\"\n  class=\"ecl-link ecl-link--standalone
+        ecl-menu__sublink\"\n   data-untranslated-label=\"Energy&#x20;modelling\"
+        data-active-path=\"&#x2F;node&#x2F;6524\"\n>Energy modelling</a></li><li\n
+        \       class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n      ><a\n
+        \ href=\"/data-and-analysis/eu-energy-statistical-pocketbook-and-country-datasheets_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"EU&#x20;energy&#x20;statistical&#x20;pocketbook&#x20;and&#x20;country&#x20;datasheets\"
+        data-active-path=\"&#x2F;node&#x2F;5637\"\n>EU energy statistical pocketbook
+        and country datasheets</a></li><li\n        class=\"ecl-menu__subitem\"\n
+        \       data-ecl-menu-subitem\n      ><a\n  href=\"/data-and-analysis/energy-union-indicators-webtool_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Energy&#x20;union&#x20;indicators&#x20;webtool\"
+        data-active-path=\"&#x2F;node&#x2F;4811\"\n>Energy union indicators webtool</a></li><li\n
+        \       class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n      ><a\n
+        \ href=\"/data-and-analysis/eurobarometers-energy_en\"\n  class=\"ecl-link
+        ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Eurobarometers&#x20;on&#x20;energy\"
+        data-active-path=\"&#x2F;node&#x2F;5444\"\n>Eurobarometers on energy</a></li><li
+        class=\"ecl-menu__subitem ecl-menu__see-all\"><a\n  href=\"/data-and-analysis_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-menu__sublink\"\n
+        \ \n><span \n      class=\"ecl-link__label\">See all</span><span \n  class=\"wt-icon--arrow-left
+        ecl-icon ecl-icon--xs ecl-icon--rotate-180 ecl-link__icon ecl-icon--arrow-left\"\n
+        \ aria-hidden=\"true\"\n  ></span></a></li></ul></div></li><li class=\"ecl-menu__item
+        ecl-menu__item--has-children\" data-ecl-menu-item data-ecl-has-children aria-haspopup
+        data-expanded=\"false\" id=\"ecl-menu-item-ecl-menu-1321615578-4\"><a\n  href=\"/energy-explained_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__link\"\n   data-untranslated-label=\"Energy&#x20;explained\"
+        data-active-path=\"&#x2F;node&#x2F;4704\" data-ecl-menu-link id=\"ecl-menu-item-ecl-menu-1321615578-4-link\"\n>Energy
+        explained</a><button\n  class=\"ecl-button ecl-button--tertiary ecl-button--m
+        ecl-button--neutral ecl-menu__button-caret\"\n  type=\"button\"\n   data-ecl-menu-caret
+        aria-label=\"Access&#x20;item&#x27;s&#x20;children\" aria-describedby=\"ecl-menu-item-ecl-menu-1321615578-4-link\"
+        aria-expanded=\"false\"\n><span class=\"ecl-button__container\"><span \n  class=\"wt-icon--corner-arrow
+        ecl-icon ecl-icon--xs ecl-icon--rotate-180 ecl-button__icon ecl-icon--corner-arrow\"\n
+        \ aria-hidden=\"true\"\n   data-ecl-icon></span></span></button><div\n    class=\"ecl-menu__mega\"\n
+        \   data-ecl-menu-mega\n  ><ul class=\"ecl-menu__sublist\"><li\n        class=\"ecl-menu__subitem\"\n
+        \       data-ecl-menu-subitem\n      ><a\n  href=\"/energy-explained/articles-energy-themes_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Articles&#x20;on&#x20;energy&#x20;themes&#x20;\"
+        data-active-path=\"&#x2F;node&#x2F;6447\"\n>Articles on energy themes </a></li><li\n
+        \       class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n      ><a\n
+        \ href=\"/energy-explained/energy-fact-pages_en\"\n  class=\"ecl-link ecl-link--standalone
+        ecl-menu__sublink\"\n   data-untranslated-label=\"Energy&#x20;fact&#x20;pages\"
+        data-active-path=\"&#x2F;node&#x2F;7114\"\n>Energy fact pages</a></li><li\n
+        \       class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n      ><a\n
+        \ href=\"/energy-explained/recent-videos-energy-policy_en\"\n  class=\"ecl-link
+        ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Recent&#x20;videos&#x20;on&#x20;energy&#x20;policy\"
+        data-active-path=\"&#x2F;node&#x2F;6222\"\n>Recent videos on energy policy</a></li><li\n
+        \       class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n      ><a\n
+        \ href=\"/energy-explained/people-energy_en\"\n  class=\"ecl-link ecl-link--standalone
+        ecl-menu__sublink\"\n   data-untranslated-label=\"People&#x20;with&#x20;energy\"
+        data-active-path=\"&#x2F;node&#x2F;4756\"\n>People with energy</a></li><li\n
+        \       class=\"ecl-menu__subitem\"\n        data-ecl-menu-subitem\n      ><a\n
+        \ href=\"/energy-explained/educational-videos-and-quiz_en\"\n  class=\"ecl-link
+        ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Educational&#x20;videos&#x20;and&#x20;a&#x20;quiz\"
+        data-active-path=\"&#x2F;node&#x2F;5848\"\n>Educational videos and a quiz</a></li><li
+        class=\"ecl-menu__subitem ecl-menu__see-all\"><a\n  href=\"/energy-explained_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-menu__sublink\"\n
+        \ \n><span \n      class=\"ecl-link__label\">See all</span><span \n  class=\"wt-icon--arrow-left
+        ecl-icon ecl-icon--xs ecl-icon--rotate-180 ecl-link__icon ecl-icon--arrow-left\"\n
+        \ aria-hidden=\"true\"\n  ></span></a></li></ul></div></li><li class=\"ecl-menu__item
+        ecl-menu__item--has-children\" data-ecl-menu-item data-ecl-has-children aria-haspopup
+        data-expanded=\"false\" id=\"ecl-menu-item-ecl-menu-1321615578-5\"><a\n  href=\"/resources_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__link\"\n   data-untranslated-label=\"Resources\"
+        data-active-path=\"&#x2F;node&#x2F;6977\" data-ecl-menu-link id=\"ecl-menu-item-ecl-menu-1321615578-5-link\"\n>Resources</a><button\n
+        \ class=\"ecl-button ecl-button--tertiary ecl-button--m ecl-button--neutral
+        ecl-menu__button-caret\"\n  type=\"button\"\n   data-ecl-menu-caret aria-label=\"Access&#x20;item&#x27;s&#x20;children\"
+        aria-describedby=\"ecl-menu-item-ecl-menu-1321615578-5-link\" aria-expanded=\"false\"\n><span
+        class=\"ecl-button__container\"><span \n  class=\"wt-icon--corner-arrow ecl-icon
+        ecl-icon--xs ecl-icon--rotate-180 ecl-button__icon ecl-icon--corner-arrow\"\n
+        \ aria-hidden=\"true\"\n   data-ecl-icon></span></span></button><div\n    class=\"ecl-menu__mega\"\n
+        \   data-ecl-menu-mega\n  ><ul class=\"ecl-menu__sublist\"><li\n        class=\"ecl-menu__subitem\"\n
+        \       data-ecl-menu-subitem\n      ><a\n  href=\"/resources/energy-publications_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Publications\"
+        data-active-path=\"&#x2F;node&#x2F;83\"\n>Publications</a></li><li\n        class=\"ecl-menu__subitem\"\n
+        \       data-ecl-menu-subitem\n      ><a\n  href=\"/resources/consultations_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Consultations\"
+        data-active-path=\"&#x2F;node&#x2F;10\"\n>Consultations</a></li><li\n        class=\"ecl-menu__subitem\"\n
+        \       data-ecl-menu-subitem\n      ><a\n  href=\"/resources/final-studies_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Final&#x20;studies\"
+        data-active-path=\"&#x2F;node&#x2F;4296\"\n>Final studies</a></li><li\n        class=\"ecl-menu__subitem\"\n
+        \       data-ecl-menu-subitem\n      ><a\n  href=\"/resources/preparatory-studies_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__sublink\"\n   data-untranslated-label=\"Preparatory&#x20;studies\"
+        data-active-path=\"&#x2F;node&#x2F;6521\"\n>Preparatory studies</a></li><li
+        class=\"ecl-menu__subitem ecl-menu__see-all\"><a\n  href=\"/resources_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-menu__sublink\"\n
+        \ \n><span \n      class=\"ecl-link__label\">See all</span><span \n  class=\"wt-icon--arrow-left
+        ecl-icon ecl-icon--xs ecl-icon--rotate-180 ecl-link__icon ecl-icon--arrow-left\"\n
+        \ aria-hidden=\"true\"\n  ></span></a></li></ul></div></li><li class=\"ecl-menu__item\"
+        data-ecl-menu-item id=\"ecl-menu-item-ecl-menu-1321615578-6\"><a\n  href=\"/events_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-menu__link\"\n   data-untranslated-label=\"Events\"
+        data-active-path=\"&#x2F;node&#x2F;4\" data-ecl-menu-link id=\"ecl-menu-item-ecl-menu-1321615578-6-link\"\n>Events</a></li><li
+        class=\"ecl-menu__item\" data-ecl-menu-item id=\"ecl-menu-item-ecl-menu-1321615578-7\"><a\n
+        \ href=\"/news_en\"\n  class=\"ecl-link ecl-link--standalone ecl-menu__link\"\n
+        \  data-untranslated-label=\"News\" data-active-path=\"&#x2F;node&#x2F;2\"
+        data-ecl-menu-link id=\"ecl-menu-item-ecl-menu-1321615578-7-link\"\n>News</a></li></ul></section></div></nav>
+        \ \n</div>\n\n  </div>\n\n\n\n</header>\n\n            <div class=\"ecl-u-mb-2xl\"
+        id=\"block-ewcms-theme-page-header\">\n  \n    \n      \n            \n  \n\n\n<div\n
+        \ class=\"ecl-page-header ecl-page-header--description-top\"\n  \n><div class=\"ecl-page-header__container\"><div
+        class=\"ecl-container\"><nav\n  class=\"ecl-breadcrumb ecl-page-header__breadcrumb\"\n
+        \  aria-label=\"You&#x20;are&#x20;here&#x3A;\" aria-label=\"\" data-ecl-breadcrumb=\"true\"\n><ol
+        class=\"ecl-breadcrumb__container\"><li class=\"ecl-breadcrumb__segment\"
+        data-ecl-breadcrumb-item=\"static\"><a\n  href=\"https://energy.ec.europa.eu/index_en\"\n
+        \ class=\"ecl-link ecl-breadcrumb__link\"\n  \n>Home</a><span \n  class=\"wt-icon--corner-arrow
+        ecl-icon ecl-icon--fluid ecl-breadcrumb__icon ecl-icon--corner-arrow\"\n  aria-hidden=\"true\"\n
+        \  role=\"presentation\"></span></li><li class=\"ecl-breadcrumb__segment\"
+        data-ecl-breadcrumb-item=\"static\"><a\n  href=\"/data-and-analysis_en\"\n
+        \ class=\"ecl-link ecl-breadcrumb__link\"\n  \n>Data and analysis</a><span
+        \n  class=\"wt-icon--corner-arrow ecl-icon ecl-icon--fluid ecl-breadcrumb__icon
+        ecl-icon--corner-arrow\"\n  aria-hidden=\"true\"\n   role=\"presentation\"></span></li><li
+        class=\"ecl-breadcrumb__segment ecl-breadcrumb__current-page\" data-ecl-breadcrumb-item=\"static\"
+        aria-current=\"page\"><span>Weekly Oil Bulletin</span></li></ol></nav><h1
+        class=\"ecl-page-header__title\"><span>Weekly Oil Bulletin</span></h1><div
+        class=\"ecl-page-header__description-top\"><div class=\"ecl-page-header__description-container\"><p
+        class=\"ecl-page-header__description\">Information and maps showing weekly
+        updates on prices of petroleum products in all EU countries\n</p></div></div></div></div></div>\n
+        \ </div>\n\n\n  \n\n  <main class=\"ecl-u-pb-xl\" id=\"main-content\" data-inpage-navigation-source-area=\"h2.ecl-u-type-heading-2,
+        div.ecl-featured-item__heading, div.ecl-quiz__title\">\n    <div class=\"ecl-container\">\n
+        \     <div class=\"ecl-row\">\n        <div class=\"ecl-col-s-12 ewcms-top-sidebar\">\n
+        \           <div>\n    <div data-drupal-messages-fallback class=\"hidden\"></div>\n
+        \ </div>\n\n        </div>\n      </div>\n      <div class=\"ecl-row\">\n
+        \       <div class=\"ecl-col-s-12\">\n                      <div  class=\"ecl-row
+        ecl-u-mt-l\">\n              <div class=\"oe-theme-left-sidebar ecl-col-12
+        ecl-col-l-3\">\n                      <nav\n  class=\"ecl-inpage-navigation
+        oe-theme-ecl-inpage-navigation ecl-u-z-dropdown\"\n  data-ecl-auto-init=\"InpageNavigation\"
+        data-ecl-auto-initialized=\"true\"\n  data-ecl-inpage-navigation=\"true\"\n
+        \ aria-labelledby=\"ecl-inpage-navigation-1674201758\"\n><div class=\"ecl-inpage-navigation__title\"
+        id=\"ecl-inpage-navigation-1674201758\">\n    Page contents\n  </div><div
+        class=\"ecl-inpage-navigation__body\"><div class=\"ecl-inpage-navigation__trigger-wrapper\"><button
+        \n      type=\"button\"\n      class=\"ecl-inpage-navigation__trigger\"\n
+        \     id=\"ecl-inpage-navigation-1674201758-trigger\"\n      data-ecl-inpage-navigation-trigger=\"true\"\n
+        \     aria-controls=\"ecl-inpage-navigation-list\"\n      aria-expanded=\"false\"><span\n
+        \         class=\"ecl-inpage-navigation__trigger-current\"\n          data-ecl-inpage-navigation-trigger-current=\"true\">Page
+        contents</span><span \n  class=\"wt-icon--corner-arrow ecl-icon ecl-icon--xs
+        ecl-icon--rotate-180 ecl-inpage-navigation__trigger-icon ecl-icon--corner-arrow\"\n
+        \ aria-hidden=\"false\"\n  ></span></button></div><ul class=\"ecl-inpage-navigation__list\"
+        data-ecl-inpage-navigation-list=\"true\" id=\"ecl-inpage-navigation-1674201758-list\"></ul></div></nav>\n\n\n
+        \             </div>\n              <div class=\"oe-theme-content-region ecl-col-l-9\">\n
+        \               <div id=\"block-ewcms-theme-main-page-content\" data-inpage-navigation-source-area=\"h2,
+        div.ecl-featured-item__heading\" class=\"ecl-u-mb-l\">\n  \n    \n      <article
+        dir=\"ltr\">\n\n  \n    \n\n  \n  <div>\n    <div class=\"ecl\">    \n\n<div
+        class=\"ecl-media-container ecl-media-container--custom-ratio ecl-u-mb-s ewcms-embed-large\"
+        data-ecl-media-container=\"true\" data-ecl-auto-init=\"MediaContainer\"><figure
+        class=\"ecl-media-container__figure\"><div class=\"ecl-media-container__media\"><img
+        loading=\"eager\" class=\"ecl-u-width-100 ecl-u-height-auto ecl-media-container__media--ratio-custom\"
+        srcset=\"/sites/default/files/styles/embed_large/public/2022-05/OilReport_banner_1200X300.jpg?itok=WTmBn4Vk
+        1x, /sites/default/files/styles/embed_large_2x/public/2022-05/OilReport_banner_1200X300.jpg?itok=JspJ2mTX
+        2x\" width=\"712\" height=\"178\" src=\"/sites/default/files/styles/embed_large/public/2022-05/OilReport_banner_1200X300.jpg?itok=WTmBn4Vk\"
+        alt=\"\"></div><figcaption class=\"ecl-media-container__caption\"><div>©iStock:balipadma/ewg3D/seraficus/mauro_grigollo/industryview</div></figcaption></figure></div>\n<p>To
+        improve the transparency of oil prices and to strengthen the internal market,
+        the European Commission's Oil Bulletin presents weekly consumer prices for
+        petroleum products in EU countries. The national data and prices are submitted
+        to the Commission on Wednesdays and our subscribers receive the bulletin per
+        mail every Thursday.</p><p><a href=\"https://ec.europa.eu/newsroom/ener/subscription-quick-generic-form-fullpage.cfm?service_id=238\"
+        class=\"ecl-link ecl-link--primary-highlight\">Subscribe to the Weekly Oil
+        Bulletin</a></p>  \n  \n\n\n  \n  \n\n<div class=\"ecl-file\" data-ecl-file=\"\"
+        id=\"ecl-file-709135163\"><div class=\"ecl-file__container\"><span class=\"wt-icon--spreadsheet
+        ecl-icon ecl-icon--m ecl-file__icon ecl-icon--spreadsheet\" aria-hidden=\"true\"></span><div
+        class=\"ecl-file__info\"><ul class=\"ecl-file__detail-meta\"><li class=\"ecl-file__detail-meta-item\">17
+        SEPTEMBER 2026</li></ul><div class=\"ecl-file__title\" id=\"ecl-file-709135163-title\">Prices
+        with taxes latest prices (xlsx)</div></div></div><div class=\"ecl-file__footer\"><div
+        class=\"ecl-file__language\" id=\"ecl-file-709135163-lang\">English</div><div
+        class=\"ecl-file__meta\" id=\"ecl-file-709135163-meta\">(13.9 KB - XLSX)</div><div
+        class=\"ecl-file__action\"><a href=\"/document/download/264c2d0f-f161-4ea3-a777-78faae59bea0_en?filename=Weekly%20Oil%20Bulletin%20Weekly%20prices%20with%20Taxes%20-%202024-02-19.xlsx\"
+        class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-file__download\"
+        data-untranslated-label=\"Prices with taxes latest prices (xlsx)\" data-wt-preview=\"xlsx\"
+        id=\"ecl-file-709135163-link\" aria-labelledby=\"ecl-file-709135163-link-label
+        ecl-file-709135163-title ecl-file-709135163-lang ecl-file-709135163-meta\"><span
+        class=\"ecl-link__label\" id=\"ecl-file-709135163-link-label\">Download</span><span
+        class=\"wt-icon--download ecl-icon ecl-icon--fluid ecl-link__icon ecl-icon--download\"
+        aria-hidden=\"true\"></span></a></div></div></div>\n    \n  \n\n\n  \n  \n\n<div
+        class=\"ecl-file\" data-ecl-file=\"\" id=\"ecl-file-40126536\"><div class=\"ecl-file__container\"><span
+        class=\"wt-icon--spreadsheet ecl-icon ecl-icon--m ecl-file__icon ecl-icon--spreadsheet\"
+        aria-hidden=\"true\"></span><div class=\"ecl-file__info\"><ul class=\"ecl-file__detail-meta\"><li
+        class=\"ecl-file__detail-meta-item\">17 SEPTEMBER 2026</li></ul><div class=\"ecl-file__title\"
+        id=\"ecl-file-40126536-title\">Prices without taxes latest prices(xlsx)</div></div></div><div
+        class=\"ecl-file__footer\"><div class=\"ecl-file__language\" id=\"ecl-file-40126536-lang\">English</div><div
+        class=\"ecl-file__meta\" id=\"ecl-file-40126536-meta\">(16.95 KB - XLSX)</div><div
+        class=\"ecl-file__action\"><a href=\"/document/download/78311f92-68f8-4b82-b5cf-1293beeaae77_en?filename=Weekly%20Oil%20Bulletin%20Weekly%20prices%20without%20taxes%20-%202024-02-19.xlsx\"
+        class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-file__download\"
+        data-untranslated-label=\"Prices without taxes latest prices(xlsx)\" data-wt-preview=\"xlsx\"
+        id=\"ecl-file-40126536-link\" aria-labelledby=\"ecl-file-40126536-link-label
+        ecl-file-40126536-title ecl-file-40126536-lang ecl-file-40126536-meta\"><span
+        class=\"ecl-link__label\" id=\"ecl-file-40126536-link-label\">Download</span><span
+        class=\"wt-icon--download ecl-icon ecl-icon--fluid ecl-link__icon ecl-icon--download\"
+        aria-hidden=\"true\"></span></a></div></div></div>\n    \n  \n\n\n  \n  \n\n<div
+        class=\"ecl-file\" data-ecl-file=\"\" id=\"ecl-file-938558222\"><div class=\"ecl-file__container\"><span
+        class=\"wt-icon--file ecl-icon ecl-icon--m ecl-file__icon ecl-icon--file\"
+        aria-hidden=\"true\"></span><div class=\"ecl-file__info\"><ul class=\"ecl-file__detail-meta\"><li
+        class=\"ecl-file__detail-meta-item\">17 SEPTEMBER 2026</li></ul><div class=\"ecl-file__title\"
+        id=\"ecl-file-938558222-title\">Map eurosuper 95 (pdf)</div></div></div><div
+        class=\"ecl-file__footer\"><div class=\"ecl-file__language\" id=\"ecl-file-938558222-lang\">English</div><div
+        class=\"ecl-file__meta\" id=\"ecl-file-938558222-meta\">(241.77 KB - PDF)</div><div
+        class=\"ecl-file__action\"><a href=\"/document/download/0241d6bb-e34f-46bb-a75e-5a99a8b3db26_en?filename=WOB%20-%20map%20-%20eurosuper%2095%20-%202024-04-22.pdf\"
+        class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-file__download\"
+        data-untranslated-label=\"Map eurosuper 95 (pdf)\" data-wt-preview=\"pdf\"
+        id=\"ecl-file-938558222-link\" aria-labelledby=\"ecl-file-938558222-link-label
+        ecl-file-938558222-title ecl-file-938558222-lang ecl-file-938558222-meta\"><span
+        class=\"ecl-link__label\" id=\"ecl-file-938558222-link-label\">Download</span><span
+        class=\"wt-icon--download ecl-icon ecl-icon--fluid ecl-link__icon ecl-icon--download\"
+        aria-hidden=\"true\"></span></a></div></div></div>\n    \n  \n\n\n  \n  \n\n<div
+        class=\"ecl-file\" data-ecl-file=\"\" id=\"ecl-file-980639094\"><div class=\"ecl-file__container\"><span
+        class=\"wt-icon--file ecl-icon ecl-icon--m ecl-file__icon ecl-icon--file\"
+        aria-hidden=\"true\"></span><div class=\"ecl-file__info\"><ul class=\"ecl-file__detail-meta\"><li
+        class=\"ecl-file__detail-meta-item\">17 SEPTEMBER 2026</li></ul><div class=\"ecl-file__title\"
+        id=\"ecl-file-980639094-title\">Map diesel (pdf)</div></div></div><div class=\"ecl-file__footer\"><div
+        class=\"ecl-file__language\" id=\"ecl-file-980639094-lang\">English</div><div
+        class=\"ecl-file__meta\" id=\"ecl-file-980639094-meta\">(240.87 KB - PDF)</div><div
+        class=\"ecl-file__action\"><a href=\"/document/download/b67af0e5-3ff6-496d-88fe-d6b5a3a873c3_en?filename=WOB%20-%20map%20-%20diesel%20-%202024-04-22.pdf\"
+        class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-file__download\"
+        data-untranslated-label=\"Map diesel (pdf)\" data-wt-preview=\"pdf\" id=\"ecl-file-980639094-link\"
+        aria-labelledby=\"ecl-file-980639094-link-label ecl-file-980639094-title ecl-file-980639094-lang
+        ecl-file-980639094-meta\"><span class=\"ecl-link__label\" id=\"ecl-file-980639094-link-label\">Download</span><span
+        class=\"wt-icon--download ecl-icon ecl-icon--fluid ecl-link__icon ecl-icon--download\"
+        aria-hidden=\"true\"></span></a></div></div></div>\n  <h2>Taxes on petroleum
+        products</h2><p>Information on value added taxes (VAT), excise duties, and
+        other indirect taxes for petroleum products in EU countries.</p>  \n  \n\n\n
+        \ \n  \n\n<div class=\"ecl-file\" data-ecl-file=\"\" id=\"ecl-file-1848081155\"><div
+        class=\"ecl-file__container\"><span class=\"wt-icon--spreadsheet ecl-icon
+        ecl-icon--m ecl-file__icon ecl-icon--spreadsheet\" aria-hidden=\"true\"></span><div
+        class=\"ecl-file__info\"><ul class=\"ecl-file__detail-meta\"><li class=\"ecl-file__detail-meta-item\">17
+        SEPTEMBER 2026</li></ul><div class=\"ecl-file__title\" id=\"ecl-file-1848081155-title\">Oil
+        Bulletin Duties and taxes (xlsx)</div></div></div><div class=\"ecl-file__footer\"><div
+        class=\"ecl-file__language\" id=\"ecl-file-1848081155-lang\">English</div><div
+        class=\"ecl-file__meta\" id=\"ecl-file-1848081155-meta\">(22.54 KB - XLSX)</div><div
+        class=\"ecl-file__action\"><a href=\"/document/download/ccdc6e96-6792-40cb-b0b4-b6609f1e30d0_en?filename=Oil_Bulletin_Duties_and_taxes.xlsx\"
+        class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-file__download\"
+        data-untranslated-label=\"Oil Bulletin Duties and taxes (xlsx)\" data-wt-preview=\"xlsx\"
+        id=\"ecl-file-1848081155-link\" aria-labelledby=\"ecl-file-1848081155-link-label
+        ecl-file-1848081155-title ecl-file-1848081155-lang ecl-file-1848081155-meta\"><span
+        class=\"ecl-link__label\" id=\"ecl-file-1848081155-link-label\">Download</span><span
+        class=\"wt-icon--download ecl-icon ecl-icon--fluid ecl-link__icon ecl-icon--download\"
+        aria-hidden=\"true\"></span></a></div></div></div>\n  <h2>Price developments</h2><p>Information
+        on price developments (with and without taxes), VAT, excise duties, and consumption
+        of petroleum products in EU countries over time.</p>  \n  \n\n\n  \n  \n\n<div
+        class=\"ecl-file\" data-ecl-file=\"\" id=\"ecl-file-444102299\"><div class=\"ecl-file__container\"><span
+        class=\"wt-icon--spreadsheet ecl-icon ecl-icon--m ecl-file__icon ecl-icon--spreadsheet\"
+        aria-hidden=\"true\"></span><div class=\"ecl-file__info\"><ul class=\"ecl-file__detail-meta\"><li
+        class=\"ecl-file__detail-meta-item\">17 SEPTEMBER 2026</li></ul><div class=\"ecl-file__title\"
+        id=\"ecl-file-444102299-title\">Price developments 2005 onwards (xlsx) </div></div></div><div
+        class=\"ecl-file__footer\"><div class=\"ecl-file__language\" id=\"ecl-file-444102299-lang\">English</div><div
+        class=\"ecl-file__meta\" id=\"ecl-file-444102299-meta\">(4.26 MB - XLSX)</div><div
+        class=\"ecl-file__action\"><a href=\"/document/download/906e60ca-8b6a-44e7-8589-652854d2fd3f_en?filename=Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx\"
+        class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-file__download\"
+        data-untranslated-label=\"Price developments 2005 onwards (xlsx) \" data-wt-preview=\"xlsx\"
+        id=\"ecl-file-444102299-link\" aria-labelledby=\"ecl-file-444102299-link-label
+        ecl-file-444102299-title ecl-file-444102299-lang ecl-file-444102299-meta\"><span
+        class=\"ecl-link__label\" id=\"ecl-file-444102299-link-label\">Download</span><span
+        class=\"wt-icon--download ecl-icon ecl-icon--fluid ecl-link__icon ecl-icon--download\"
+        aria-hidden=\"true\"></span></a></div></div></div>\n  <h2>Methodological notes
+        on price reporting</h2><div class=\"ecl-table-responsive\"><table class=\"ecl-table\"><tbody
+        class=\"ecl-table__body\"><tr class=\"ecl-table__row\"><td><a href=\"/document/download/a99a3695-dfa9-49bf-98b4-192a97f19b7b_en?filename=2018_austria_notes.pdf\"
+        data-entity-type=\"external\">Austria</a></td><td><a href=\"/document/download/7d7b3f3f-1135-46e5-b5b2-8e9af64c4fbc_en?filename=2018_belgium_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Belgium</a></td><td><a href=\"/document/download/21f400ed-370a-4b39-8254-c5d5f020c49d_en?filename=2018_bulgaria_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Bulgaria</a></td><td><a href=\"/document/download/9a76e6a8-b415-4ac9-bdaa-74d54477f317_en?filename=CROATIA%202021.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Croatia</a></td></tr><tr
+        class=\"ecl-table__row\"><td><a href=\"/document/download/6ec6ea99-0148-4323-9a49-5eec819e29ec_en?filename=2018_cyprus_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Cyprus</a></td><td><a href=\"/document/download/2b6efb04-9c48-4ef5-a5b1-c2e8183d3c08_en?filename=CZECHIA%202022.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Czechia</a></td><td><a href=\"/document/download/afbe68d2-55cf-4b73-9663-076bc44d8e22_en?filename=2018_denmark_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Denmark</a></td><td><a href=\"/document/download/0aa3a8a2-1983-45ad-85cf-90bd9e3bd798_en?filename=2018_estonia_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Estonia</a></td></tr><tr
+        class=\"ecl-table__row\"><td><a href=\"/document/download/1c5925f1-c789-4ea0-af48-4420d396e19c_en?filename=FI-Documentation_Oil_Bulletin_13.3.2026.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Finland</a></td><td><a href=\"/document/download/1916960d-df35-4bee-ab2e-dac6f6a402bf_en?filename=2018_france_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">France</a></td><td><a href=\"/document/download/6b94220a-8483-44cd-bd23-e699050e6047_en?filename=2018_germany_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Germany</a></td><td><a href=\"/document/download/f111bfd0-4d0f-4f59-8cef-8cff2e0285f9_en?filename=2018_greece_notes.pdf\"
+        data-entity-type=\"external\">Greece</a></td></tr><tr class=\"ecl-table__row\"><td><a
+        href=\"/document/download/743bfc66-3335-45a2-b931-e685d2b969f5_en?filename=2018_hungary_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Hungary</a></td><td><a href=\"/document/download/48241a54-9faa-4ba5-b0b9-12314f41d9af_en?filename=IRELAND%20Methodology-EU%20Update%2008_10_2025%20LATEST.pdf\"
+        data-entity-type=\"external\">Ireland</a></td><td><a href=\"/document/download/eecb8488-6a38-4df2-9fd9-b1ca658f5ebf_en?filename=2014_italy_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Italy</a></td><td><a href=\"/document/download/4eeea125-b872-4338-8c49-e57f66b70115_en?filename=2018_latvia_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Latvia</a></td></tr><tr class=\"ecl-table__row\"><td><a
+        href=\"/document/download/e2b15741-9a39-41d2-96d6-329c8e84884a_en?filename=LITHUANIAPRICES%202021.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Lithuania</a></td><td><a
+        href=\"/document/download/e7403bc3-47c8-4b8e-a6dc-43eb9a8ddabe_en?filename=2018_luxembourg_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Luxembourg</a></td><td><a
+        href=\"/document/download/334373b7-e8d4-4b4c-8dc9-1bc5c44a1fa4_en?filename=MALTA%202021A.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Malta</a></td><td><a href=\"/document/download/c4cac938-81b1-4821-ba73-6d156f7815d6_en?filename=2014_netherlands_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Netherlands</a></td></tr><tr
+        class=\"ecl-table__row\"><td><a href=\"/document/download/58ad7e80-7fb8-481f-a50f-a75750d69d5e_en?filename=2018_poland_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Poland</a></td><td><a href=\"/document/download/d609e796-8cef-48b2-b3da-fd0f6aaf8ef1_en?filename=PORTUGAL%20approved%2010december2021.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Portugal</a></td><td><a href=\"/document/download/5c167af7-eaff-4fb3-a0e7-9e8b51669852_en?filename=2018_romania_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Romania</a></td><td><a href=\"/document/download/106b7340-581e-4bda-a77e-d56469a7c648_en?filename=SLOVAKIA_Methodological%20notes%20on%20price%20reporting%202021.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Slovakia</a></td></tr><tr
+        class=\"ecl-table__row\"><td><a href=\"/document/download/a6370e02-3a21-4079-9779-8de1cb052ff5_en?filename=wob_slovenia_methodology_update_october2020.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Slovenia</a></td><td><a href=\"/document/download/03d1245b-ee6b-48eb-9bea-57b5f36b82a2_en?filename=2018_spain_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Spain</a></td><td><a href=\"/document/download/63e28722-65d8-4725-b527-28ea7701cee8_en?filename=2018_sweden_notes.pdf\"
+        data-entity-type=\"external\" class=\"ecl-link\">Sweden</a></td><td> </td></tr></tbody></table></div><h2>Documents</h2>
+        \ \n  \n\n\n\n  \n\n<div class=\"ecl-file\" data-ecl-file=\"\" id=\"ecl-file-1102957550\"><div
+        class=\"ecl-file__container\"><span class=\"wt-icon--file ecl-icon ecl-icon--m
+        ecl-file__icon ecl-icon--file\" aria-hidden=\"true\"></span><div class=\"ecl-file__info\"><ul
+        class=\"ecl-file__detail-meta\"><li class=\"ecl-file__detail-meta-item\">11
+        DECEMBER 2013</li></ul><div class=\"ecl-file__title\" id=\"ecl-file-1102957550-title\">Commission
+        Recommendation on Reporting Weekly Petroleum Product Prices [COM(2013) 8737)</div></div></div><div
+        class=\"ecl-file__footer\"><div class=\"ecl-file__language\" id=\"ecl-file-1102957550-lang\">English</div><div
+        class=\"ecl-file__meta\" id=\"ecl-file-1102957550-meta\">(HTML)</div><div
+        class=\"ecl-file__action\"><a href=\"/document/download/3b1e5e6f-99bf-4f2a-b3e6-9da76571833a_en\"
+        class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-file__download\"
+        data-untranslated-label=\"Commission Recommendation on Reporting Weekly Petroleum
+        Product Prices [COM(2013) 8737)\" id=\"ecl-file-1102957550-link\" aria-labelledby=\"ecl-file-1102957550-link-label
+        ecl-file-1102957550-title ecl-file-1102957550-lang ecl-file-1102957550-meta\"><span
+        class=\"ecl-link__label\" id=\"ecl-file-1102957550-link-label\">Download</span><span
+        class=\"wt-icon--download ecl-icon ecl-icon--fluid ecl-link__icon ecl-icon--download\"
+        aria-hidden=\"true\"></span></a></div></div></div>\n    \n  \n\n\n\n  \n\n<div
+        class=\"ecl-file\" data-ecl-file=\"\" id=\"ecl-file-116768166\"><div class=\"ecl-file__container\"><span
+        class=\"wt-icon--file ecl-icon ecl-icon--m ecl-file__icon ecl-icon--file\"
+        aria-hidden=\"true\"></span><div class=\"ecl-file__info\"><ul class=\"ecl-file__detail-meta\"><li
+        class=\"ecl-file__detail-meta-item\">11 DECEMBER 2013</li></ul><div class=\"ecl-file__title\"
+        id=\"ecl-file-116768166-title\">Annex Commission Recommendation on Reporting
+        Weekly Petroleum Product Prices [COM(2013) 8737)</div></div></div><div class=\"ecl-file__footer\"><div
+        class=\"ecl-file__language\" id=\"ecl-file-116768166-lang\">English</div><div
+        class=\"ecl-file__meta\" id=\"ecl-file-116768166-meta\">(HTML)</div><div class=\"ecl-file__action\"><a
+        href=\"/document/download/c9fc9e09-2200-4803-a5a1-bd515a4ed213_en\" class=\"ecl-link
+        ecl-link--standalone ecl-link--icon ecl-file__download\" data-untranslated-label=\"Annex
+        Commission Recommendation on Reporting Weekly Petroleum Product Prices [COM(2013)
+        8737)\" id=\"ecl-file-116768166-link\" aria-labelledby=\"ecl-file-116768166-link-label
+        ecl-file-116768166-title ecl-file-116768166-lang ecl-file-116768166-meta\"><span
+        class=\"ecl-link__label\" id=\"ecl-file-116768166-link-label\">Download</span><span
+        class=\"wt-icon--download ecl-icon ecl-icon--fluid ecl-link__icon ecl-icon--download\"
+        aria-hidden=\"true\"></span></a></div></div></div>\n    \n  \n\n\n\n  \n\n<div
+        class=\"ecl-file\" data-ecl-file=\"\" id=\"ecl-file-1880946320\"><div class=\"ecl-file__container\"><span
+        class=\"wt-icon--file ecl-icon ecl-icon--m ecl-file__icon ecl-icon--file\"
+        aria-hidden=\"true\"></span><div class=\"ecl-file__info\"><ul class=\"ecl-file__detail-meta\"><li
+        class=\"ecl-file__detail-meta-item\">1 FEBRUARY 2009</li></ul><div class=\"ecl-file__title\"
+        id=\"ecl-file-1880946320-title\">Oil Bulletin survey 2008</div></div></div><div
+        class=\"ecl-file__footer\"><div class=\"ecl-file__language\" id=\"ecl-file-1880946320-lang\">English</div><div
+        class=\"ecl-file__meta\" id=\"ecl-file-1880946320-meta\">(HTML)</div><div
+        class=\"ecl-file__action\"><a href=\"/document/download/8782dccd-4cc6-4e6d-ae70-a219ede15f9c_en\"
+        class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-file__download\"
+        data-untranslated-label=\"Oil Bulletin survey 2008\" id=\"ecl-file-1880946320-link\"
+        aria-labelledby=\"ecl-file-1880946320-link-label ecl-file-1880946320-title
+        ecl-file-1880946320-lang ecl-file-1880946320-meta\"><span class=\"ecl-link__label\"
+        id=\"ecl-file-1880946320-link-label\">Download</span><span class=\"wt-icon--download
+        ecl-icon ecl-icon--fluid ecl-link__icon ecl-icon--download\" aria-hidden=\"true\"></span></a></div></div></div>\n
+        \   \n  \n\n\n\n  \n\n<div class=\"ecl-file\" data-ecl-file=\"\" id=\"ecl-file-1883464245\"><div
+        class=\"ecl-file__container\"><span class=\"wt-icon--file ecl-icon ecl-icon--m
+        ecl-file__icon ecl-icon--file\" aria-hidden=\"true\"></span><div class=\"ecl-file__info\"><ul
+        class=\"ecl-file__detail-meta\"><li class=\"ecl-file__detail-meta-item\">1
+        FEBRUARY 2009</li></ul><div class=\"ecl-file__title\" id=\"ecl-file-1883464245-title\">Oil
+        Bulletin data collection methodology 2008</div></div></div><div class=\"ecl-file__footer\"><div
+        class=\"ecl-file__language\" id=\"ecl-file-1883464245-lang\">English</div><div
+        class=\"ecl-file__meta\" id=\"ecl-file-1883464245-meta\">(HTML)</div><div
+        class=\"ecl-file__action\"><a href=\"/document/download/f1fe97e3-d2ba-4ff9-ac4a-8bfc1283180d_en\"
+        class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-file__download\"
+        data-untranslated-label=\"Oil Bulletin data collection methodology 2008\"
+        id=\"ecl-file-1883464245-link\" aria-labelledby=\"ecl-file-1883464245-link-label
+        ecl-file-1883464245-title ecl-file-1883464245-lang ecl-file-1883464245-meta\"><span
+        class=\"ecl-link__label\" id=\"ecl-file-1883464245-link-label\">Download</span><span
+        class=\"wt-icon--download ecl-icon ecl-icon--fluid ecl-link__icon ecl-icon--download\"
+        aria-hidden=\"true\"></span></a></div></div></div>\n    \n  \n\n\n\n  \n\n<div
+        class=\"ecl-file\" data-ecl-file=\"\" id=\"ecl-file-1081828681\"><div class=\"ecl-file__container\"><span
+        class=\"wt-icon--file ecl-icon ecl-icon--m ecl-file__icon ecl-icon--file\"
+        aria-hidden=\"true\"></span><div class=\"ecl-file__info\"><ul class=\"ecl-file__detail-meta\"><li
+        class=\"ecl-file__detail-meta-item\">14 AUGUST 1999</li></ul><div class=\"ecl-file__title\"
+        id=\"ecl-file-1081828681-title\">Commission Decision on Crude Oil Supply Costs
+        and the Consumer Prices of Petroleum Products (1999/566/EC)</div></div></div><div
+        class=\"ecl-file__footer\"><div class=\"ecl-file__language\" id=\"ecl-file-1081828681-lang\">English</div><div
+        class=\"ecl-file__meta\" id=\"ecl-file-1081828681-meta\">(HTML)</div><div
+        class=\"ecl-file__action\"><a href=\"/document/download/03e803a4-8ac7-4801-b9a4-11ade2bf0f7e_en\"
+        class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-file__download\"
+        data-untranslated-label=\"Commission Decision on Crude Oil Supply Costs and
+        the Consumer Prices of Petroleum Products (1999/566/EC)\" id=\"ecl-file-1081828681-link\"
+        aria-labelledby=\"ecl-file-1081828681-link-label ecl-file-1081828681-title
+        ecl-file-1081828681-lang ecl-file-1081828681-meta\"><span class=\"ecl-link__label\"
+        id=\"ecl-file-1081828681-link-label\">Download</span><span class=\"wt-icon--download
+        ecl-icon ecl-icon--fluid ecl-link__icon ecl-icon--download\" aria-hidden=\"true\"></span></a></div></div></div>\n
+        \   \n  \n\n\n\n  \n\n<div class=\"ecl-file\" data-ecl-file=\"\" id=\"ecl-file-38806307\"><div
+        class=\"ecl-file__container\"><span class=\"wt-icon--file ecl-icon ecl-icon--m
+        ecl-file__icon ecl-icon--file\" aria-hidden=\"true\"></span><div class=\"ecl-file__info\"><ul
+        class=\"ecl-file__detail-meta\"><li class=\"ecl-file__detail-meta-item\">28
+        APRIL 1999</li></ul><div class=\"ecl-file__title\" id=\"ecl-file-38806307-title\">Council
+        Decision on Crude Oil Supply Costs and the Consumer Prices of Petroleum Products
+        (1999/280/EC)</div></div></div><div class=\"ecl-file__footer\"><div class=\"ecl-file__language\"
+        id=\"ecl-file-38806307-lang\">English</div><div class=\"ecl-file__meta\" id=\"ecl-file-38806307-meta\">(HTML)</div><div
+        class=\"ecl-file__action\"><a href=\"/document/download/4bcf27d9-66f1-4fc6-8589-90052816699a_en\"
+        class=\"ecl-link ecl-link--standalone ecl-link--icon ecl-file__download\"
+        data-untranslated-label=\"Council Decision on Crude Oil Supply Costs and the
+        Consumer Prices of Petroleum Products (1999/280/EC)\" id=\"ecl-file-38806307-link\"
+        aria-labelledby=\"ecl-file-38806307-link-label ecl-file-38806307-title ecl-file-38806307-lang
+        ecl-file-38806307-meta\"><span class=\"ecl-link__label\" id=\"ecl-file-38806307-link-label\">Download</span><span
+        class=\"wt-icon--download ecl-icon ecl-icon--fluid ecl-link__icon ecl-icon--download\"
+        aria-hidden=\"true\"></span></a></div></div></div>\n  </div>\n\n  </div>\n\n</article>\n\n
+        \ </div>\n\n                \n              </div>\n            </div>\n                  </div>\n
+        \     </div>\n      <div class=\"ecl-row\">\n        <div class=\"ecl-col-s-12\">\n
+        \         \n          \n        </div>\n      </div>\n    </div>\n  </main>\n\n
+        \       <div id=\"block-ewcms-theme-pagefeedbackform\">\n  \n    \n      <script
+        type=\"application/json\">{\"service\":\"dff\",\"id\":\"9d97l5vU_dff_v2\",\"lang\":\"en\"}</script>\n\n
+        \ </div>\n  \n  \n\n  \n  \n  \n\n  \n    \n\n\n    \n    \n  <footer\n  class=\"ecl-site-footer\"\n
+        \  data-logo-area-label-en=\"Home&#x20;-&#x20;European&#x20;Commission\"\n><div
+        class=\"ecl-site-footer__main\"><div class=\"ecl-container ecl-site-footer__container\"><div
+        class=\"ecl-site-footer__row ecl-site-footer__row--specific\"><div \n  class=\"ecl-site-footer__section
+        ecl-site-footer__section--site-info\"\n  \n><div class=\"ecl-site-footer__title\"><a\n
+        \ href=\"https://energy.ec.europa.eu/index_en\"\n  class=\"ecl-link ecl-link--inverted
+        ecl-link--icon ecl-site-footer__title-link\"\n  \n><span \n      class=\"ecl-link__label\">Energy</span><span
+        \n  class=\"wt-icon--arrow-left wt-icon--inverted ecl-icon ecl-icon--xs ecl-icon--flip-horizontal
+        ecl-link__icon ecl-icon--arrow-left\"\n  aria-hidden=\"true\"\n  ></span></a></div><div
+        class=\"ecl-site-footer__description\">This site is managed by:<br />Directorate-General
+        for Energy</div><div\n  class=\"ecl-social-media-follow ecl-social-media-follow--vertical
+        ecl-social-media-follow--left ecl-site-footer__social-media\"\n  \n><ul class=\"ecl-social-media-follow__list\"><li
+        class=\"ecl-social-media-follow__item\"><a\n  href=\"https://x.com/Energy4Europe\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-link--icon
+        ecl-social-media-follow__link\"\n   data-section-label-untranslated=\"Follow&#x20;us\"
+        data-footer-link-label=\"X\"\n><span \n  class=\"wt-icon-networks--x wt-icon--inverted
+        ecl-icon ecl-icon--s ecl-link__icon ecl-social-media-follow__icon ecl-icon-networks--x\"\n
+        \ aria-hidden=\"true\"\n  ></span><span \n      class=\"ecl-link__label\">X</span></a></li><li
+        class=\"ecl-social-media-follow__item\"><a\n  href=\"https://www.linkedin.com/showcase/eu-energy/\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-link--icon
+        ecl-social-media-follow__link\"\n   data-section-label-untranslated=\"Follow&#x20;us\"
+        data-footer-link-label=\"LinkedIn\"\n><span \n  class=\"wt-icon-networks--linkedin
+        wt-icon--inverted ecl-icon ecl-icon--s ecl-link__icon ecl-social-media-follow__icon
+        ecl-icon-networks--linkedin\"\n  aria-hidden=\"true\"\n  ></span><span \n
+        \     class=\"ecl-link__label\">LinkedIn</span></a></li><li class=\"ecl-social-media-follow__item\"><a\n
+        \ href=\"https://www.youtube.com/@EUEnergy\"\n  class=\"ecl-link ecl-link--standalone
+        ecl-link--inverted ecl-link--icon ecl-social-media-follow__link\"\n   data-section-label-untranslated=\"Follow&#x20;us\"
+        data-footer-link-label=\"Youtube\"\n><span \n  class=\"wt-icon-networks--youtube
+        wt-icon--inverted ecl-icon ecl-icon--s ecl-link__icon ecl-social-media-follow__icon
+        ecl-icon-networks--youtube\"\n  aria-hidden=\"true\"\n  ></span><span \n      class=\"ecl-link__label\">Youtube</span></a></li><li
+        class=\"ecl-social-media-follow__item\"><a\n  href=\"https://energy.ec.europa.eu/newsletters_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-social-media-follow__link\"\n
+        \  data-section-label-untranslated=\"Follow&#x20;us\" data-footer-link-label=\"DG&#x20;Energy&#x20;newsletters\"\n>DG
+        Energy newsletters</a></li></ul></div></div><div class=\"ecl-site-footer__section
+        ecl-site-footer__section--links\"><div class=\"ecl-site-footer__row\"><div
+        \n  class=\"ecl-site-footer__section ecl-site-footer__section--contact\"\n
+        \ \n><div class=\"ecl-site-footer__title\">\n    Contact us  </div><ul class=\"ecl-site-footer__list\"><li
+        class=\"ecl-site-footer__list-item\"><a\n  href=\"https://commission.europa.eu/about-european-commission/departments-and-executive-agencies/energy_en#contact\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-site-footer__link\"\n
+        \  data-section-label-untranslated=\"Contact&#x20;us\" data-footer-link-label=\"Contact\"\n>Contact</a></li></ul></div><div
+        \n  class=\"ecl-site-footer__section ecl-site-footer__section--about\"\n  \n><div
+        class=\"ecl-site-footer__title\">\n    About us  </div><ul class=\"ecl-site-footer__list\"><li
+        class=\"ecl-site-footer__list-item\"><a\n  href=\"https://commission.europa.eu/about-european-commission/departments-and-executive-agencies/energy_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-site-footer__link\"\n
+        \  data-section-label-untranslated=\"About&#x20;us\" data-footer-link-label=\"Directorate-General&#x20;for&#x20;Energy\"\n>Directorate-General
+        for Energy</a></li></ul></div></div><div class=\"ecl-site-footer__row\"><div
+        \n  class=\"ecl-site-footer__section ecl-site-footer__section--related\"\n
+        \ \n><div class=\"ecl-site-footer__title\">\n    Related links  </div><ul
+        class=\"ecl-site-footer__list\"><li class=\"ecl-site-footer__list-item\"><a\n
+        \ href=\"https://commission.europa.eu/about-european-commission/departments-and-executive-agencies/energy_en#related-links\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-site-footer__link\"\n
+        \  data-section-label-untranslated=\"Related&#x20;links\" data-footer-link-label=\"Energy&#x20;policy&#x20;related&#x20;web&#x20;sites&#x20;\"\n>Energy
+        policy related web sites </a></li></ul></div></div></div></div><div class=\"ecl-site-footer__row
+        ecl-site-footer__row--common\"><div \n  class=\"ecl-site-footer__section ecl-site-footer__section--common\"\n
+        \ \n><a\n  href=\"https://commission.europa.eu/index_en\"\n  class=\"ecl-link
+        ecl-link--standalone ecl-link--inverted ecl-site-footer__logo-link\"\n  \n><picture\n
+        \ class=\"ecl-picture ecl-site-footer__picture\"\n  \n><img \n              class=\"ecl-site-footer__logo-image\"\n
+        \             src=\"/themes/contrib/oe_theme/dist/ec/images/logo/negative/logo-ec--en.svg\"\n
+        \             alt=\"European Commission logo\"\n          ></picture></a><div
+        class=\"ecl-site-footer__extra-links-container\"><div\n  class=\"ecl-social-media-follow
+        ecl-social-media-follow--left ecl-social-media-follow--description_inline
+        ecl-site-footer__social-media\"\n  \n><p class=\"ecl-social-media-follow__description\">Follow
+        the European Commission</p><ul class=\"ecl-social-media-follow__list\"><li
+        class=\"ecl-social-media-follow__item\"><a\n  href=\"https://ec.social-network.europa.eu/@EUCommission\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-link--icon
+        ecl-social-media-follow__link ecl-link--icon-only\"\n   data-section-label-untranslated=\"social_media_common_links\"
+        data-footer-link-label=\"Mastodon\"\n><span \n  class=\"wt-icon-networks--mastodon
+        wt-icon--inverted ecl-icon ecl-icon--s ecl-link__icon ecl-social-media-follow__icon
+        ecl-icon-networks--mastodon\"\n  aria-hidden=\"true\"\n  ></span><span \n
+        \     class=\"ecl-link__label\">Mastodon</span></a></li><li class=\"ecl-social-media-follow__item\"><a\n
+        \ href=\"http://www.linkedin.com/company/european-commission\"\n  class=\"ecl-link
+        ecl-link--standalone ecl-link--inverted ecl-link--icon ecl-social-media-follow__link
+        ecl-link--icon-only\"\n   data-section-label-untranslated=\"social_media_common_links\"
+        data-footer-link-label=\"LinkedIn\"\n><span \n  class=\"wt-icon-networks--linkedin
+        wt-icon--inverted ecl-icon ecl-icon--s ecl-link__icon ecl-social-media-follow__icon
+        ecl-icon-networks--linkedin\"\n  aria-hidden=\"true\"\n  ></span><span \n
+        \     class=\"ecl-link__label\">LinkedIn</span></a></li><li class=\"ecl-social-media-follow__item\"><a\n
+        \ href=\"https://bsky.app/profile/ec.europa.eu\"\n  class=\"ecl-link ecl-link--standalone
+        ecl-link--inverted ecl-link--icon ecl-social-media-follow__link ecl-link--icon-only\"\n
+        \  data-section-label-untranslated=\"social_media_common_links\" data-footer-link-label=\"Bluesky\"\n><span
+        \n  class=\"wt-icon-networks--bluesky wt-icon--inverted ecl-icon ecl-icon--s
+        ecl-link__icon ecl-social-media-follow__icon ecl-icon-networks--bluesky\"\n
+        \ aria-hidden=\"true\"\n  ></span><span \n      class=\"ecl-link__label\">Bluesky</span></a></li><li
+        class=\"ecl-social-media-follow__item\"><a\n  href=\"https://www.facebook.com/EuropeanCommission\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-link--icon
+        ecl-social-media-follow__link ecl-link--icon-only\"\n   data-section-label-untranslated=\"social_media_common_links\"
+        data-footer-link-label=\"Facebook\"\n><span \n  class=\"wt-icon-networks--facebook
+        wt-icon--inverted ecl-icon ecl-icon--s ecl-link__icon ecl-social-media-follow__icon
+        ecl-icon-networks--facebook\"\n  aria-hidden=\"true\"\n  ></span><span \n
+        \     class=\"ecl-link__label\">Facebook</span></a></li><li class=\"ecl-social-media-follow__item\"><a\n
+        \ href=\"https://www.youtube.com/user/eutube\"\n  class=\"ecl-link ecl-link--standalone
+        ecl-link--inverted ecl-link--icon ecl-social-media-follow__link ecl-link--icon-only\"\n
+        \  data-section-label-untranslated=\"social_media_common_links\" data-footer-link-label=\"Youtube\"\n><span
+        \n  class=\"wt-icon-networks--youtube wt-icon--inverted ecl-icon ecl-icon--s
+        ecl-link__icon ecl-social-media-follow__icon ecl-icon-networks--youtube\"\n
+        \ aria-hidden=\"true\"\n  ></span><span \n      class=\"ecl-link__label\">Youtube</span></a></li><li
+        class=\"ecl-social-media-follow__item\"><a\n  href=\"https://european-union.europa.eu/contact-eu/social-media-channels_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-link--icon
+        ecl-social-media-follow__link ecl-link--icon-only\"\n   data-section-label-untranslated=\"social_media_common_links\"
+        data-footer-link-label=\"Other\"\n><span \n  class=\"wt-icon-networks--chain
+        wt-icon--inverted ecl-icon ecl-icon--s ecl-link__icon ecl-social-media-follow__icon
+        ecl-icon-networks--chain\"\n  aria-hidden=\"true\"\n  ></span><span \n      class=\"ecl-link__label\">Other</span></a></li></ul></div><ul
+        class=\"ecl-site-footer__list ecl-site-footer__list--inline\"><li class=\"ecl-site-footer__list-item\"><a\n
+        \ href=\"https://commission.europa.eu/about/contact_en\"\n  class=\"ecl-link
+        ecl-link--standalone ecl-link--inverted ecl-site-footer__link\"\n   data-section-label-untranslated=\"extra_links\"
+        data-footer-link-label=\"Contact&#x20;us\"\n>Contact us</a></li></ul></div><ul
+        class=\"ecl-site-footer__list ecl-site-footer__list--inline\"><li class=\"ecl-site-footer__list-item\"><a\n
+        \ href=\"https://commission.europa.eu/legal-notice/vulnerability-disclosure-policy_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-site-footer__link\"\n
+        \  data-section-label-untranslated=\"legal_navigation\" data-footer-link-label=\"Report&#x20;an&#x20;IT&#x20;vulnerability\"\n>Report
+        an IT vulnerability</a></li><li class=\"ecl-site-footer__list-item\"><a\n
+        \ href=\"https://commission.europa.eu/languages-our-websites_en\"\n  class=\"ecl-link
+        ecl-link--standalone ecl-link--inverted ecl-site-footer__link\"\n   data-section-label-untranslated=\"legal_navigation\"
+        data-footer-link-label=\"Languages&#x20;on&#x20;our&#x20;websites\"\n>Languages
+        on our websites</a></li><li class=\"ecl-site-footer__list-item\"><a\n  href=\"https://commission.europa.eu/cookies-policy_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-site-footer__link\"\n
+        \  data-section-label-untranslated=\"legal_navigation\" data-footer-link-label=\"Cookies\"\n>Cookies</a></li><li
+        class=\"ecl-site-footer__list-item\"><a\n  href=\"https://commission.europa.eu/privacy-policy-websites-managed-european-commission_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-site-footer__link\"\n
+        \  data-section-label-untranslated=\"legal_navigation\" data-footer-link-label=\"Privacy&#x20;policy\"\n>Privacy
+        policy</a></li><li class=\"ecl-site-footer__list-item\"><a\n  href=\"https://commission.europa.eu/legal-notice_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-site-footer__link\"\n
+        \  data-section-label-untranslated=\"legal_navigation\" data-footer-link-label=\"Legal&#x20;notice\"\n>Legal
+        notice</a></li><li class=\"ecl-site-footer__list-item\"><a\n  href=\"/accessibility-statement_en\"\n
+        \ class=\"ecl-link ecl-link--standalone ecl-link--inverted ecl-site-footer__link\"\n
+        \  data-is-accessibility-link=\"true\"\n>Accessibility</a></li></ul></div></div></div></div></footer>\n\n\n
+        \ \n  </div>\n\n    <script type=\"application/json\">{\"utility\":\"piwik\",\"siteID\":\"5cd2315c-dfe3-46df-97ad-1edca607e2fd\",\"sitePath\":[\"energy.ec.europa.eu\"],\"instance\":\"ec\",\"dimensions\":[{\"id\":3,\"value\":\"Page\"},{\"id\":4,\"value\":\"database\"},{\"id\":5,\"value\":\"Directorate-General-for-Energy\"},{\"id\":6,\"value\":\"Weekly
+        Oil Bulletin\"},{\"id\":7,\"value\":\"36202d89-0112-4567-ab3b-ccc63e207ef1\"},{\"id\":8,\"value\":\"EC
+        - STANDARDISED\"},{\"id\":9,\"value\":\"industrial-policy\"},{\"id\":10,\"value\":\"Default
+        landing page\"},{\"id\":12,\"value\":\"65\"},{\"id\":30,\"value\":\"4q25lm-node-4206\"}]}</script>\n<script
+        type=\"application/json\">{\"utility\":\"cck\"}</script>\n\n    <script type=\"application/json\"
+        data-drupal-selector=\"drupal-settings-json\">{\"path\":{\"baseUrl\":\"\\/\",\"pathPrefix\":\"\",\"currentPath\":\"node\\/4206\",\"currentPathIsAdmin\":false,\"isFront\":false,\"currentLanguage\":\"en\",\"urlSuffixes\":[\"bg\",\"cs\",\"da\",\"de\",\"et\",\"el\",\"en\",\"es\",\"fr\",\"ga\",\"hr\",\"it\",\"lv\",\"lt\",\"hu\",\"mt\",\"nl\",\"pl\",\"pt\",\"ro\",\"sk\",\"sl\",\"fi\",\"sv\",\"tr\",\"ar\",\"ca\",\"is\",\"no\",\"uk\",\"ru\",\"zh\",\"lb\",\"sw\",\"he\",\"ja\",\"kl\"]},\"pluralDelimiter\":\"\\u0003\",\"suppressDeprecationErrors\":true,\"ewcms_multilingual\":{\"monolingual\":false,\"current_node_available_translations\":[\"en\"],\"machine_translation_script\":{\"json\":\"{\\u0022service\\u0022:\\u0022etrans\\u0022,\\u0022renderAs\\u0022:false,\\u0022user\\u0022:\\u0022Energy\\u0022,\\u0022exclude\\u0022:\\u0022.ecl-site-header__language-item,.ecl-site-header__language-selector,.toolbar\\u0022,\\u0022languages\\u0022:{\\u0022source\\u0022:\\u0022en\\u0022,\\u0022available\\u0022:[\\u0022en\\u0022]},\\u0022config\\u0022:{\\u0022live\\u0022:false,\\u0022mode\\u0022:\\u0022lc2023\\u0022,\\u0022targets\\u0022:{\\u0022receiver\\u0022:\\u0022#webtools-etrans\\u0022}}}\",\"current_node_language\":\"en\"},\"machine_translation\":{\"available_languages\":[\"bg\",\"es\",\"cs\",\"da\",\"de\",\"et\",\"el\",\"fr\",\"ga\",\"hr\",\"it\",\"lv\",\"lt\",\"hu\",\"mt\",\"nl\",\"pl\",\"pt-pt\",\"ro\",\"sk\",\"sl\",\"fi\",\"sv\",\"en\"],\"current_node_language_code\":\"en\",\"native_languages\":{\"bg\":\"\\u0431\\u044a\\u043b\\u0433\\u0430\\u0440\\u0441\\u043a\\u0438\",\"es\":\"espa\\u00f1ol\",\"cs\":\"\\u010de\\u0161tina\",\"da\":\"dansk\",\"de\":\"Deutsch\",\"et\":\"eesti\",\"el\":\"\\u03b5\\u03bb\\u03bb\\u03b7\\u03bd\\u03b9\\u03ba\\u03ac\",\"en\":\"English\",\"fr\":\"fran\\u00e7ais\",\"ga\":\"Gaeilge\",\"hr\":\"hrvatski\",\"it\":\"italiano\",\"lv\":\"latvie\\u0161u\",\"lt\":\"lietuvi\\u0173\",\"hu\":\"magyar\",\"mt\":\"Malti\",\"nl\":\"Nederlands\",\"pl\":\"polski\",\"pt-pt\":\"portugu\\u00eas\",\"ro\":\"rom\\u00e2n\\u0103\",\"sk\":\"sloven\\u010dina\",\"sl\":\"sloven\\u0161\\u010dina\",\"fi\":\"suomi\",\"sv\":\"svenska\",\"ar\":\"\\u0627\\u0644\\u0639\\u0631\\u0628\\u064a\\u0629\",\"ca\":\"catal\\u00e0\",\"is\":\"\\u00edslenska\",\"he\":\"\\u05e2\\u05d1\\u05e8\\u05d9\\u05ea\",\"kl\":\"kalaallisut\",\"ja\":\"\\u65e5\\u672c\\u8a9e\",\"lb\":\"L\\u00ebtzebuergesch\",\"nb\":\"norsk\",\"ru\":\"\\u0440\\u0443\\u0441\\u0441\\u043a\\u0438\\u0439\",\"sw\":\"Kiswahili\",\"tr\":\"t\\u00fcrk\\u00e7e\",\"uk\":\"y\\u043a\\u0440\\u0430\\u0457\\u043d\\u0441\\u044c\\u043a\\u0430\",\"zh-hans\":\"\\u4e2d\\u6587\"},\"suffix_map\":{\"bg\":\"bg\",\"cs\":\"cs\",\"da\":\"da\",\"de\":\"de\",\"et\":\"et\",\"el\":\"el\",\"en\":\"en\",\"es\":\"es\",\"fr\":\"fr\",\"ga\":\"ga\",\"hr\":\"hr\",\"it\":\"it\",\"lv\":\"lv\",\"lt\":\"lt\",\"hu\":\"hu\",\"mt\":\"mt\",\"nl\":\"nl\",\"pl\":\"pl\",\"pt\":\"pt-pt\",\"ro\":\"ro\",\"sk\":\"sk\",\"sl\":\"sl\",\"fi\":\"fi\",\"sv\":\"sv\"},\"etrans_enabled\":true,\"etrans_languages\":[\"ar\",\"bg\",\"cs\",\"da\",\"de\",\"el\",\"en\",\"es\",\"et\",\"fi\",\"fr\",\"ga\",\"hr\",\"hu\",\"is\",\"it\",\"ja\",\"lt\",\"lv\",\"mt\",\"nb\",\"nl\",\"pl\",\"pt-pt\",\"ro\",\"ru\",\"sk\",\"sl\",\"sv\",\"tr\",\"uk\",\"zh-hans\"],\"non_eu_languages\":[\"ar\",\"ca\",\"he\",\"is\",\"ja\",\"kl\",\"lb\",\"nb\",\"ru\",\"sw\",\"tr\",\"uk\",\"zh-hans\"],\"translated_strings\":{\"translation_not_available\":{\"bg\":\"\\u0422\\u0430\\u0437\\u0438
+        \\u0441\\u0442\\u0440\\u0430\\u043d\\u0438\\u0446\\u0430 \\u043d\\u0435 \\u0435
+        \\u0434\\u043e\\u0441\\u0442\\u044a\\u043f\\u043d\\u0430 \\u043d\\u0430 \\u0431\\u044a\\u043b\\u0433\\u0430\\u0440\\u0441\\u043a\\u0438
+        \\u0435\\u0437\\u0438\\u043a.\",\"es\":\"Esta p\\u00e1gina no est\\u00e1 disponible
+        en espa\\u00f1ol\",\"cs\":\"Tato str\\u00e1nka nen\\u00ed v \\u010de\\u0161tin\\u011b
+        k dispozici\",\"da\":\"Denne side er ikke tilg\\u00e6ngelig p\\u00e5 dansk\",\"de\":\"Diese
+        Seite ist auf Deutsch nicht verf\\u00fcgbar.\",\"et\":\"See lehek\\u00fclg
+        ei ole eesti keeles k\\u00e4ttesaadav\",\"el\":\"\\u0397 \\u03c3\\u03b5\\u03bb\\u03af\\u03b4\\u03b1
+        \\u03b1\\u03c5\\u03c4\\u03ae \\u03b4\\u03b5\\u03bd \\u03b5\\u03af\\u03bd\\u03b1\\u03b9
+        \\u03b4\\u03b9\\u03b1\\u03b8\\u03ad\\u03c3\\u03b9\\u03bc\\u03b7 \\u03c3\\u03c4\\u03b1
+        \\u03b5\\u03bb\\u03bb\\u03b7\\u03bd\\u03b9\\u03ba\\u03ac\",\"en\":\"This page
+        is not available in English.\",\"fr\":\"Cette page n\\u2019est pas disponible
+        en fran\\u00e7ais.\",\"ga\":\"N\\u00edl an leathanach seo ar f\\u00e1il i
+        nGaeilge\",\"hr\":\"Ova stranica nije dostupna na hrvatskom jeziku\",\"it\":\"Questa
+        pagina non \\u00e8 disponibile in italiano\",\"lv\":\"\\u0160\\u012b lapa
+        nav pieejama latvie\\u0161u valod\\u0101.\",\"lt\":\"\\u0160io puslapio lietuvi\\u0173
+        kalba n\\u0117ra\",\"hu\":\"Ez az oldal nem \\u00e9rhet\\u0151 el magyarul\",\"mt\":\"Din
+        il-pa\\u0121na mhix disponibbli bil-Malti\",\"nl\":\"Deze pagina is niet beschikbaar
+        in het Nederlands.\",\"pl\":\"Strona nie jest dost\\u0119pna w j\\u0119zyku
+        polskim.\",\"pt-pt\":\"Esta p\\u00e1gina n\\u00e3o est\\u00e1 dispon\\u00edvel
+        em portugu\\u00eas\",\"ro\":\"Aceast\\u0103 pagin\\u0103 nu este disponibil\\u0103
+        \\u00een limba rom\\u00e2n\\u0103\",\"sk\":\"T\\u00e1to str\\u00e1nka nie
+        je dostupn\\u00e1 v sloven\\u010dine\",\"sl\":\"Ta stran ni na voljo v sloven\\u0161\\u010dini.\",\"fi\":\"T\\u00e4t\\u00e4
+        sivua ei ole saatavilla suomen kielell\\u00e4.\",\"sv\":\"Sidan finns inte
+        p\\u00e5 svenska\",\"ar\":\"\\u0647\\u0630\\u0647 \\u0627\\u0644\\u0635\\u0641\\u062d\\u0629
+        \\u063a\\u064a\\u0631 \\u0645\\u062a\\u0627\\u062d\\u0629 \\u0641\\u064a \\u0627\\u0644\\u0639\\u0631\\u0628\\u064a\\u0629.\",\"ca\":\"Aquesta
+        p\\u00e0gina no est\\u00e0 disponible en catal\\u00e0.\",\"is\":\"\\u00deessi
+        s\\u00ed\\u00f0a er ekki tilt\\u00e6k \\u00ed \\u00edslenska.\",\"he\":\"This
+        page is not available in \\u05e2\\u05d1\\u05e8\\u05d9\\u05ea.\",\"kl\":\"This
+        page is not available in kalaallisut.\",\"ja\":\"\\u3053\\u306e\\u30da\\u30fc\\u30b8\\u306f\\u65e5\\u672c\\u8a9e\\u3067\\u306f\\u3054\\u5229\\u7528\\u3044\\u305f\\u3060\\u3051\\u307e\\u305b\\u3093\\u3002\",\"lb\":\"D\\u00ebs
+        S\\u00e4it ass net op L\\u00ebtzebuergesch zoug\\u00e4nglech.\",\"nb\":\"Denne
+        siden er ikke tilgjengelig p\\u00e5 norsk.\",\"ru\":\"\\u0440\\u0443\\u0441\\u0441\\u043a\\u0438\\u0439
+        \\u043e\\u0442\\u0441\\u0443\\u0442\\u0441\\u0442\\u0432\\u0443\\u0435\\u0442
+        \\u0434\\u043b\\u044f \\u043f\\u0435\\u0440\\u0435\\u0432\\u043e\\u0434\\u0430
+        \\u044d\\u0442\\u043e\\u0439 \\u0441\\u0442\\u0440\\u0430\\u043d\\u0438\\u0446\\u044b\",\"sw\":\"This
+        page is not available in Kiswahili.\",\"tr\":\"Bu sayfa t\\u00fcrk\\u00e7e
+        dilinde mevcut de\\u011fildir.\",\"uk\":\"y\\u043a\\u0440\\u0430\\u0457\\u043d\\u0441\\u044c\\u043a\\u0430
+        \\u0432\\u0456\\u0434\\u0441\\u0443\\u0442\\u043d\\u044f \\u0434\\u043b\\u044f
+        \\u043f\\u0435\\u0440\\u0435\\u043a\\u043b\\u0430\\u0434\\u0443 \\u0446\\u0456\\u0454\\u0457
+        \\u0441\\u0442\\u043e\\u0440\\u0456\\u043d\\u043a\\u0438.\",\"zh-hans\":\"\\u672c\\u9875\\u9762\\u5e76\\u65e0\\u4e2d\\u6587\\u7248\\u672c\\u3002\"},\"translation_message\":{\"bg\":\"\\u0412\\u0435\\u0440\\u0441\\u0438\\u044f
+        \\u043d\\u0430 \\u0431\\u044a\\u043b\\u0433\\u0430\\u0440\\u0441\\u043a\\u0438
+        \\u0435\\u0437\\u0438\\u043a \\u0435 \\u043d\\u0430\\u043b\\u0438\\u0447\\u043d\\u0430
+        \\u0447\\u0440\\u0435\\u0437 eTranslation, \\u0443\\u0441\\u043b\\u0443\\u0433\\u0430\\u0442\\u0430
+        \\u0437\\u0430 \\u043c\\u0430\\u0448\\u0438\\u043d\\u0435\\u043d \\u043f\\u0440\\u0435\\u0432\\u043e\\u0434
+        \\u043d\\u0430 \\u0415\\u0432\\u0440\\u043e\\u043f\\u0435\\u0439\\u0441\\u043a\\u0430\\u0442\\u0430
+        \\u043a\\u043e\\u043c\\u0438\\u0441\\u0438\\u044f.\",\"es\":\"El espa\\u00f1ol
+        est\\u00e1 disponible mediante eTranslation, el servicio de traducci\\u00f3n
+        autom\\u00e1tica de la Comisi\\u00f3n Europea.\",\"cs\":\"\\u010cesk\\u00fd
+        p\\u0159eklad textu je k dispozici prost\\u0159ednictv\\u00edm eTranslation,
+        slu\\u017eby strojov\\u00e9ho p\\u0159ekladu Evropsk\\u00e9 komise.\",\"da\":\"En
+        overs\\u00e6ttelse til dansk f\\u00e5r du via eTranslation, som er Europa-Kommissionens
+        maskinovers\\u00e6ttelsestjeneste.\",\"de\":\"Deutsch ist \\u00fcber eTranslation
+        verf\\u00fcgbar, den maschinellen \\u00dcbersetzungsdienst der Europ\\u00e4ischen
+        Kommission.\",\"et\":\"Eesti keel on Euroopa Komisjoni masint\\u00f5lketeenuses
+        eTranslation k\\u00e4ttesaadav.\",\"el\":\"\\u0397 \\u03ad\\u03ba\\u03b4\\u03bf\\u03c3\\u03b7
+        \\u03c3\\u03c4\\u03b1 \\u03b5\\u03bb\\u03bb\\u03b7\\u03bd\\u03b9\\u03ba\\u03ac
+        \\u03b5\\u03af\\u03bd\\u03b1\\u03b9 \\u03b4\\u03b9\\u03b1\\u03b8\\u03ad\\u03c3\\u03b9\\u03bc\\u03b7
+        \\u03bc\\u03ad\\u03c3\\u03c9 \\u03c4\\u03b7\\u03c2 \\u03c5\\u03c0\\u03b7\\u03c1\\u03b5\\u03c3\\u03af\\u03b1\\u03c2
+        eTranslation, \\u03c4\\u03b7\\u03c2 \\u03c5\\u03c0\\u03b7\\u03c1\\u03b5\\u03c3\\u03af\\u03b1\\u03c2
+        \\u03b1\\u03c5\\u03c4\\u03cc\\u03bc\\u03b1\\u03c4\\u03b7\\u03c2 \\u03bc\\u03b5\\u03c4\\u03ac\\u03c6\\u03c1\\u03b1\\u03c3\\u03b7\\u03c2
+        \\u03c4\\u03b7\\u03c2 \\u0395\\u03c5\\u03c1\\u03c9\\u03c0\\u03b1\\u03ca\\u03ba\\u03ae\\u03c2
+        \\u0395\\u03c0\\u03b9\\u03c4\\u03c1\\u03bf\\u03c0\\u03ae\\u03c2.\",\"en\":\"English
+        is available via eTranslation, the European Commission\\u0027s machine translation
+        service.\",\"fr\":\"Le fran\\u00e7ais est disponible par eTranslation, le
+        service de traduction automatique de la Commission europ\\u00e9enne.\",\"ga\":\"T\\u00e1
+        an Ghaeilge ar f\\u00e1il tr\\u00ed eTranslation, seirbh\\u00eds meais\\u00ednaistri\\u00fach\\u00e1in
+        an Choimisi\\u00fain Eorpaigh.\",\"hr\":\"Tekst na hrvatskom dostupan je samo
+        kao strojni prijevod koji je generirala usluga eTranslation Europske komisije.\",\"it\":\"L\\u0027italiano
+        \\u00e8 disponibile in versione tradotta automaticamente dal servizio eTranslation
+        della Commissione europea.\",\"lv\":\"Tulkojums latvie\\u0161u valod\\u0101
+        ir pieejams, izmantojot Eiropas Komisijas ma\\u0161\\u012bntulko\\u0161anas
+        pakalpojumu \\u201ceTranslation\\u201d.\",\"lt\":\"Vertim\\u0105 \\u012f lietuvi\\u0173
+        kalb\\u0105 galima sugeneruoti Europos Komisijos ma\\u0161ininio vertimo priemone
+        \\u201eeTranslation\\u201c.\",\"hu\":\"Ez a tartalom el\\u00e9rhet\\u0151
+        magyar nyelven az eTranslation, az Eur\\u00f3pai Bizotts\\u00e1g ford\\u00edt\\u00f3programja
+        \\u00e1ltal biztos\\u00edtott g\\u00e9pi ford\\u00edt\\u00e1s form\\u00e1j\\u00e1ban.\",\"mt\":\"Il-Malti
+        hu disponibbli permezz tal-eTranslation, is-servizz tat-traduzzjoni awtomatika
+        tal-Kummissjoni Ewropea.\",\"nl\":\"Nederlands is beschikbaar via eTranslation,
+        de machinevertaaldienst van de Europese Commissie.\",\"pl\":\"T\\u0142umaczenie
+        na j\\u0119zyk polski zostanie wygenerowane przy pomocy serwisu t\\u0142umaczenia
+        maszynowego Komisji Europejskiej eTranslation.\",\"pt-pt\":\"Vers\\u00e3o
+        em portugu\\u00eas dispon\\u00edvel atrav\\u00e9s do servi\\u00e7o eTranslation,
+        o servi\\u00e7o de tradu\\u00e7\\u00e3o autom\\u00e1tica da Comiss\\u00e3o
+        Europeia.\",\"ro\":\"Versiunea \\u00een limba rom\\u00e2n\\u0103 este disponibil\\u0103
+        prin intermediul eTranslation, serviciul de traducere automat\\u0103 al Comisiei
+        Europene.\",\"sk\":\"Preklad do sloven\\u010diny je dostupn\\u00fd cez eTranslation,
+        slu\\u017ebu strojov\\u00e9ho prekladu Eur\\u00f3pskej komisie.\",\"sl\":\"Slovenski
+        prevod je na voljo prek eTranslation, strojnega prevajalnika Evropske komisije.\",\"fi\":\"Euroopan
+        komission eTranslation-palvelusta voi tilata suomenkielisen konek\\u00e4\\u00e4nn\\u00f6ksen.\",\"sv\":\"Svenska
+        kan f\\u00e5s via eTranslation, EU-kommissionens maskin\\u00f6vers\\u00e4ttningsverktyg.\",\"ar\":\"@\\u0627\\u0644\\u0644\\u063a\\u0629
+        \\u0645\\u062a\\u0627\\u062d\\u0629 \\u0645\\u0646 \\u062e\\u0644\\u0627\\u0644
+        eTranslation\\u060c \\u062e\\u062f\\u0645\\u0629 \\u0627\\u0644\\u062a\\u0631\\u062c\\u0645\\u0629
+        \\u0627\\u0644\\u0622\\u0644\\u064a\\u0629 \\u0645\\u0646 \\u0627\\u0644\\u0645\\u0641\\u0648\\u0636\\u064a\\u0629
+        \\u0627\\u0644\\u0623\\u0648\\u0631\\u0648\\u0628\\u064a\\u0629.\",\"ca\":\"catal\\u00e0
+        est\\u00e0 disponible a trav\\u00e9s d\\u2019eTranslation, el servei de traducci\\u00f3
+        autom\\u00e0tica de la Comissi\\u00f3 Europea.\",\"is\":\"\\u00edslenska er
+        f\\u00e1anlegt \\u00ed gegnum eTranslation, v\\u00e9l\\u00fe\\u00fd\\u00f0ingar\\u00fej\\u00f3nustu
+        framkv\\u00e6mdastj\\u00f3rnar Evr\\u00f3pusambandsins.\",\"he\":\"\\u05e2\\u05d1\\u05e8\\u05d9\\u05ea
+        is available via eTranslation, the European Commission\\u0027s machine translation
+        service.\",\"kl\":\"kalaallisut is available via eTranslation, the European
+        Commission\\u0027s machine translation service.\",\"ja\":\"\\u65e5\\u672c\\u8a9e\\u306f\\u6b27\\u5dde\\u59d4\\u54e1\\u4f1a\\u306e\\u6a5f\\u68b0\\u7ffb\\u8a33\\u30b5\\u30fc\\u30d3\\u30b9\\u3067\\u3042\\u308beTranslation\\u3092\\u901a\\u3058\\u3066\\u5229\\u7528\\u3067\\u304d\\u307e\\u3059\\u3002\",\"lb\":\"L\\u00ebtzebuergesch
+        ass zoug\\u00e4nglech via eTranslation, den automateschen Iwwersetzungsd\\u00e9ngscht
+        vun der Europ\\u00e4escher Kommissioun.\",\"nb\":\"norsk er tilgjengelig via
+        eTranslation, EU-kommisjonens tjeneste for maskinoversettelse.\",\"ru\":\"\\u0440\\u0443\\u0441\\u0441\\u043a\\u0438\\u0439
+        \\u0434\\u043e\\u0441\\u0442\\u0443\\u043f\\u0435\\u043d \\u0432 eTranslation,
+        \\u0441\\u043b\\u0443\\u0436\\u0431\\u0435 \\u043c\\u0430\\u0448\\u0438\\u043d\\u043d\\u043e\\u0433\\u043e
+        \\u043f\\u0435\\u0440\\u0435\\u0432\\u043e\\u0434\\u0430 \\u0415\\u0432\\u0440\\u043e\\u043f\\u0435\\u0439\\u0441\\u043a\\u043e\\u0439
+        \\u043a\\u043e\\u043c\\u0438\\u0441\\u0441\\u0438\\u0438.\",\"sw\":\"Kiswahili
+        is available via eTranslation, the European Commission\\u0027s machine translation
+        service.\",\"tr\":\"t\\u00fcrk\\u00e7e, Avrupa Komisyonu\\u0027nun makine
+        terc\\u00fcmesi hizmeti olan eTranslation \\u00fczerinde mevcuttur.\",\"uk\":\"y\\u043a\\u0440\\u0430\\u0457\\u043d\\u0441\\u044c\\u043a\\u0430
+        \\u0456\\u0441\\u043d\\u0443\\u0454 \\u0432 eTranslation, \\u0441\\u043b\\u0443\\u0436\\u0431\\u0456
+        \\u043c\\u0430\\u0448\\u0438\\u043d\\u043d\\u043e\\u0433\\u043e \\u043f\\u0435\\u0440\\u0435\\u043a\\u043b\\u0430\\u0434\\u0443
+        \\u0404\\u0432\\u0440\\u043e\\u043f\\u0435\\u0439\\u0441\\u044c\\u043a\\u043e\\u0457
+        \\u043a\\u043e\\u043c\\u0456\\u0441\\u0456\\u0457.\",\"zh-hans\":\"\\u53ef\\u901a\\u8fc7\\u6b27\\u76df\\u59d4\\u5458\\u4f1a\\u7684\\u673a\\u5668\\u7ffb\\u8bd1\\u670d\\u52a1eTranslation\\u83b7\\u5f97\\u4e2d\\u6587\\u7248\\u672c\\u3002\"},\"translate_link\":{\"bg\":\"\\u041f\\u0440\\u0435\\u0432\\u043e\\u0434
+        \\u043d\\u0430 \\u0431\\u044a\\u043b\\u0433\\u0430\\u0440\\u0441\\u043a\\u0438\",\"es\":\"Traducir
+        al espa\\u00f1ol\",\"cs\":\"P\\u0159elo\\u017eit do \\u010de\\u0161tiny\",\"da\":\"Overs\\u00e6t
+        til dansk\",\"de\":\"Ins Deutsche \\u00fcbersetzen\",\"et\":\"T\\u00f5lgi
+        eesti keelde\",\"el\":\"\\u039c\\u03b5\\u03c4\\u03ac\\u03c6\\u03c1\\u03b1\\u03c3\\u03b7
+        \\u03c3\\u03c4\\u03b1 \\u03b5\\u03bb\\u03bb\\u03b7\\u03bd\\u03b9\\u03ba\\u03ac\",\"en\":\"Translate
+        to English\",\"fr\":\"Traduire en fran\\u00e7ais\",\"ga\":\"Aistrigh go Gaeilge\",\"hr\":\"Prevedi
+        na hrvatski\",\"it\":\"Tradurre in italiano\",\"lv\":\"P\\u0101rtulkot latvie\\u0161u
+        valod\\u0101\",\"lt\":\"I\\u0161versti \\u012f lietuvi\\u0173 kalb\\u0105\",\"hu\":\"Ford\\u00edt\\u00e1s
+        magyarra\",\"mt\":\"Ittradu\\u010bi g\\u0127all-Malti\",\"nl\":\"Vertalen
+        in het Nederlands\",\"pl\":\"Przet\\u0142umacz na j\\u0119zyk polski\",\"pt-pt\":\"Traduzir
+        para portugu\\u00eas\",\"ro\":\"Traducere \\u00een limba rom\\u00e2n\\u0103\",\"sk\":\"Prelo\\u017ei\\u0165
+        do sloven\\u010diny\",\"sl\":\"Prevedi v sloven\\u0161\\u010dino\",\"fi\":\"K\\u00e4\\u00e4nn\\u00e4
+        suomeksi\",\"sv\":\"\\u00d6vers\\u00e4tt till svenska\",\"ar\":\"\\u062a\\u0631\\u062c\\u0645
+        \\u0625\\u0644\\u0649 \\u0627\\u0644\\u0639\\u0631\\u0628\\u064a\\u0629.\",\"ca\":\"Tradueix-la
+        a catal\\u00e0\",\"is\":\"\\u00de\\u00fd\\u00f0a \\u00e1 \\u00edslenska\",\"he\":\"Translate
+        to \\u05e2\\u05d1\\u05e8\\u05d9\\u05ea\",\"kl\":\"Translate to kalaallisut\",\"ja\":\"\\u65e5\\u672c\\u8a9e\\u306b\\u7ffb\\u8a33\",\"lb\":\"Op
+        L\\u00ebtzebuergesch iwwersetzen.\",\"nb\":\"Oversett til norsk\",\"ru\":\"\\u041f\\u0435\\u0440\\u0435\\u0432\\u0435\\u0441\\u0442\\u0438
+        \\u043d\\u0430 \\u0440\\u0443\\u0441\\u0441\\u043a\\u0438\\u0439\",\"sw\":\"Translate
+        to Kiswahili\",\"tr\":\"t\\u00fcrk\\u00e7e diline terc\\u00fcme et\",\"uk\":\"\\u041f\\u0435\\u0440\\u0435\\u043a\\u043b\\u0430\\u0441\\u0442\\u0438
+        \\u043d\\u0430 y\\u043a\\u0440\\u0430\\u0457\\u043d\\u0441\\u044c\\u043a\\u0430.\",\"zh-hans\":\"\\u7ffb\\u8bd1\\u4e3a\\u4e2d\\u6587\"},\"disclaimer_link\":{\"bg\":\"\\u0412\\u0430\\u0436\\u043d\\u0430
+        \\u0438\\u043d\\u0444\\u043e\\u0440\\u043c\\u0430\\u0446\\u0438\\u044f \\u043e\\u0442\\u043d\\u043e\\u0441\\u043d\\u043e
+        \\u043c\\u0430\\u0448\\u0438\\u043d\\u043d\\u0438\\u044f \\u043f\\u0440\\u0435\\u0432\\u043e\\u0434\",\"es\":\"Informaci\\u00f3n
+        importante sobre la traducci\\u00f3n autom\\u00e1tica\",\"cs\":\"D\\u016fle\\u017eit\\u00e9
+        informace o strojov\\u00e9m p\\u0159ekladu\",\"da\":\"Vigtig information om
+        maskinovers\\u00e6ttelser\",\"de\":\"Das sollten Sie \\u00fcber maschinelle
+        \\u00dcbersetzung wissen\",\"et\":\"Oluline teave masint\\u00f5lke kohta\",\"el\":\"\\u03a3\\u03b7\\u03bc\\u03b1\\u03bd\\u03c4\\u03b9\\u03ba\\u03ad\\u03c2
+        \\u03c0\\u03bb\\u03b7\\u03c1\\u03bf\\u03c6\\u03bf\\u03c1\\u03af\\u03b5\\u03c2
+        \\u03c3\\u03c7\\u03b5\\u03c4\\u03b9\\u03ba\\u03ac \\u03bc\\u03b5 \\u03c4\\u03b7\\u03bd
+        \\u03b1\\u03c5\\u03c4\\u03cc\\u03bc\\u03b1\\u03c4\\u03b7 \\u03bc\\u03b5\\u03c4\\u03ac\\u03c6\\u03c1\\u03b1\\u03c3\\u03b7\",\"en\":\"Important
+        information about machine translation\",\"fr\":\"Informations importantes
+        concernant la traduction automatique\",\"ga\":\"Eolas t\\u00e1bhachtach faoin
+        meais\\u00ednaistri\\u00fach\\u00e1n\",\"hr\":\"Va\\u017ene informacije o
+        strojnom prevo\\u0111enju\",\"it\":\"Informazioni importante sulla traduzione
+        automatica\",\"lv\":\"Svar\\u012bga inform\\u0101cija par ma\\u0161\\u012bntulko\\u0161anu\",\"lt\":\"Svarbi
+        informacija apie ma\\u0161inin\\u012f vertim\\u0105\",\"hu\":\"Fontos tudnival\\u00f3k
+        a g\\u00e9pi ford\\u00edt\\u00e1sr\\u00f3l\",\"mt\":\"Informazzjoni importanti
+        dwar it-traduzzjoni awtomatika\",\"nl\":\"Belangrijke informatie over machinevertaling\",\"pl\":\"Wa\\u017cne
+        informacje o t\\u0142umaczeniu maszynowym\",\"pt-pt\":\"Informa\\u00e7\\u00f5es
+        importantes sobre a tradu\\u00e7\\u00e3o autom\\u00e1tica\",\"ro\":\"Informa\\u021bii
+        importante despre traducerea automat\\u0103\",\"sk\":\"D\\u00f4le\\u017eit\\u00e9
+        inform\\u00e1cie o strojovom preklade\",\"sl\":\"Pomembne informacije o strojnem
+        prevodu\",\"fi\":\"T\\u00e4rke\\u00e4\\u00e4 tietoa konek\\u00e4\\u00e4nn\\u00f6ksist\\u00e4\",\"sv\":\"Viktigt
+        om maskin\\u00f6vers\\u00e4ttning\",\"ar\":\"\\u0645\\u0639\\u0644\\u0648\\u0645\\u0627\\u062a
+        \\u0647\\u0627\\u0645\\u0629 \\u062d\\u0648\\u0644 \\u0627\\u0644\\u062a\\u0631\\u062c\\u0645\\u0629
+        \\u0627\\u0644\\u0622\\u0644\\u064a\\u0629\",\"ca\":\"Informaci\\u00f3 important
+        sobre la traducci\\u00f3 autom\\u00e0tica\",\"is\":\"Mikilv\\u00e6gar uppl\\u00fdsingar
+        um v\\u00e9lr\\u00e6na \\u00fe\\u00fd\\u00f0ingu\",\"he\":\"Important information
+        about machine translation\",\"kl\":\"Important information about machine translation\",\"ja\":\"\\u6a5f\\u68b0\\u7ffb\\u8a33\\u306b\\u95a2\\u3059\\u308b\\u91cd\\u8981\\u306a\\u60c5\\u5831\",\"lb\":\"Wichteg
+        Informatiounen fir d\\u0027automatesch Iwwersetzung\",\"nb\":\"Viktig informasjon
+        om maskinoversettelse\",\"ru\":\"\\u0412\\u0430\\u0436\\u043d\\u0430\\u044f
+        \\u0438\\u043d\\u0444\\u043e\\u0440\\u043c\\u0430\\u0446\\u0438\\u044f \\u043e
+        \\u043c\\u0430\\u0448\\u0438\\u043d\\u043d\\u043e\\u043c \\u043f\\u0435\\u0440\\u0435\\u0432\\u043e\\u0434\\u0435\",\"sw\":\"Important
+        information about machine translation\",\"tr\":\"Makine terc\\u00fcmesi hakk\\u0131nda
+        \\u00f6nemli bilgiler\",\"uk\":\"\\u0412\\u0430\\u0436\\u043b\\u0438\\u0432\\u0430
+        \\u0456\\u043d\\u0444\\u043e\\u0440\\u043c\\u0430\\u0446\\u0456\\u044f \\u043f\\u0440\\u043e
+        \\u043c\\u0430\\u0448\\u0438\\u043d\\u043d\\u0438\\u0439 \\u043f\\u0435\\u0440\\u0435\\u043a\\u043b\\u0430\\u0434\",\"zh-hans\":\"\\u5173\\u4e8e\\u673a\\u5668\\u7ffb\\u8bd1\\u7684\\u91cd\\u8981\\u4fe1\\u606f\"},\"close_message\":{\"bg\":\"\\u0417\\u0430\\u0442\\u0432\\u0430\\u0440\\u044f\\u043d\\u0435
+        \\u043d\\u0430 \\u0441\\u044a\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435\\u0442\\u043e\",\"es\":\"Cerrar
+        este mensaje\",\"cs\":\"Zav\\u0159\\u00edt tuto zpr\\u00e1vu\",\"da\":\"Luk
+        denne meddelelse\",\"de\":\"Diese Nachricht schlie\\u00dfen\",\"et\":\"Sulge
+        teade\",\"el\":\"\\u039a\\u03bb\\u03b5\\u03af\\u03c3\\u03b9\\u03bc\\u03bf
+        \\u03b1\\u03c5\\u03c4\\u03bf\\u03cd \\u03c4\\u03bf\\u03c5 \\u03bc\\u03b7\\u03bd\\u03cd\\u03bc\\u03b1\\u03c4\\u03bf\\u03c2\",\"en\":\"Close
+        this message\",\"fr\":\"Fermer ce message\",\"ga\":\"D\\u00fan an teachtaireacht
+        seo\",\"hr\":\"Zatvori ovu poruku\",\"it\":\"Chiudi il messaggio\",\"lv\":\"Aizv\\u0113rt
+        \\u0161o zi\\u0146ojumu\",\"lt\":\"U\\u017edaryti \\u0161i\\u0105 \\u017einut\\u0119\",\"hu\":\"\\u00dczenet
+        bez\\u00e1r\\u00e1sa\",\"mt\":\"Ag\\u0127laq dan il-messa\\u0121\\u0121\",\"nl\":\"Bericht
+        sluiten\",\"pl\":\"Zamknij t\\u0119 wiadomo\\u015b\\u0107\",\"pt-pt\":\"Fechar
+        esta mensagem\",\"ro\":\"\\u00cenchide\\u021bi acest mesaj\",\"sk\":\"Zatvori\\u0165
+        t\\u00fato spr\\u00e1vu\",\"sl\":\"Zapri to sporo\\u010dilo\",\"fi\":\"Sulje
+        t\\u00e4m\\u00e4 viesti\",\"sv\":\"St\\u00e4ng meddelandet\",\"ar\":\"\\u0627\\u0642\\u0641\\u0644
+        \\u0647\\u0630\\u0647 \\u0627\\u0644\\u0631\\u0633\\u0627\\u0644\\u0629\",\"ca\":\"Tanca
+        aquest missatge\",\"is\":\"Loka skilabo\\u00f0unum\",\"he\":\"Close this message\",\"kl\":\"Close
+        this message\",\"ja\":\"\\u3053\\u306e\\u30e1\\u30c3\\u30bb\\u30fc\\u30b8\\u3092\\u9589\\u3058\\u308b\",\"lb\":\"D\\u00ebs
+        Noriicht zoumaachen\",\"nb\":\"Lukk meldingen\",\"ru\":\"\\u0417\\u0430\\u043a\\u0440\\u044b\\u0442\\u044c
+        \\u044d\\u0442\\u043e \\u0441\\u043e\\u043e\\u0431\\u0449\\u0435\\u043d\\u0438\\u0435\",\"sw\":\"Close
+        this message\",\"tr\":\"Bu mesaj\\u0131 kapat\",\"uk\":\"\\u0417\\u0430\\u043a\\u0440\\u0438\\u0442\\u0438
+        \\u0446\\u0435 \\u043f\\u043e\\u0432\\u0456\\u0434\\u043e\\u043c\\u043b\\u0435\\u043d\\u043d\\u044f\",\"zh-hans\":\"\\u5173\\u95ed\\u6b64\\u4fe1\\u606f\"}}}},\"ewcms_theme\":{\"defaultLanguagePageTitle\":\"Weekly
+        Oil Bulletin\"},\"ajaxTrustedUrl\":{\"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM\":true},\"user\":{\"uid\":0,\"permissionsHash\":\"6f35384c51b327de968218f0fc0e334d04b0f60143c64832543603258ab82e0f\"}}</script>\n<script
+        src=\"/core/assets/vendor/jquery/jquery.min.js?v=4.0.0\"></script>\n<script
+        src=\"/sites/default/files/js/js_bVwDnv6AZktf3mmbckpwHhrOYyd0HZ7vVhmy8bAc1Fo.js?scope=footer&amp;delta=1&amp;language=en&amp;theme=ewcms_theme&amp;include=eJyVjUESgzAIRS9k65EYGpnIDAGHkFh7-lprFy67g_ffB1pTqTCb88s0UKCQthFTcCcIR5aBDqU0CRbW3FDGE2GaWQ9Nq2Cw6V8yqIHsf85SzFRopAS1eaftSo8ZFWULTvWSsS6YCRQ75-9dp2IdZTD61Z9Bvpeh9vyhKz3CTOo4eVtQ7r_9Vgt6iOFE_gYx9HHH\"></script>\n<script
+        src=\"https://ec.europa.eu/wel/surveys/wr_survey01/wr_survey.js\" defer></script>\n<script
+        src=\"/sites/default/files/js/js_UX_tnU7Xy1I2nSFvBynaTmNst-0p3prR1Vk7riDofy4.js?scope=footer&amp;delta=3&amp;language=en&amp;theme=ewcms_theme&amp;include=eJyVjUESgzAIRS9k65EYGpnIDAGHkFh7-lprFy67g_ffB1pTqTCb88s0UKCQthFTcCcIR5aBDqU0CRbW3FDGE2GaWQ9Nq2Cw6V8yqIHsf85SzFRopAS1eaftSo8ZFWULTvWSsS6YCRQ75-9dp2IdZTD61Z9Bvpeh9vyhKz3CTOo4eVtQ7r_9Vgt6iOFE_gYx9HHH\"></script>\n<script
+        src=\"https://webtools.europa.eu/load.js\" defer></script>\n\n  </body>\n</html>\n"
+  recorded_at: Wed, 23 Sep 2026 04:44:31 GMT
+recorded_with: VCR 6.4.0
