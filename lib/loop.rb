@@ -130,7 +130,7 @@ class Loop
 
   # The time of day when it is today, else the day as well
   def moment(time)
-    return "at #{time.strftime('%H:%M:%S')}" if time.to_date == Date.today
+    return "at #{time.strftime('%H:%M:%S')}" if time.to_date == Time.now.to_date
 
     "on #{time.strftime('%a %Y-%m-%d')} at #{time.strftime('%H:%M:%S')}"
   end
