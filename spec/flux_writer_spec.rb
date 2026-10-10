@@ -36,6 +36,16 @@ describe FluxWriter do
       expect(stub).to have_been_requested
     end
 
+    it 'splits a large batch into several requests' do
+      stub = stub_request(:post, %r{/api/v2/write}).to_return(status: 204)
+      stub_const('FluxWriter::POINTS_PER_WRITE', 2)
+      rows = (0...5).map { |i| Batch::Row.new(time: time + (i * 900), fields: { 'price' => 0.1 }) }
+
+      flux_writer.push(batch(*rows))
+
+      expect(stub).to have_been_requested.times(3)
+    end
+
     it 'writes nothing without rows' do
       stub = stub_request(:post, %r{/api/v2/write}).to_return(status: 204)
 

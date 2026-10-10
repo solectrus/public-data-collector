@@ -8,6 +8,9 @@ class FluxWriter
   # Seconds between two questions to InfluxDB at the start, while it boots.
   READY_RETRY_WAIT = 5
 
+  # The most points in one request to InfluxDB
+  POINTS_PER_WRITE = 5000
+
   def initialize(config:)
     @config = config
   end
@@ -48,10 +51,13 @@ class FluxWriter
 
   # A point that exists already is overwritten with the same value, so a
   # repeated write costs nothing and repairs the data after a gap.
+  #
+  # A history of quarter hours holds 35,000 points per year. InfluxDB
+  # advises 5000 points per request, so a large batch takes several.
   def push(batch)
-    return if batch.rows.empty?
-
-    write_api.write(data: points(batch), bucket: config.influx_bucket, org: config.influx_org)
+    points(batch).each_slice(POINTS_PER_WRITE) do |slice|
+      write_api.write(data: slice, bucket: config.influx_bucket, org: config.influx_org)
+    end
   end
 
   # InfluxDB stores a measurement as a table, one row per timestamp and one
