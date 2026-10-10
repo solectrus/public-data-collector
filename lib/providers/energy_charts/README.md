@@ -1,9 +1,10 @@
 # Energy-Charts
 
-This provider reads two values from the [Energy-Charts API](https://api.energy-charts.info/) of Fraunhofer ISE:
+This provider reads three values from the [Energy-Charts API](https://api.energy-charts.info/) of Fraunhofer ISE:
 
 - The day-ahead electricity price, so you can run a load when electricity is cheap.
 - The renewable share of the load, so you can run a load when the grid is green.
+- The CO2 intensity of the power mix, so you can tell how much CO2 your grid import caused. This value exists for Germany alone.
 
 The API reports the electricity market of more than 50 bidding zones in Europe. A bidding zone is an area with one common electricity price. The API needs no account and no key.
 
@@ -13,19 +14,21 @@ The API reports the electricity market of more than 50 bidding zones in Europe. 
 | ---------------------------- | ------- | ------------ |
 | `PublicGrid:price`           | EUR/kWh | quarter hour |
 | `PublicGrid:renewable_share` | percent | quarter hour |
+| `PublicGrid:co2_intensity`   | g/kWh   | quarter hour |
 
-The table shows the default names. You can rename the measurement and both fields.
+The table shows the default names. You can rename the measurement and every field.
 
 ## Configuration
 
 | Variable                            | Default           | Description                                               |
 | ----------------------------------- | ----------------- | --------------------------------------------------------- |
 | `PUBLIC_GRID_BIDDING_ZONE`          | `DE-LU`           | Bidding zone, for example `DE-LU`, `AT`, `CH`, `FR`, `NL` |
-| `PUBLIC_GRID_MEASUREMENT`           | `PublicGrid`      | Measurement that holds the two electricity values         |
+| `PUBLIC_GRID_MEASUREMENT`           | `PublicGrid`      | Measurement that holds the electricity values             |
 | `PUBLIC_GRID_FIELD_PRICE`           | `price`           | Field that holds the day-ahead price                      |
 | `PUBLIC_GRID_FIELD_RENEWABLE_SHARE` | `renewable_share` | Field that holds the renewable share                      |
+| `PUBLIC_GRID_FIELD_CO2_INTENSITY`   | `co2_intensity`   | Field that holds the CO2 intensity                        |
 
-The share also needs the general setting `COUNTRY`. The price does not use it. It asks for the bidding zone in `PUBLIC_GRID_BIDDING_ZONE` instead.
+The share and the CO2 intensity also need the general setting `COUNTRY`. The provider computes the CO2 intensity only when `COUNTRY` is `DE`. The price does not use `COUNTRY`. It asks for the bidding zone in `PUBLIC_GRID_BIDDING_ZONE` instead.
 
 ### Finding your bidding zone or country
 
@@ -44,14 +47,17 @@ The price endpoint accepts 2 requests per minute. One cycle makes one request pe
 
 ## History
 
-The first read after a start also writes the days before today that InfluxDB does not hold yet. The history begins where the other data in your bucket begins. The section [History](../../../README.md#history) explains why. Every later read writes today and tomorrow alone.
+The first read after a start also writes the days before the current values that InfluxDB does not hold yet. The history begins where the other data in your bucket begins. The section [History](../../../README.md#history) explains why. Every later read writes today and tomorrow alone.
 
 The history of each value comes from a different endpoint than its current values:
 
-| Value           | Today and tomorrow | Days before today  | Begins for Germany |
-| --------------- | ------------------ | ------------------ | ------------------ |
-| Day-ahead price | `/v2/price`        | `/v2/price`        | 2018-10-01         |
-| Renewable share | `/v2/signal`       | `/v2/public_power` | 2015-01-01         |
+| Value           | Current values                         | Days before        | Begins for Germany |
+| --------------- | -------------------------------------- | ------------------ | ------------------ |
+| Day-ahead price | `/v2/price`, today and tomorrow        | `/v2/price`        | 2018-10-01         |
+| Renewable share | `/v2/signal`, today and tomorrow       | `/v2/public_power` | 2015-01-01         |
+| CO2 intensity   | `/v2/total_power`, yesterday and today | `/v2/total_power`  | 2015-01-01         |
+
+The CO2 intensity has no forecast. Its current values include yesterday, because the last quarter hours of a day arrive about two hours after midnight.
 
 `/v2/signal` answers for today and the forecast alone. `/v2/public_power` carries the same share in the series `renewable_share_of_load`. On 2026-10-10, the two endpoints gave the same value for every quarter hour that was measured. They differed only where `/v2/signal` used its forecast.
 
@@ -74,13 +80,13 @@ If InfluxDB refuses the query, the provider reads the whole history.
 
 The provider asks for one year per request, the newest year first. A year without data ends that part of the history. For such a year, the price endpoint answers 404 and `/v2/public_power` answers 400. The read continues with today and tomorrow. If the source fails for another reason, the read fails, and the next cycle tries again.
 
-Each endpoint accepts 2 requests per minute. The provider therefore waits 31 seconds between two requests to the same endpoint. A history of six years takes about six minutes at the first start.
+Each endpoint accepts 2 requests per minute. The provider therefore waits 31 seconds between two requests to the same endpoint. A history of six years takes about nine minutes at the first start, because the three values read one after the other.
 
 ### Size
 
 The history of the renewable share is large. `/v2/public_power` sends every kind of generation together with the share, and it cannot leave them out. One year is a download of about 20 MB. While the provider reads one year, it uses about 100 MB of memory. One year of prices is less than 3 MB.
 
-If the data in your bucket begins in 2020, the first start downloads about 130 MB. A later start downloads only the missing days, which is less than 1 MB after a short restart.
+The history of the CO2 intensity has the same size, because `/v2/total_power` also sends every source. If the data in your bucket begins in 2020, the first start downloads about 260 MB. A later start downloads only the missing days, which is less than 1 MB after a short restart.
 
 ## Day-ahead electricity price
 
@@ -136,13 +142,76 @@ The thresholds are not published, and they differ per country. A measurement on 
 
 The light carries no information that the share does not carry. If you want a light, you can compute it from the share, with thresholds that you choose.
 
-### There is no CO2 value
+## CO2 intensity
 
-The source carries no CO2 value, so the provider writes none. The renewable share is the closest number that it offers.
+The CO2 intensity tells how many grams of CO2 the generation of one kWh caused, for each quarter hour. It answers how much CO2 your grid import caused, which a fixed factor for every hour cannot answer. In 2025, the value was between 92 and 737 g/kWh, with a median of 359 g/kWh.
+
+### Definition
+
+The value follows the definition of the "Emissionsfaktor Strommix" of the Umweltbundesamt (UBA), the federal environment agency of Germany:
+
+- It counts the direct CO2 from the combustion of fuel. It does not count the emissions upstream, for example from mining, and it does not count methane or nitrous oxide.
+- It divides by the consumption, which is the generation less the losses of the grid.
+- It counts the generation in Germany alone. Imports and exports do not change it.
+- It counts biomass as zero, as the reporting rules require.
+
+### Computation
+
+Energy-Charts reports no CO2 value. The provider computes it from two inputs:
+
+1. The net generation of every source per quarter hour, from `/v2/total_power`. This endpoint includes the power plants of the industry, as the UBA does.
+2. One emission factor per fuel, in gram CO2 per kWh. The UBA publishes the emissions per fuel and the energy per fuel each year. The ratio of the two, related to the energy that Energy-Charts reports, gives the factor.
+
+| Fuel                | Factor in g/kWh |
+| ------------------- | --------------- |
+| Lignite             | 1100            |
+| Hard coal           | 862             |
+| Natural gas         | 390             |
+| Oil                 | 770             |
+| Waste               | 830             |
+| Other fuels         | 1090            |
+| Renewables, nuclear | 0               |
+
+The factors are the average of 2023, 2024 and 2025. For coal and gas, the factors of the three years differ by 1 percent or less. The factor for waste is about half of the UBA value, because the UBA counts the fossil part of waste alone, and Energy-Charts reports all of it.
+
+The provider divides the emissions by the generation less pumping, times 0.947. The UBA consumption was 94.7 percent of that generation in each of the three years.
+
+A quarter hour without a value for one of the main sources gets no value. This is true for the newest quarter hours of an answer.
+
+### Accuracy
+
+The yearly average of the computed values, weighted with the consumption, matches the value of the UBA within 1.6 percent:
+
+| Year | UBA in g/kWh | Computed | Difference |
+| ---- | ------------ | -------- | ---------- |
+| 2015 | 529          | 527      | -0.5 %     |
+| 2016 | 524          | 524      | -0.1 %     |
+| 2017 | 490          | 492      | +0.5 %     |
+| 2018 | 473          | 480      | +1.6 %     |
+| 2019 | 409          | 408      | -0.4 %     |
+| 2020 | 365          | 362      | -0.8 %     |
+| 2021 | 406          | 404      | -0.4 %     |
+| 2022 | 433          | 434      | +0.1 %     |
+| 2023 | 379          | 378      | -0.2 %     |
+| 2024 | 353          | 351      | -0.6 %     |
+| 2025 | 344          | 342      | -0.7 %     |
+
+The UBA values come from [Climate Change 16/2026](https://www.umweltbundesamt.de/publikationen/entwicklung-der-spezifischen-treibhausgas-0), table 1. The values for 2024 and 2025 are preliminary. The factors come from 2023 to 2025, so 2015 to 2022 test the method on years that it did not learn from.
+
+In these eleven years, the value for Germany fell from 529 to 344 g/kWh. The mix of sources explains this fall, and the provider reads the mix for each quarter hour. The factor of each fuel changed so little that one set of factors fits every year.
+
+With `/v2/public_power`, the result is 2 to 4 percent lower, because that endpoint leaves out the power plants of the industry. No official value exists for that mix, so the provider uses `/v2/total_power`.
+
+### Limits
+
+- The factors describe the power plants of Germany. For another country, the provider writes no CO2 intensity.
+- The UBA publishes new values each March. If the power plants change, the factors must change, and only values written after that change use the new factors.
+- Energy-Charts replaces preliminary data with final data later. The provider does not read a day again after it wrote it.
+- The UBA values hold for a year. A single quarter hour has no official value to compare with.
 
 ## Data source
 
-The two values have different origins. Every answer names its own origin in a `license` field.
+The values have different origins. Every answer names its own origin in a `license` field.
 
 The license of the price depends on the bidding zone. Energy-Charts passes the number through without a change. On 2026-10-10, the answers named two licenses:
 
@@ -153,7 +222,9 @@ The license of the price depends on the bidding zone. Energy-Charts passes the n
 
 The collector writes the price into your own InfluxDB, which is a private use. If you pass the price on to other people, read the license of your zone first.
 
-The renewable share comes from [Energy-Charts](https://www.energy-charts.info/) itself, under CC BY 4.0 with attribution to energy-charts.info. This is true for `/v2/signal` and for `/v2/public_power`. Fraunhofer ISE computes the share from generation and load data. The part that reaches into the future is their forecast, not a measurement.
+The renewable share comes from [Energy-Charts](https://www.energy-charts.info/) itself, under CC BY 4.0 with attribution to energy-charts.info. This is true for `/v2/signal`, `/v2/public_power` and `/v2/total_power`. Fraunhofer ISE computes the share from generation and load data. The part that reaches into the future is their forecast, not a measurement.
+
+The CO2 intensity is a computation of the collector. It uses the generation from `/v2/total_power` and emission factors derived from the publications of the Umweltbundesamt, see [CO2 intensity](#co2-intensity).
 
 ## Files
 
@@ -161,9 +232,10 @@ The renewable share comes from [Energy-Charts](https://www.energy-charts.info/) 
 provider.rb       the provider: reads on every cycle, minimum interval 60 seconds
 settings.rb       the settings, read from ENV
 client.rb         the JSON client, the envelope that every endpoint answers with, and the wait between two requests
-history.rb        the days before today, one year per request
+history.rb        the days before the current values, one year per request
 price_series.rb   the day-ahead price, from /v2/price
 share_series.rb   the renewable share, from /v2/signal, and from /v2/public_power for the history
+co2_series.rb     the CO2 intensity, computed from /v2/total_power
 ```
 
-The specs replay the recorded answers `spec/cassettes/energy_charts/price.yml` and `spec/cassettes/energy_charts/share.yml`. To record them again, delete the two files and run the specs. The specs of the history do not use recorded answers, because one year of the share is 20 MB.
+The specs replay the recorded answers `spec/cassettes/energy_charts/price.yml`, `spec/cassettes/energy_charts/share.yml` and `spec/cassettes/energy_charts/co2.yml`. To record them again, delete the files and run the specs. The specs of the history do not use recorded answers, because one year of the share is 20 MB.

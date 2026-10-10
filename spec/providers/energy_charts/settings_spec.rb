@@ -8,6 +8,7 @@ describe Providers::EnergyCharts::Settings do
       measurement: 'my-measurement',
       field_price: 'amount',
       field_share: 'share',
+      field_co2: 'co2',
     }
   end
 
@@ -45,6 +46,20 @@ describe Providers::EnergyCharts::Settings do
           .to raise_error(Env::Error, /they must differ/)
       end
     end
+
+    describe 'the CO2 intensity' do
+      it 'needs a field' do
+        expect { described_class.new(**valid_options, field_co2: '') }
+          .to raise_error(Env::Error, /PUBLIC_GRID_FIELD_CO2_INTENSITY is missing/)
+      end
+
+      it 'rejects the field name of another value' do
+        expect { described_class.new(**valid_options, field_co2: 'share') }.to raise_error(
+          Env::Error,
+          'PUBLIC_GRID_FIELD_RENEWABLE_SHARE and PUBLIC_GRID_FIELD_CO2_INTENSITY are both share, they must differ',
+        )
+      end
+    end
   end
 
   describe '.from_env' do
@@ -55,6 +70,7 @@ describe Providers::EnergyCharts::Settings do
         measurement: 'my-measurement',
         field_price: 'my-price',
         field_share: 'my-share',
+        field_co2: 'my-co2',
       )
     end
 

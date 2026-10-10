@@ -29,12 +29,12 @@ Copy the shape of the badges from `README.md` of `tibber-collector`.
 
 ### Energy-Charts
 
-The collector reads `/v2/price` and `/v2/signal`, and of the second one only the share. For the history, it also reads the series `renewable_share_of_load` of `/v2/public_power`. The API offers more. Each endpoint below needs a decision about its field names before anybody writes code. The measurement is settled: everything goes to `PUBLIC_GRID_MEASUREMENT`.
+The collector reads `/v2/price` and `/v2/signal`, and of the second one only the share. For the history, it also reads the series `renewable_share_of_load` of `/v2/public_power`. For Germany, it computes the CO2 intensity from `/v2/total_power`. The API offers more. Each endpoint below needs a decision about its field names before anybody writes code. The measurement is settled: everything goes to `PUBLIC_GRID_MEASUREMENT`.
 
 - [ ] `/v2/ren_share_forecast`: forecast of the renewable, solar and wind share. The endpoint answered with HTTP 500 on 2026-09-19. Test it again before you plan work on it.
 - [ ] `/v2/public_power`: net electricity production per production type in MW. Many series, so this needs a rule about which series to write.
 - [ ] `/v2/solar_share`: solar share of the load in percent, split into a measured series and a forecast series. It is a subset of the renewable share, and it costs one request per cycle.
-- [ ] Decide whether the renewable share can replace the static `CO2_EMISSION_FACTOR` of the dashboard, which is 401 g/kWh for every hour of the history. A time-dependent factor needs a mapping from the share to g/kWh, and that mapping is a model, not a number the API reports.
+- [ ] Use `PublicGrid:co2_intensity` in the dashboard instead of the static `CO2_EMISSION_FACTOR`, which is 401 g/kWh for every hour of the history. The collector writes the value for Germany alone. Another country keeps the static factor.
 
 Note the rate limit. The API documentation says that the limit applies to each endpoint and each client IP, not to the whole API. Most endpoints accept 2 requests per minute with a burst of 4. `/v2/price` accepts 2 per minute with a burst of 2, and `/v2/signal` accepts 20 per minute. Under high load, the server can lower these limits. A third endpoint therefore needs no longer interval, because it has a limit of its own.
 

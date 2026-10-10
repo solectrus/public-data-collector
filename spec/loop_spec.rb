@@ -42,7 +42,8 @@ describe Loop do
   def with_sources(&)
     stub_bulletin
     VCR.use_cassettes(
-      %w[energy_charts/price energy_charts/share eurostat/gas_prices oil_bulletin/page].map { { name: it } },
+      %w[energy_charts/price energy_charts/share energy_charts/co2 eurostat/gas_prices oil_bulletin/page]
+        .map { { name: it } },
       &
     )
   end
@@ -75,12 +76,13 @@ describe Loop do
       expect(stdout).to match(/^Cycle #1 at \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} [+-]\d{4}$/)
       expect(stdout).to include("  Energy-Charts\n    ✓ day-ahead prices for DE-LU: ")
       expect(stdout).to include('    ✓ renewable shares for DE: ')
+      expect(stdout).to include('    ✓ CO2 intensities for DE: ')
       expect(stdout).to include("  EU Weekly Oil Bulletin\n    ✓ fuel prices for DE: ")
       expect(stdout).to include("  Eurostat\n    ✓ gas prices for DE: ")
       expect(stderr).to be_empty
 
-      # One write per source
-      expect(write_stub).to have_been_requested.times(4)
+      # One write per value
+      expect(write_stub).to have_been_requested.times(5)
     end
 
     describe 'the two paces' do
@@ -90,8 +92,8 @@ describe Loop do
 
         capture_output { with_sources { run_cycles(3, from: monday) } }
 
-        # Price and share three times, fuel and gas on the first cycle alone
-        expect(write_stub).to have_been_requested.times((3 * 2) + 2)
+        # Price, share and CO2 three times, fuel and gas on the first cycle alone
+        expect(write_stub).to have_been_requested.times((3 * 3) + 2)
       end
 
       # The interval is 60 seconds, so the cycles run at 05:59, 06:00 and 06:01
@@ -101,7 +103,7 @@ describe Loop do
 
         capture_output { with_sources { run_cycles(3, from: friday_early) } }
 
-        expect(write_stub).to have_been_requested.times((3 * 2) + (2 * 2))
+        expect(write_stub).to have_been_requested.times((3 * 3) + (2 * 2))
       end
 
       it 'sleeps until the next Friday without Energy-Charts' do
@@ -257,13 +259,13 @@ describe Loop do
 
       stdout, stderr = capture_output do
         VCR.use_cassettes(
-          [{ name: 'energy_charts/price' }, { name: 'energy_charts/share' }, { name: 'eurostat/gas_prices' }],
+          %w[energy_charts/price energy_charts/share energy_charts/co2 eurostat/gas_prices].map { { name: it } },
         ) { described_class.start(config:, max_count: 1) }
       end
 
       expect(stdout).to include('    ✗ fuel prices for DE: 500')
       expect(stdout).to include('    ✓ gas prices for DE: ')
-      expect(write_stub).to have_been_requested.times(3)
+      expect(write_stub).to have_been_requested.times(4)
       expect(stderr).to be_empty
     end
 
@@ -368,11 +370,11 @@ describe Loop do
 
       stdout, = capture_output { with_sources { described_class.start(config:, max_count: 1) } }
 
-      expect(stdout.scan('    ! InfluxDB: ').size).to eq(4)
-      expect(stdout.scan(/^    ✗ .*, but not stored in InfluxDB \(.*, 2 attempts\)/).size).to eq(4)
+      expect(stdout.scan('    ! InfluxDB: ').size).to eq(5)
+      expect(stdout.scan(/^    ✗ .*, but not stored in InfluxDB \(.*, 2 attempts\)/).size).to eq(5)
 
-      # Two attempts per source
-      expect(write_stub).to have_been_requested.times(8)
+      # Two attempts per value
+      expect(write_stub).to have_been_requested.times(10)
     end
   end
 end

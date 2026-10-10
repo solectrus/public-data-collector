@@ -6,11 +6,11 @@ Collect prices and values from public sources and push them to InfluxDB. Every s
 
 The collector reads three sources. The code that reads one source is a provider. Each provider has a README that describes its values, its configuration and its source:
 
-| Provider                                                       | Values                                       | Pace            |
-| -------------------------------------------------------------- | -------------------------------------------- | --------------- |
-| [Energy-Charts](lib/providers/energy_charts/README.md)         | day-ahead electricity price, renewable share | every cycle     |
-| [Eurostat](lib/providers/eurostat/README.md)                   | natural gas                                  | Friday at 06:00 |
-| [EU Weekly Oil Bulletin](lib/providers/oil_bulletin/README.md) | petrol, diesel, heating oil, LPG             | Friday at 06:00 |
+| Provider                                                       | Values                                                      | Pace            |
+| -------------------------------------------------------------- | ----------------------------------------------------------- | --------------- |
+| [Energy-Charts](lib/providers/energy_charts/README.md)         | day-ahead electricity price, renewable share, CO2 intensity | every cycle     |
+| [Eurostat](lib/providers/eurostat/README.md)                   | natural gas                                                 | Friday at 06:00 |
+| [EU Weekly Oil Bulletin](lib/providers/oil_bulletin/README.md) | petrol, diesel, heating oil, LPG                            | Friday at 06:00 |
 
 Every provider also reads at every start, so a new container fills InfluxDB at once.
 
@@ -20,6 +20,7 @@ Every provider also reads at every start, so a new container fills InfluxDB at o
 | ---------------------------- | ------- | ---------------------- |
 | `PublicGrid:price`           | EUR/kWh | Energy-Charts          |
 | `PublicGrid:renewable_share` | percent | Energy-Charts          |
+| `PublicGrid:co2_intensity`   | g/kWh   | Energy-Charts          |
 | `Gas:price`                  | EUR/kWh | Eurostat               |
 | `Fuel:price_petrol`          | EUR/l   | EU Weekly Oil Bulletin |
 | `Fuel:price_diesel`          | EUR/l   | EU Weekly Oil Bulletin |
@@ -65,7 +66,7 @@ A read fails when the source does not answer, answers with an error code, or sen
 
 ### History
 
-Every provider has a long history. The fuel prices go back to 2005, and the gas price goes back to 2007. For Germany, the renewable share goes back to 2015, and the day-ahead price goes back to October 2018. The collector writes this history only from the time where the other data in your bucket begins.
+Every provider has a long history. The fuel prices go back to 2005, and the gas price goes back to 2007. For Germany, the renewable share and the CO2 intensity go back to 2015, and the day-ahead price goes back to October 2018. The collector writes this history only from the time where the other data in your bucket begins.
 
 The reason is the storage of InfluxDB. InfluxDB keeps the points of a bucket in blocks that are called shards. With an unlimited retention, one shard covers one week. Every shard uses memory and open files for as long as it exists. A fuel price from 2005 in a bucket whose data begins in 2020 therefore adds about 800 shards that hold nothing else.
 
@@ -74,7 +75,7 @@ At the start, the collector asks InfluxDB for the oldest point in the bucket. It
 1. The first read of a provider writes its history from that time on, together with the newest value before it. That value tells the price at the time where your data begins.
 2. Every later read writes a short window: eight weeks of fuel prices, eighteen months of gas prices, and today and tomorrow of the electricity values. A later read therefore does not write to every shard again.
 
-Every start of the collector repeats the first read. For the fuel and gas prices, it reads the whole history again, which is a small download. The history of the electricity values is the largest: one year of the renewable share is a download of about 20 MB. A start therefore reads only the days of the electricity values that InfluxDB does not hold yet. The [README of Energy-Charts](lib/providers/energy_charts/README.md#history) gives the details.
+Every start of the collector repeats the first read. For the fuel and gas prices, it reads the whole history again, which is a small download. The history of the electricity values is the largest: one year of the renewable share or of the CO2 intensity is a download of about 20 MB. A start therefore reads only the days of the electricity values that InfluxDB does not hold yet. The [README of Energy-Charts](lib/providers/energy_charts/README.md#history) gives the details.
 
 For the query at the start, the token needs read permission for the bucket. If the token can only write, the collector writes the newest value of each provider and no history. The same is true for a bucket that holds no other data. The log then tells the reason.
 

@@ -22,6 +22,11 @@ module Providers
     #
     #   history_records(first, last)   the records of the days from `first`
     #                                  to `last`, both included (private)
+    #
+    # and may answer this:
+    #
+    #   current_start                  the first day of the current answer
+    #                                  (private). The default is today.
     module History
       # A request that the source answers with one of these has reached the
       # time before its data begins. The price answers 404, the renewable
@@ -49,7 +54,10 @@ module Providers
       # The day of the loop clock, which is Time.now
       def today = Time.now.to_date
 
-      # The days before today that the bucket lacks, as [first, last] pairs.
+      def current_start = today
+
+      # The days before the current answer that the bucket lacks, as
+      # [first, last] pairs.
       #
       # These are the days before its oldest point, and the days since its
       # newest point before today. Every cycle writes until the end of the
@@ -59,12 +67,12 @@ module Providers
       # so the measurement replaces the forecast.
       def missing(since, stored)
         first = since.to_date
-        yesterday = today - 1
-        return [[first, yesterday]] unless stored
+        last = current_start - 1
+        return [[first, last]] unless stored
 
         days = []
-        days << [first, [stored.oldest.to_date, yesterday].min] if since < stored.oldest
-        days << [[first, stored.newest.to_date - 1].max, yesterday] if stored.newest
+        days << [first, [stored.oldest.to_date, last].min] if since < stored.oldest
+        days << [[first, stored.newest.to_date - 1].max, last] if stored.newest
         merge(days)
       end
 

@@ -11,6 +11,7 @@ module Providers
         :measurement,
         :field_price,
         :field_share,
+        :field_co2,
       ) do
         def initialize(**)
           super
@@ -20,6 +21,7 @@ module Providers
           Env.validate_presence!(measurement, 'PUBLIC_GRID_MEASUREMENT')
           Env.validate_presence!(field_price, 'PUBLIC_GRID_FIELD_PRICE')
           Env.validate_presence!(field_share, 'PUBLIC_GRID_FIELD_RENEWABLE_SHARE')
+          Env.validate_presence!(field_co2, 'PUBLIC_GRID_FIELD_CO2_INTENSITY')
           validate_distinct_fields!
         end
 
@@ -30,20 +32,30 @@ module Providers
             measurement: Env['PUBLIC_GRID_MEASUREMENT'] || 'PublicGrid',
             field_price: Env['PUBLIC_GRID_FIELD_PRICE'] || 'price',
             field_share: Env['PUBLIC_GRID_FIELD_RENEWABLE_SHARE'] || 'renewable_share',
+            field_co2: Env['PUBLIC_GRID_FIELD_CO2_INTENSITY'] || 'co2_intensity',
           )
         end
 
         private
 
-        # Price and share go to the same measurement and carry the same
-        # timestamps. One field name for both would therefore let one value
-        # overwrite the other.
+        # Every value goes to the same measurement and carries the same
+        # timestamps. One field name for two values would therefore let one
+        # value overwrite the other.
         def validate_distinct_fields!
-          return unless field_price == field_share
+          field_names.keys.combination(2) do |one, other|
+            next unless public_send(one) == public_send(other)
 
-          raise Env::Error,
-                'PUBLIC_GRID_FIELD_PRICE and PUBLIC_GRID_FIELD_RENEWABLE_SHARE ' \
-                "are both #{field_price}, they must differ"
+            raise Env::Error,
+                  "#{field_names[one]} and #{field_names[other]} are both #{public_send(one)}, they must differ"
+          end
+        end
+
+        def field_names
+          {
+            field_price: 'PUBLIC_GRID_FIELD_PRICE',
+            field_share: 'PUBLIC_GRID_FIELD_RENEWABLE_SHARE',
+            field_co2: 'PUBLIC_GRID_FIELD_CO2_INTENSITY',
+          }
         end
       end
   end
