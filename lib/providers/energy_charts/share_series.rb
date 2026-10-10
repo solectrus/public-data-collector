@@ -1,5 +1,6 @@
 require 'providers/country'
 require 'providers/energy_charts/client'
+require 'providers/energy_charts/history'
 require 'providers/series'
 
 module Providers
@@ -12,10 +13,19 @@ module Providers
     # hold the same value for days while the share moves by 50 percentage
     # points.
     class ShareSeries < Series
+      include History
+
       PATH = '/v2/signal'.freeze
 
       # Id of the series that carries the share, as declared by the API.
       SERIES_ID = 'share'.freeze
+
+      # `signal` answers for today and the forecast alone. The days before
+      # come from `public_power`, which carries the same share as a series
+      # of its own, measured and not forecast. The two agree on every
+      # quarter hour that is measured.
+      HISTORY_PATH = '/v2/public_power'.freeze
+      HISTORY_SERIES_ID = 'renewable_share_of_load'.freeze
 
       # The renewable share of the load in percent, for one quarter hour.
       # The value goes above 100 when the renewable sources produce more
@@ -32,18 +42,28 @@ module Providers
       # how far the forecast reaches, so the collector asks for no time
       # range.
       def records
-        # Energy-Charts asks for the ISO code in lower case.
-        build(client.get(PATH, country: Country.iso(settings.country).downcase))
+        build(client.get(PATH, country:), SERIES_ID)
       end
 
       private
+
+      # The answer carries every kind of generation as well, which makes a
+      # year about 20 MB. The endpoint cannot leave them out.
+      def history_records(first, last)
+        build(client.get(HISTORY_PATH, country:, start: first.to_s, end: last.to_s), HISTORY_SERIES_ID)
+      end
+
+      # Energy-Charts asks for the ISO code in lower case.
+      def country
+        Country.iso(settings.country).downcase
+      end
 
       def client
         @client ||= Client.new
       end
 
-      def build(json)
-        Client.series(json, SERIES_ID).map do |starts_at, share|
+      def build(json, id)
+        Client.series(json, id).map do |starts_at, share|
           Share.new(starts_at, share.to_f)
         end
       end

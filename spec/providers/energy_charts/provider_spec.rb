@@ -5,7 +5,9 @@ require 'providers/energy_charts/provider'
 describe Providers::EnergyCharts::Provider do
   subject(:provider) { described_class.from_env }
 
-  def results
+  # One read alone. A second read within a few seconds waits for the rate
+  # limit of the API.
+  let(:results) do
     VCR.use_cassettes([{ name: 'energy_charts/price' }, { name: 'energy_charts/share' }]) { provider.call.to_a }
   end
 

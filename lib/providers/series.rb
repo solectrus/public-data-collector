@@ -21,6 +21,11 @@ module Providers
   #   measurement        the measurement the records go to
   #   window             for a series with a history: the days a read
   #                      covers once the history is written, see `since`
+  #   since(...)         for a series with a history that a window cannot
+  #                      describe: the time from which a read writes
+  #   records_since(time) for a source that takes a time range: the records
+  #                      from `time` on (private). The default reads every
+  #                      record, and `fetch` drops the older ones.
   #
   # Every record answers `starts_at` and one accessor per field.
   class Series
@@ -64,7 +69,7 @@ module Providers
     # arrived. Raises FetchError when the source failed or delivered
     # nothing.
     def fetch(since = nil)
-      records = self.records
+      records = since ? records_since(since) : self.records
       raise FetchError, nothing_found if records.empty?
       return [batch(records), summary(records)] unless since
 
@@ -73,6 +78,8 @@ module Providers
     end
 
     private
+
+    def records_since(_since) = records
 
     # The records from `since` on, and the newest one before it. That one
     # holds the value that applies at `since`, for example the price of

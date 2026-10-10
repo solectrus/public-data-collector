@@ -14,6 +14,12 @@ module Providers
     class Client < JsonApi
       BASE_URL = 'https://api.energy-charts.info'.freeze
 
+      # Seconds between two requests to the same endpoint. The API limits
+      # the requests per endpoint, and most endpoints allow 2 per minute. A
+      # cycle makes one request per endpoint, so this matters only for the
+      # history, which makes one request per year.
+      SPACING = 31
+
       # The timestamp and the value of one series id for every entry of an
       # envelope. An entry without a numeric value is left out.
       def self.series(json, id)
@@ -26,7 +32,26 @@ module Providers
         end
       end
 
+      # Waits until the endpoint accepts the next request.
+      def get(path, **)
+        pause(path)
+        super
+      ensure
+        requested_at[path] = Time.now
+      end
+
       private
+
+      def requested_at
+        @requested_at ||= {}
+      end
+
+      def pause(path)
+        return unless (last = requested_at[path])
+
+        seconds = last + SPACING - Time.now
+        sleep(seconds) if seconds.positive?
+      end
 
       def source
         NAME

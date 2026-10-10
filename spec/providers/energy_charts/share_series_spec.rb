@@ -87,6 +87,47 @@ describe Providers::EnergyCharts::ShareSeries do
     end
   end
 
+  describe 'the history' do
+    before do
+      allow(Time).to receive(:now).and_return(Time.local(2026, 10, 10, 12))
+      stub_const('Providers::EnergyCharts::Client::SPACING', 0)
+      stub_share_request([{ timestamp: Time.local(2026, 10, 10).iso8601, values: { share: 110.8, signal: 2 } }])
+    end
+
+    # The answer of public_power: the share beside every kind of generation
+    def stub_public_power(first, last, status: 200)
+      values = { solar: 1234.5, load: 50_000.0, renewable_share_of_load: 75.7, renewable_share_of_generation: 70.1 }
+      data = [{ timestamp: Date.parse(first).to_time.iso8601, values: }]
+
+      stub_request(:get, 'https://api.energy-charts.info/v2/public_power')
+        .with(query: { country: 'de', start: first, end: last })
+        .to_return(status:, body: JSON.generate(unit: 'MW', data:))
+    end
+
+    it 'reads the days before today from public_power, and today from signal' do
+      stub_public_power('2026-09-01', '2026-10-09')
+
+      batch, = share_series.fetch(Time.local(2026, 9, 1))
+
+      expect(batch.rows).to eq(
+        [
+          Batch::Row.new(time: Time.local(2026, 9, 1), fields: { 'my-share' => 75.7 }),
+          Batch::Row.new(time: Time.local(2026, 10, 10), fields: { 'my-share' => 110.8 })
+        ],
+      )
+    end
+
+    # public_power answers 400 for a time before its data begins
+    it 'ends the history at an older year that has no data' do
+      stub_public_power('2025-10-10', '2026-10-09')
+      stub_public_power('2024-10-10', '2025-10-09', status: 400)
+
+      batch, = share_series.fetch(Time.local(2010, 1, 1))
+
+      expect(batch.rows.map(&:time)).to eq([Time.local(2025, 10, 10), Time.local(2026, 10, 10)])
+    end
+  end
+
   describe '#fetch' do
     it 'sums up what arrived' do
       _, summary = VCR.use_cassette('energy_charts/share') { share_series.fetch }

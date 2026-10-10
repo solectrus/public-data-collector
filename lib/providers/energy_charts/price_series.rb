@@ -1,12 +1,13 @@
-require 'date'
-
 require 'providers/energy_charts/client'
+require 'providers/energy_charts/history'
 require 'providers/series'
 
 module Providers
   module EnergyCharts
     # Reads the day-ahead spot market price for one bidding zone.
     class PriceSeries < Series
+      include History
+
       PATH = '/v2/price'.freeze
 
       # Id of the series that carries the price, as declared by the API.
@@ -39,14 +40,22 @@ module Providers
       # cleared, which happens in the early afternoon. Before that the API
       # returns today alone, which is not an error.
       def records
-        today = Date.today
-        json = client.get(PATH, bzn: settings.bzn, start: today.to_s, end: (today + 1).to_s)
+        prices(today, today + 1)
+      end
+
+      private
+
+      # The same endpoint answers for every day it knows. Before October
+      # 2025, the auction priced every hour, so the history has one price
+      # per hour until then.
+      def history_records(first, last) = prices(first, last)
+
+      def prices(first, last)
+        json = client.get(PATH, bzn: settings.bzn, start: first.to_s, end: last.to_s)
         check_unit!(json['unit'])
 
         build(json)
       end
-
-      private
 
       def client
         @client ||= Client.new

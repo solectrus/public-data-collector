@@ -57,10 +57,13 @@ module Providers
       when Net::HTTPSuccess
         nil
       when Net::HTTPTooManyRequests
-        raise FetchError, "#{response.code} from #{source}, rate limit reached, " \
-                          "retry after #{response['Retry-After'] || '?'} seconds"
+        raise FetchError.new(
+          "#{response.code} from #{source}, rate limit reached, " \
+          "retry after #{response['Retry-After'] || '?'} seconds",
+          status: response.code.to_i,
+        )
       else
-        raise FetchError, "#{response.code} #{response.message} from #{source}"
+        raise FetchError.new("#{response.code} #{response.message} from #{source}", status: response.code.to_i)
       end
     end
 

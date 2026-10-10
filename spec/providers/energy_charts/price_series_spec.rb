@@ -58,7 +58,7 @@ describe Providers::EnergyCharts::PriceSeries do
 
       price_series.records
 
-      today = Date.today
+      today = Time.now.to_date
       expect(
         a_request(:get, /api\.energy-charts\.info/).with(
           query: { bzn: 'DE-LU', start: today.to_s, end: (today + 1).to_s },
@@ -116,6 +116,85 @@ describe Providers::EnergyCharts::PriceSeries do
 
         expect { price_series.records }.to raise_error(Providers::FetchError)
       end
+    end
+  end
+
+  describe '#since' do
+    let(:now) { Time.local(2026, 10, 10, 12) }
+
+    before { allow(Time).to receive(:now).and_return(now) }
+
+    it 'writes the history at the first read' do
+      expect(price_series.since(Time.local(2020, 11, 27), first_read: true)).to eq(Time.local(2020, 11, 27))
+    end
+
+    it 'writes the current answer alone at every later read' do
+      expect(price_series.since(Time.local(2020, 11, 27), first_read: false)).to be_nil
+    end
+
+    # The bucket holds no other data, or the token may not read
+    it 'writes the current answer alone for a start within today' do
+      expect(price_series.since(now, first_read: true)).to be_nil
+    end
+
+    it 'writes the current answer alone without a start' do
+      expect(price_series.since(nil, first_read: true)).to be_nil
+    end
+  end
+
+  describe 'the history' do
+    before do
+      allow(Time).to receive(:now).and_return(Time.local(2026, 10, 10, 12))
+      stub_const('Providers::EnergyCharts::Client::SPACING', 0)
+    end
+
+    # One price at the start of the first day
+    def stub_prices(first, last, status: 200)
+      data = [{ timestamp: Date.parse(first).to_time.iso8601, values: { day_ahead_price: 100.0 } }]
+
+      stub_request(:get, 'https://api.energy-charts.info/v2/price')
+        .with(query: { bzn: 'DE-LU', start: first, end: last })
+        .to_return(status:, body: JSON.generate(unit: 'EUR / MWh', data:))
+    end
+
+    it 'reads the days before today a year at a time, then today and tomorrow' do
+      requests = [
+        stub_prices('2025-10-10', '2026-10-09'),
+        stub_prices('2024-10-10', '2025-10-09'),
+        stub_prices('2024-06-15', '2024-10-09'),
+        stub_prices('2026-10-10', '2026-10-11')
+      ]
+
+      batch, summary = price_series.fetch(Time.local(2024, 6, 15, 8))
+
+      expect(requests).to all(have_been_requested.once)
+      expect(batch.rows.map(&:time)).to eq(
+        [Time.local(2024, 6, 15), Time.local(2024, 10, 10), Time.local(2025, 10, 10), Time.local(2026, 10, 10)],
+      )
+      expect(summary).to eq('4 prices (from 2024-06-15)')
+    end
+
+    it 'ends the history at an older year that has no data' do
+      stub_prices('2025-10-10', '2026-10-09')
+      stub_prices('2024-10-10', '2025-10-09', status: 404)
+      stub_prices('2026-10-10', '2026-10-11')
+
+      batch, = price_series.fetch(Time.local(2018, 1, 1))
+
+      expect(batch.rows.map(&:time)).to contain_exactly(Time.local(2025, 10, 10), Time.local(2026, 10, 10))
+    end
+
+    it 'fails when the newest year fails' do
+      stub_prices('2025-10-10', '2026-10-09', status: 404)
+
+      expect { price_series.fetch(Time.local(2018, 1, 1)) }.to raise_error(Providers::FetchError, /404/)
+    end
+
+    it 'fails when an older year fails for another reason' do
+      stub_prices('2025-10-10', '2026-10-09')
+      stub_prices('2024-10-10', '2025-10-09', status: 500)
+
+      expect { price_series.fetch(Time.local(2024, 1, 1)) }.to raise_error(Providers::FetchError, /500/)
     end
   end
 

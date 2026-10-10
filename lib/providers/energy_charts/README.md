@@ -42,6 +42,33 @@ A cycle writes today and tomorrow again. A point that exists already gets the sa
 
 The price endpoint accepts 2 requests per minute. One cycle makes one request per endpoint, so the collector refuses an interval below 60 seconds.
 
+## History
+
+The first read after a start also writes the days before today. It begins where the other data in your bucket begins. The section [History](../../../README.md#history) explains why. Every later read writes today and tomorrow alone.
+
+The history of each value comes from a different endpoint than its current values:
+
+| Value           | Today and tomorrow | Days before today  | Begins for Germany |
+| --------------- | ------------------ | ------------------ | ------------------ |
+| Day-ahead price | `/v2/price`        | `/v2/price`        | 2018-10-01         |
+| Renewable share | `/v2/signal`       | `/v2/public_power` | 2015-01-01         |
+
+`/v2/signal` answers for today and the forecast alone. `/v2/public_power` carries the same share in the series `renewable_share_of_load`. On 2026-10-10, the two endpoints gave the same value for every quarter hour that was measured. They differed only where `/v2/signal` used its forecast.
+
+Until 30 September 2025, the day-ahead auction set one price per hour. The history therefore has one price per hour until that day, and one price per quarter hour after it.
+
+### Requests
+
+The provider asks for one year per request, the newest year first. An older year without data ends the history. For such a year, the price endpoint answers 404 and `/v2/public_power` answers 400. If the newest year fails, the read fails, and the next cycle tries again.
+
+Each endpoint accepts 2 requests per minute. The provider therefore waits 31 seconds between two requests to the same endpoint. A history of six years takes about six minutes at the first read.
+
+### Size
+
+The history of the renewable share is large. `/v2/public_power` sends every kind of generation together with the share, and it cannot leave them out. One year is a download of about 20 MB. While the provider reads one year, it uses about 100 MB of memory. One year of prices is less than 3 MB.
+
+Every start of the collector repeats the first read. If the data in your bucket begins in 2020, every start therefore downloads about 130 MB.
+
 ## Day-ahead electricity price
 
 The day-ahead price is the price of the spot market auction for the next day. The auction runs once a day, and the results appear in the early afternoon CET. Before that time, the source returns today alone.
@@ -120,9 +147,10 @@ The renewable share comes from [Energy-Charts](https://www.energy-charts.info/) 
 ```
 provider.rb       the provider: reads on every cycle, minimum interval 60 seconds
 settings.rb       the settings, read from ENV
-client.rb         the JSON client and the envelope that every endpoint answers with
+client.rb         the JSON client, the envelope that every endpoint answers with, and the wait between two requests
+history.rb        the days before today, one year per request
 price_series.rb   the day-ahead price, from /v2/price
-share_series.rb   the renewable share, from /v2/signal
+share_series.rb   the renewable share, from /v2/signal, and from /v2/public_power for the history
 ```
 
-The specs replay the recorded answers `spec/cassettes/energy_charts/price.yml` and `spec/cassettes/energy_charts/share.yml`. To record them again, delete the two files and run the specs.
+The specs replay the recorded answers `spec/cassettes/energy_charts/price.yml` and `spec/cassettes/energy_charts/share.yml`. To record them again, delete the two files and run the specs. The specs of the history do not use recorded answers, because one year of the share is 20 MB.
