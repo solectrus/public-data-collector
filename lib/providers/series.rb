@@ -23,9 +23,12 @@ module Providers
   #                      covers once the history is written, see `since`
   #   since(...)         for a series with a history that a window cannot
   #                      describe: the time from which a read writes
-  #   records_since(time) for a source that takes a time range: the records
-  #                      from `time` on (private). The default reads every
-  #                      record, and `fetch` drops the older ones.
+  #   records_since(time, extents)
+  #                      for a source that takes a time range: the records
+  #                      from `time` on (private). `extents` tells what the
+  #                      bucket holds already, see Extent. The default
+  #                      reads every record, and `fetch` drops the older
+  #                      ones.
   #
   # Every record answers `starts_at` and one accessor per field.
   class Series
@@ -47,9 +50,14 @@ module Providers
     # prices of today and tomorrow.
     def window = nil
 
+    # The fields this series fills, as [measurement, field].
+    def targets
+      fields.values.map { |field| [measurement, field] }
+    end
+
     # The sensors this series fills, as `MEASUREMENT:field`.
     def sensors
-      fields.values.map { |field| "#{measurement}:#{field}" }
+      targets.map { |target| target.join(':') }
     end
 
     # The time from which a read writes, or nil for everything.
@@ -67,9 +75,10 @@ module Providers
 
     # The records from `since` on as a Batch, and a few words on what
     # arrived. Raises FetchError when the source failed or delivered
-    # nothing.
-    def fetch(since = nil)
-      records = since ? records_since(since) : self.records
+    # nothing. `extents` is what the bucket holds already, as
+    # {[measurement, field] => Extent}.
+    def fetch(since = nil, extents: {})
+      records = since ? records_since(since, extents) : self.records
       raise FetchError, nothing_found if records.empty?
       return [batch(records), summary(records)] unless since
 
@@ -79,7 +88,7 @@ module Providers
 
     private
 
-    def records_since(_since) = records
+    def records_since(_since, _extents) = records
 
     # The records from `since` on, and the newest one before it. That one
     # holds the value that applies at `since`, for example the price of

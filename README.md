@@ -74,7 +74,7 @@ At the start, the collector asks InfluxDB for the oldest point in the bucket. It
 1. The first read of a provider writes its history from that time on, together with the newest value before it. That value tells the price at the time where your data begins.
 2. Every later read writes a short window: eight weeks of fuel prices, eighteen months of gas prices, and today and tomorrow of the electricity values. A later read therefore does not write to every shard again.
 
-Every start of the collector repeats the first read. The history of the electricity values is the largest. One year of the renewable share is a download of about 20 MB, and Energy-Charts accepts 2 requests per minute. The [README of Energy-Charts](lib/providers/energy_charts/README.md#history) gives the details.
+Every start of the collector repeats the first read. For the fuel and gas prices, it reads the whole history again, which is a small download. The history of the electricity values is the largest: one year of the renewable share is a download of about 20 MB. A start therefore reads only the days of the electricity values that InfluxDB does not hold yet. The [README of Energy-Charts](lib/providers/energy_charts/README.md#history) gives the details.
 
 For the query at the start, the token needs read permission for the bucket. If the token can only write, the collector writes the newest value of each provider and no history. The same is true for a bucket that holds no other data. The log then tells the reason.
 
@@ -113,7 +113,8 @@ lib/env.rb                    reads a setting out of ENV
 lib/loop.rb                   the cycle: calls every provider, pushes its batches
 lib/batch.rb                  what a provider hands to the writer
 lib/flux_writer.rb            writes the batches to InfluxDB
-lib/flux_reader.rb            finds where the other data in the bucket begins
+lib/flux_reader.rb            finds where the other data in the bucket begins, and what it holds of each field
+lib/extent.rb                 what the bucket holds of one field: its oldest and its newest point
 lib/influx_client.rb          the InfluxDB client that the writer and the reader share
 lib/app_version.rb            the version of this build
 lib/user_agent.rb             what the collector calls itself
@@ -144,7 +145,7 @@ Every provider has the same interface, which `Providers::Base` defines:
 | `descriptions` | one line per value for the banner                        |
 | `measurements` | the measurements it writes to                            |
 
-`Providers.from_env` loads every folder and builds every provider. The loop then calls `call` on each provider that is due, and gives every batch to `FluxWriter`. With each call, the loop passes the start of the history and tells whether it is the first read of the provider.
+`Providers.from_env` loads every folder and builds every provider. The loop then calls `call` on each provider that is due, and gives every batch to `FluxWriter`. With each call, the loop passes the start of the history and tells whether it is the first read of the provider. At the first read, it also passes what the bucket holds of each field of the provider: the oldest point, and the newest point before today.
 
 A batch is a measurement and a list of rows. Each row has a time and its fields. The writer therefore needs no knowledge of the records of a provider.
 

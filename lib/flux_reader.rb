@@ -1,5 +1,6 @@
 require 'time'
 
+require 'extent'
 require 'influx_client'
 
 # Reads from InfluxDB the one thing the collector needs to know: where the
@@ -45,7 +46,43 @@ class FluxReader
     tables.flat_map(&:records).map { |record| Time.iso8601(record.time) }.min
   end
 
+  # What the bucket holds of the given fields, as {[measurement, field] =>
+  # Extent}. A field without a point is left out. `before` is the start
+  # of today. When InfluxDB refuses the query, the answer is empty, and a
+  # series then reads its whole history.
+  def extents(targets, before:)
+    return {} if targets.empty?
+
+    newest = times(targets, 'last()', stop: before)
+    times(targets, 'first()').to_h do |target, oldest|
+      [target, Extent.new(oldest:, newest: newest[target])]
+    end
+  rescue StandardError
+    {}
+  end
+
   private
+
+  # The time of one point per field, as {[measurement, field] => time}
+  def times(targets, selector, stop: nil)
+    tables = query_api.query(query: extent_query(targets, selector, stop), org: config.influx_org)
+
+    tables.flat_map(&:records).to_h { |record| [[record.measurement, record.field], Time.iso8601(record.time)] }
+  end
+
+  def extent_query(targets, selector, stop)
+    filter = targets.map do |measurement, field|
+      "(r._measurement == #{quote(measurement)} and r._field == #{quote(field)})"
+    end
+
+    <<~FLUX
+      from(bucket: #{quote(config.influx_bucket)})
+        |> range(start: 0#{", stop: #{stop.utc.iso8601}" if stop})
+        |> filter(fn: (r) => #{filter.join(' or ')})
+        |> #{selector}
+        |> keep(columns: ["_measurement", "_field", "_time"])
+    FLUX
+  end
 
   def note(start, text)
     puts text

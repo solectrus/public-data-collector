@@ -1,3 +1,4 @@
+require 'extent'
 require 'providers/energy_charts/price_series'
 require 'providers/energy_charts/settings'
 
@@ -184,17 +185,81 @@ describe Providers::EnergyCharts::PriceSeries do
       expect(batch.rows.map(&:time)).to contain_exactly(Time.local(2025, 10, 10), Time.local(2026, 10, 10))
     end
 
-    it 'fails when the newest year fails' do
+    # A source that is down shows at the request for today
+    it 'keeps today when the newest year has no data' do
       stub_prices('2025-10-10', '2026-10-09', status: 404)
+      stub_prices('2026-10-10', '2026-10-11')
 
-      expect { price_series.fetch(Time.local(2018, 1, 1)) }.to raise_error(Providers::FetchError, /404/)
+      batch, = price_series.fetch(Time.local(2018, 1, 1))
+
+      expect(batch.rows.map(&:time)).to eq([Time.local(2026, 10, 10)])
     end
 
-    it 'fails when an older year fails for another reason' do
+    it 'fails when a year fails for another reason' do
       stub_prices('2025-10-10', '2026-10-09')
       stub_prices('2024-10-10', '2025-10-09', status: 500)
 
       expect { price_series.fetch(Time.local(2024, 1, 1)) }.to raise_error(Providers::FetchError, /500/)
+    end
+
+    describe 'with what the bucket holds already' do
+      let(:history_start) { Time.local(2020, 11, 27, 18) }
+
+      def fetch(newest:, since: history_start, oldest: history_start)
+        price_series.fetch(since, extents: { %w[my-measurement my-price] => Extent.new(oldest:, newest:) })
+      end
+
+      def times(batch) = batch.rows.map(&:time)
+
+      # The newest point is tomorrow of the last cycle, so the read starts
+      # one day before it
+      it 'reads the days since the last cycle alone' do
+        stub_prices('2026-10-06', '2026-10-09')
+        stub_prices('2026-10-10', '2026-10-11')
+
+        batch, = fetch(newest: Time.local(2026, 10, 7, 23))
+
+        expect(times(batch)).to eq([Time.local(2026, 10, 6), Time.local(2026, 10, 10)])
+      end
+
+      it 'reads two days after a restart' do
+        stub_prices('2026-10-08', '2026-10-09')
+        stub_prices('2026-10-10', '2026-10-11')
+
+        batch, = fetch(newest: Time.local(2026, 10, 9, 23))
+
+        expect(times(batch)).to eq([Time.local(2026, 10, 8), Time.local(2026, 10, 10)])
+      end
+
+      # Older data was imported into the bucket
+      it 'reads the days before the oldest point as well' do
+        stub_prices('2020-01-01', '2020-11-27')
+        stub_prices('2026-10-08', '2026-10-09')
+        stub_prices('2026-10-10', '2026-10-11')
+
+        batch, = fetch(since: Time.local(2020, 1, 1), newest: Time.local(2026, 10, 9, 23))
+
+        expect(times(batch)).to eq([Time.local(2020, 1, 1), Time.local(2026, 10, 8), Time.local(2026, 10, 10)])
+      end
+
+      it 'joins the two parts when they touch' do
+        stub_prices('2026-09-01', '2026-10-09')
+        stub_prices('2026-10-10', '2026-10-11')
+
+        batch, = fetch(since: Time.local(2026, 9, 1), oldest: Time.local(2026, 9, 20), newest: Time.local(2026, 9, 21))
+
+        expect(times(batch)).to eq([Time.local(2026, 9, 1), Time.local(2026, 10, 10)])
+      end
+
+      # The bucket holds the points of today and tomorrow alone
+      it 'reads the whole history without a point before today' do
+        stub_prices('2026-09-01', '2026-10-09')
+        stub_prices('2026-10-10', '2026-10-11')
+
+        batch, = fetch(since: Time.local(2026, 9, 1), oldest: Time.local(2026, 10, 10), newest: nil)
+
+        expect(times(batch)).to eq([Time.local(2026, 9, 1), Time.local(2026, 10, 10)])
+      end
     end
   end
 

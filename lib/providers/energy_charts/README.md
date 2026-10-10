@@ -44,7 +44,7 @@ The price endpoint accepts 2 requests per minute. One cycle makes one request pe
 
 ## History
 
-The first read after a start also writes the days before today. It begins where the other data in your bucket begins. The section [History](../../../README.md#history) explains why. Every later read writes today and tomorrow alone.
+The first read after a start also writes the days before today that InfluxDB does not hold yet. The history begins where the other data in your bucket begins. The section [History](../../../README.md#history) explains why. Every later read writes today and tomorrow alone.
 
 The history of each value comes from a different endpoint than its current values:
 
@@ -57,17 +57,30 @@ The history of each value comes from a different endpoint than its current value
 
 Until 30 September 2025, the day-ahead auction set one price per hour. The history therefore has one price per hour until that day, and one price per quarter hour after it.
 
+### Which days a start reads
+
+At the start, the collector asks InfluxDB for two points of each field: the oldest point, and the newest point before today. The provider then reads two parts of the history:
+
+1. The days from the start of the history until the oldest point. These are missing at the first start, and after you import older data into the bucket.
+2. The days from one day before the newest point until yesterday. These are missing when the collector did not run for some time.
+
+The second part starts one day early because of the forecast. Every cycle writes the share until the end of tomorrow. For the day of the last cycle and the day after it, InfluxDB therefore holds forecast values. The second part replaces them with measured values. After a short restart, the second part is two days.
+
+A gap in the middle of the history stays. Such a gap occurs when a source fails for more than a day while the collector runs.
+
+If InfluxDB refuses the query, the provider reads the whole history.
+
 ### Requests
 
-The provider asks for one year per request, the newest year first. An older year without data ends the history. For such a year, the price endpoint answers 404 and `/v2/public_power` answers 400. If the newest year fails, the read fails, and the next cycle tries again.
+The provider asks for one year per request, the newest year first. A year without data ends that part of the history. For such a year, the price endpoint answers 404 and `/v2/public_power` answers 400. The read continues with today and tomorrow. If the source fails for another reason, the read fails, and the next cycle tries again.
 
-Each endpoint accepts 2 requests per minute. The provider therefore waits 31 seconds between two requests to the same endpoint. A history of six years takes about six minutes at the first read.
+Each endpoint accepts 2 requests per minute. The provider therefore waits 31 seconds between two requests to the same endpoint. A history of six years takes about six minutes at the first start.
 
 ### Size
 
 The history of the renewable share is large. `/v2/public_power` sends every kind of generation together with the share, and it cannot leave them out. One year is a download of about 20 MB. While the provider reads one year, it uses about 100 MB of memory. One year of prices is less than 3 MB.
 
-Every start of the collector repeats the first read. If the data in your bucket begins in 2020, every start therefore downloads about 130 MB.
+If the data in your bucket begins in 2020, the first start downloads about 130 MB. A later start downloads only the missing days, which is less than 1 MB after a short restart.
 
 ## Day-ahead electricity price
 

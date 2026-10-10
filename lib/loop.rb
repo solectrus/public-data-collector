@@ -92,10 +92,17 @@ class Loop
 
     due.each do |provider|
       puts "  #{provider.source}"
-      results = provider.call(history_start:, first_read: timetable.first_read?(provider))
+      first_read = timetable.first_read?(provider)
+      results = provider.call(history_start:, first_read:, extents: first_read ? extents(provider) : {})
       errors = results.filter_map { |result| report(result) }
       finished(provider, errors.empty?, Time.now)
     end
+  end
+
+  # What the bucket holds of the fields of a provider, for its first read.
+  # A series with a history then reads only the days that are missing.
+  def extents(provider)
+    flux_reader.extents(provider.targets, before: Time.now.to_date.to_time)
   end
 
   def finished(provider, success, time)

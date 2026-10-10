@@ -48,10 +48,11 @@ module Providers
     #
     # `history_start` and `first_read` tell a series with a history how far
     # back to write, see Series#since. Without them, it writes everything.
-    def call(history_start: nil, first_read: true)
-      return enum_for(:call, history_start:, first_read:) unless block_given?
+    # `extents` tells what the bucket holds already, see Series#fetch.
+    def call(history_start: nil, first_read: true, extents: {})
+      return enum_for(:call, history_start:, first_read:, extents:) unless block_given?
 
-      series.each { |one| yield read(one, one.since(history_start, first_read:)) }
+      series.each { |one| yield read(one, one.since(history_start, first_read:), extents) }
     end
 
     # One line per series for the banner: what it reads, where it reads it,
@@ -65,10 +66,15 @@ module Providers
       series.map(&:measurement).uniq
     end
 
+    # The fields this provider writes to, as [measurement, field].
+    def targets
+      series.flat_map(&:targets)
+    end
+
     private
 
-    def read(one, since)
-      batch, summary = one.fetch(since)
+    def read(one, since, extents)
+      batch, summary = one.fetch(since, extents:)
       Result.new(subject: one.subject, batch:, summary:)
     rescue FetchError => e
       Result.new(subject: one.subject, error: e.message)
