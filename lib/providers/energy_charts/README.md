@@ -104,9 +104,16 @@ The source carries no CO2 value, so the provider writes none. The renewable shar
 
 The two values have different origins. Every answer names its own origin in a `license` field.
 
-The price comes from Bundesnetzagentur | SMARD.de, for every bidding zone that the API offers. Energy-Charts passes the number through without a change. The license is CC BY 4.0.
+The license of the price depends on the bidding zone. Energy-Charts passes the number through without a change. On 2026-10-10, the answers named two licenses:
 
-The renewable share comes from [Energy-Charts](https://www.energy-charts.info/) itself, under CC BY 4.0 with attribution to energy-charts.info. Fraunhofer ISE computes it from generation and load data. The part that reaches into the future is their forecast, not a measurement.
+| License                                       | Bidding zones, among others                                                              |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| CC BY 4.0, from Bundesnetzagentur \| SMARD.de | `DE-LU`, `AT`, `BE`, `CH`, `CZ`, `DK1`, `DK2`, `FR`, `HU`, `NL`, `PL`, `SI`              |
+| For private and internal use alone            | `ES`, `FI`, `GR`, `PT`, `EE`, `SK`, `SE1` to `SE3`, the zones of Italy except `IT-North` |
+
+The collector writes the price into your own InfluxDB, which is a private use. If you pass the price on to other people, read the license of your zone first.
+
+The renewable share comes from [Energy-Charts](https://www.energy-charts.info/) itself, under CC BY 4.0 with attribution to energy-charts.info. This is true for `/v2/signal` and for `/v2/public_power`. Fraunhofer ISE computes the share from generation and load data. The part that reaches into the future is their forecast, not a measurement.
 
 ## Files
 
