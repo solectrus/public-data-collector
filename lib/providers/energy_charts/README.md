@@ -4,7 +4,7 @@ This provider reads three values from the [Energy-Charts API](https://api.energy
 
 - The day-ahead electricity price, so you can run a load when electricity is cheap.
 - The renewable share of the load, so you can run a load when the grid is green.
-- The CO2 intensity of the power mix, so you can tell how much CO2 your grid import caused. This value exists for Germany alone.
+- The CO2 intensity of the power mix, so you can tell how much CO2 your grid import caused and how much CO2 your generation saved. This value exists for Germany alone.
 
 The API reports the electricity market of more than 50 bidding zones in Europe. A bidding zone is an area with one common electricity price. The API needs no account and no key.
 
@@ -144,7 +144,7 @@ The light carries no information that the share does not carry. If you want a li
 
 ## CO2 intensity
 
-The CO2 intensity tells how many grams of CO2 the generation of one kWh caused, for each quarter hour. It answers how much CO2 your grid import caused, which a fixed factor for every hour cannot answer. In 2025, the value was between 92 and 737 g/kWh, with a median of 359 g/kWh.
+The CO2 intensity tells how many grams of CO2 the generation of one kWh caused, for each quarter hour. It answers how much CO2 your grid import caused and how much CO2 your generation saved, which a fixed factor for every hour cannot answer. In 2025, the value was between 92 and 737 g/kWh, with a median of 359 g/kWh.
 
 ### Definition
 
@@ -201,6 +201,22 @@ The UBA values come from [Climate Change 16/2026](https://www.umweltbundesamt.de
 In these eleven years, the value for Germany fell from 529 to 344 g/kWh. The mix of sources explains this fall, and the provider reads the mix for each quarter hour. The factor of each fuel changed so little that one set of factors fits every year.
 
 With `/v2/public_power`, the result is 2 to 4 percent lower, because that endpoint leaves out the power plants of the industry. No official value exists for that mix, so the provider uses `/v2/total_power`.
+
+### Use
+
+Multiply the CO2 intensity of a quarter hour with an energy of the same quarter hour:
+
+- Grid import times CO2 intensity gives the CO2 that your grid import caused.
+- Generation times CO2 intensity gives the CO2 that the same energy from the grid caused at the same time. This is the CO2 that your generation saved, compared to the power mix.
+
+Add the results of all quarter hours. Do not multiply the total energy with an average value. Generation and CO2 intensity change in the course of a day, so the two results differ.
+
+The saved CO2 is a low estimate, for two reasons:
+
+- PV generates the most energy at noon in summer. At that time, the power mix is the cleanest, partly because of the PV itself.
+- The CO2 intensity is the average of all sources. A kWh from PV replaces mostly fossil power plants, which emit more than the average.
+
+The UBA publishes a different value: the emissions that PV avoids in the whole power system. For 2023, it was 690 g CO2 equivalents per kWh, see [Emissionsbilanz erneuerbarer Energieträger](https://www.umweltbundesamt.de/publikationen/emissionsbilanz-erneuerbarer-energietraeger-2023), table 10. That value also counts the emissions upstream, the other greenhouse gases and the production of the PV system. Do not combine it with the CO2 of your grid import, because the two values have different definitions.
 
 ### Limits
 
