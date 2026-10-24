@@ -1,4 +1,4 @@
-FROM ruby:4.0.7-alpine AS builder
+FROM ruby:4.0.9-alpine AS builder
 RUN apk add --no-cache build-base
 
 WORKDIR /public-data-collector
@@ -11,7 +11,7 @@ RUN bundle config set path /usr/local/bundle && \
     bundle install -j4 --retry 3 && \
     bundle clean --force
 
-FROM ruby:4.0.7-alpine
+FROM ruby:4.0.9-alpine
 LABEL org.opencontainers.image.authors="georg@ledermann.dev"
 LABEL org.opencontainers.image.description="Collects prices and values from public sources: electricity, petrol, diesel, heating oil and gas"
 
