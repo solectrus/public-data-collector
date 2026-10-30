@@ -173,7 +173,7 @@ describe Loop do
         expect(
           a_request(:post, %r{/api/v2/query}).with do |request|
             JSON.parse(request.body)['query'].include?(
-              'r._measurement != "my-measurement" and r._measurement != "my-gas" and r._measurement != "my-fuel"',
+              'r._measurement != "PublicGrid" and r._measurement != "Gas" and r._measurement != "Fuel"',
             )
           end,
         ).to have_been_made

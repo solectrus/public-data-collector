@@ -19,7 +19,7 @@ describe Providers::EnergyCharts::Provider do
         ['day-ahead prices for DE-LU', 'renewable shares for DE', 'CO2 intensities for DE'],
       )
       expect(results).to all(be_ok)
-      expect(results.map { |result| result.batch.measurement }.uniq).to eq(['my-measurement'])
+      expect(results.map { |result| result.batch.measurement }.uniq).to eq(['PublicGrid'])
       expect(results.map(&:summary)).to all(be_a(String))
     end
 
@@ -49,9 +49,9 @@ describe Providers::EnergyCharts::Provider do
     it 'names each value, its source and its fields' do
       expect(provider.descriptions).to eq(
         [
-          'day-ahead prices for DE-LU from Energy-Charts => my-measurement:my-price',
-          'renewable shares for DE from Energy-Charts => my-measurement:my-share',
-          'CO2 intensities for DE from Energy-Charts => my-measurement:my-co2'
+          'day-ahead prices for DE-LU from Energy-Charts => PublicGrid:price',
+          'renewable shares for DE from Energy-Charts => PublicGrid:renewable_share',
+          'CO2 intensities for DE from Energy-Charts => PublicGrid:co2_intensity'
         ],
       )
     end
@@ -61,8 +61,8 @@ describe Providers::EnergyCharts::Provider do
       with_env(COUNTRY: 'AT') do
         expect(described_class.from_env.descriptions).to eq(
           [
-            'day-ahead prices for DE-LU from Energy-Charts => my-measurement:my-price',
-            'renewable shares for AT from Energy-Charts => my-measurement:my-share'
+            'day-ahead prices for AT from Energy-Charts => PublicGrid:price',
+            'renewable shares for AT from Energy-Charts => PublicGrid:renewable_share'
           ],
         )
       end

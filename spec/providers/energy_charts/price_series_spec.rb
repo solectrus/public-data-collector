@@ -206,7 +206,7 @@ describe Providers::EnergyCharts::PriceSeries do
       let(:history_start) { Time.local(2020, 11, 27, 18) }
 
       def fetch(newest:, since: history_start, oldest: history_start)
-        price_series.fetch(since, extents: { %w[my-measurement my-price] => Extent.new(oldest:, newest:) })
+        price_series.fetch(since, extents: { %w[PublicGrid price] => Extent.new(oldest:, newest:) })
       end
 
       def times(batch) = batch.rows.map(&:time)

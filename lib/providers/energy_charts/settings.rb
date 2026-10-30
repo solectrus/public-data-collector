@@ -3,59 +3,44 @@ require 'providers/country'
 
 module Providers
   module EnergyCharts
+    # The bidding zone of a country.
+    #
+    # Most countries have one zone that carries their own code. Germany and
+    # Luxembourg share one, and Ireland has one with Northern Ireland.
+    # Denmark, Italy, Norway and Sweden have more than one zone, so the user
+    # must name it there.
+    module BiddingZone
+      # Countries whose zone carries the code of the country
+      OWN = %w[AT BE BG CH CZ EE ES FI FR GR HR HU LT LV ME NL PL PT RO RS SI SK].freeze
+
+      # Countries that share a zone, or whose zone has another code
+      SHARED = { 'DE' => 'DE-LU', 'LU' => 'DE-LU', 'IE' => 'IE(SEM)' }.freeze
+
+      # The zone, or nil for a country with more than one zone or without a
+      # zone at Energy-Charts
+      def self.of(country)
+        iso = Country.iso(country)
+
+        SHARED.fetch(iso) { iso if OWN.include?(iso) }
+      end
+    end
+
     # The settings of Energy-Charts, read from ENV.
     Settings =
-      Data.define(
-        :bzn,
-        :country,
-        :measurement,
-        :field_price,
-        :field_share,
-        :field_co2,
-      ) do
+      Data.define(:country, :bzn) do
         def initialize(**)
           super
 
-          Env.validate_presence!(bzn, 'PUBLIC_GRID_BIDDING_ZONE')
           Env.validate_presence!(country, 'COUNTRY')
-          Env.validate_presence!(measurement, 'PUBLIC_GRID_MEASUREMENT')
-          Env.validate_presence!(field_price, 'PUBLIC_GRID_FIELD_PRICE')
-          Env.validate_presence!(field_share, 'PUBLIC_GRID_FIELD_RENEWABLE_SHARE')
-          Env.validate_presence!(field_co2, 'PUBLIC_GRID_FIELD_CO2_INTENSITY')
-          validate_distinct_fields!
+          return unless bzn.to_s.strip.empty?
+
+          raise Env::Error, "BIDDING_ZONE is missing, because COUNTRY #{country} has no single bidding zone"
         end
 
         def self.from_env
-          new(
-            bzn: Env['PUBLIC_GRID_BIDDING_ZONE'] || 'DE-LU',
-            country: Country.from_env,
-            measurement: Env['PUBLIC_GRID_MEASUREMENT'] || 'PublicGrid',
-            field_price: Env['PUBLIC_GRID_FIELD_PRICE'] || 'price',
-            field_share: Env['PUBLIC_GRID_FIELD_RENEWABLE_SHARE'] || 'renewable_share',
-            field_co2: Env['PUBLIC_GRID_FIELD_CO2_INTENSITY'] || 'co2_intensity',
-          )
-        end
+          country = Country.from_env
 
-        private
-
-        # Every value goes to the same measurement and carries the same
-        # timestamps. One field name for two values would therefore let one
-        # value overwrite the other.
-        def validate_distinct_fields!
-          field_names.keys.combination(2) do |one, other|
-            next unless public_send(one) == public_send(other)
-
-            raise Env::Error,
-                  "#{field_names[one]} and #{field_names[other]} are both #{public_send(one)}, they must differ"
-          end
-        end
-
-        def field_names
-          {
-            field_price: 'PUBLIC_GRID_FIELD_PRICE',
-            field_share: 'PUBLIC_GRID_FIELD_RENEWABLE_SHARE',
-            field_co2: 'PUBLIC_GRID_FIELD_CO2_INTENSITY',
-          }
+          new(country:, bzn: Env['BIDDING_ZONE'] || BiddingZone.of(country))
         end
       end
   end

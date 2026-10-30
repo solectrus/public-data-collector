@@ -67,8 +67,7 @@ module Providers
 
       def label = 'gas prices'
 
-      # The field name is fixed. There is no other collector whose field
-      # this would have to match, so a setting for it would be ballast.
+      def measurement = MEASUREMENT
       def fields = { amount: 'price' }
 
       def window = WINDOW

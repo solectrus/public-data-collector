@@ -112,8 +112,8 @@ describe Providers::EnergyCharts::Co2Series do
 
       expect(batch.rows).to eq(
         [
-          Batch::Row.new(time: Time.local(2026, 9, 1), fields: { 'my-co2' => 309 }),
-          Batch::Row.new(time: Time.local(2026, 10, 9), fields: { 'my-co2' => 309 })
+          Batch::Row.new(time: Time.local(2026, 9, 1), fields: { 'co2_intensity' => 309 }),
+          Batch::Row.new(time: Time.local(2026, 10, 9), fields: { 'co2_intensity' => 309 })
         ],
       )
       expect(summary).to eq('2 values (from 2026-09-01)')
@@ -123,7 +123,7 @@ describe Providers::EnergyCharts::Co2Series do
       stub_total_power([entry(Time.local(2026, 10, 8), values)], first: '2026-10-08', last: '2026-10-08')
       stub_total_power([entry(Time.local(2026, 10, 9), values)], first: '2026-10-09', last: '2026-10-10')
       stored = Extent.new(oldest: Time.local(2020, 1, 1), newest: Time.local(2026, 10, 9, 23))
-      extents = { %w[my-measurement my-co2] => stored }
+      extents = { %w[PublicGrid co2_intensity] => stored }
 
       batch, = co2_series.fetch(Time.local(2020, 1, 1), extents:)
 

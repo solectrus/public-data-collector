@@ -5,21 +5,17 @@ module Providers
   module Eurostat
     # The settings of Eurostat, read from ENV.
     Settings =
-      Data.define(:country, :measurement) do
+      Data.define(:country) do
         def initialize(**)
           super
 
           Env.validate_presence!(country, 'COUNTRY')
-          Env.validate_presence!(measurement, 'GAS_MEASUREMENT')
         end
 
         # Eurostat asks for the country code in upper case, which is the
         # spelling the collector stores.
         def self.from_env
-          new(
-            country: Country.from_env,
-            measurement: Env['GAS_MEASUREMENT'] || 'Gas',
-          )
+          new(country: Country.from_env)
         end
       end
   end

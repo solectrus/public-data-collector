@@ -35,8 +35,9 @@ module Providers
       def label = 'renewable shares'
 
       # The share goes to the measurement of the price, in a field of its
-      # own. The user can rename that field, as with the price.
-      def fields = { share: settings.field_share }
+      # own.
+      def measurement = MEASUREMENT
+      def fields = { share: 'renewable_share' }
 
       # Shares from today until the end of the forecast. The API decides
       # how far the forecast reaches, so the collector asks for no time

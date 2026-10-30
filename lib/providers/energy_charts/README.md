@@ -16,7 +16,7 @@ The API needs no account and no key. It covers more than 50 bidding zones in Eur
 | `PublicGrid` | `renewable_share` | Renewable share | percent | quarter hour  |
 | `PublicGrid` | `co2_intensity`   | CO2 intensity   | g/kWh   | quarter hour  |
 
-The table shows the default names. You can change the measurement and every field. Each point has the start of its quarter hour as its time.
+The names are fixed. Each point has the start of its quarter hour as its time.
 
 ## The values
 
@@ -28,11 +28,7 @@ The price is the exchange price. It does not contain grid fees, levies, or tax. 
 
 Until 30 September 2025, the auction set one price per hour. The history therefore has one value per hour until that day.
 
-### Do not mix the price with the price of tibber-collector
-
-[tibber-collector](https://github.com/solectrus/tibber-collector) writes the price that you pay to Tibber, with grid fees, levies, and tax. This collector writes the exchange price without them. The two prices are different numbers, so they go to different measurements: `Prices` for Tibber, `PublicGrid` for this collector.
-
-You can use this collector instead of `tibber-collector`, for example for the [SENEC Charger](https://github.com/solectrus/senec-charger). To do that, set `PUBLIC_GRID_MEASUREMENT=Prices` and `PUBLIC_GRID_FIELD_PRICE=amount`. The renewable share and the CO2 intensity then go to `Prices` as well. Do not run both collectors with that configuration at the same time, because each one overwrites the prices of the other one.
+[tibber-collector](https://github.com/solectrus/tibber-collector) writes a different price: the price that you pay to Tibber, with grid fees, levies, and tax. It writes to the measurement `Prices`, so the two collectors can run together.
 
 ### Renewable share
 
@@ -57,19 +53,9 @@ The saved CO2 is a low estimate. PV generates the most energy at noon in summer,
 
 ## Configuration
 
-| Variable                            | Default           | Description                      |
-| ----------------------------------- | ----------------- | -------------------------------- |
-| `PUBLIC_GRID_BIDDING_ZONE`          | `DE-LU`           | Bidding zone of the price        |
-| `PUBLIC_GRID_MEASUREMENT`           | `PublicGrid`      | Measurement for the three values |
-| `PUBLIC_GRID_FIELD_PRICE`           | `price`           | Field for the day-ahead price    |
-| `PUBLIC_GRID_FIELD_RENEWABLE_SHARE` | `renewable_share` | Field for the renewable share    |
-| `PUBLIC_GRID_FIELD_CO2_INTENSITY`   | `co2_intensity`   | Field for the CO2 intensity      |
+The collector uses the general setting `COUNTRY`. The CO2 intensity exists only when `COUNTRY` is `DE`.
 
-The price uses the bidding zone. The renewable share uses the general setting `COUNTRY`. The CO2 intensity exists only when `COUNTRY` is `DE`.
-
-The three fields must have different names. If two names are the same, the collector stops at the start, because one value would overwrite the other.
-
-Common bidding zones are `DE-LU`, `AT`, `BE`, `CH`, `CZ`, `DK1`, `DK2`, `FR`, `HU`, `NL`, `PL` and `SI`. To find another zone, open https://api.energy-charts.info/v2 and read the allowed values of the parameter `bzn` of `/v2/price`.
+The price needs the bidding zone of the country. The collector finds it from `COUNTRY`, for example `DE-LU` for `DE` and `AT` for `AT`. Denmark, Italy, Norway and Sweden have more than one zone. For these countries, set `BIDDING_ZONE` to your zone, for example `SE3`. To find the code of your zone, open https://api.energy-charts.info/v2 and read the allowed values of the parameter `bzn` of `/v2/price`.
 
 ## When the collector reads
 

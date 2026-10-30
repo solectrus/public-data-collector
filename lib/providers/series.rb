@@ -9,6 +9,7 @@ module Providers
   # the records. A subclass answers these:
   #
   #   label              names the records in the log
+  #   measurement        the measurement the records go to
   #   fields             record accessor => field name
   #   records            the records. It raises FetchError when the
   #                      source failed.
@@ -18,7 +19,6 @@ module Providers
   # and may answer these:
   #
   #   subject            what the log says this series is fetching
-  #   measurement        the measurement the records go to
   #   window             for a series with a history: the days a read
   #                      covers once the history is written, see `since`
   #   since(...)         for a series with a history that a window cannot
@@ -43,8 +43,6 @@ module Providers
     def subject
       "#{label} for #{settings.country}"
     end
-
-    def measurement = settings.measurement
 
     # Nil for a series that writes everything it reads, for example the
     # prices of today and tomorrow.

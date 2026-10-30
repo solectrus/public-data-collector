@@ -24,15 +24,14 @@ The README has the badge for the CI workflow. Three badges are missing. Copy the
 
 - [ ] Add the service to the `helios` repository, so a user can switch it on there. The repositories `hosting` and `configurator` are archived, and `helios` replaces them. A service lives in `app/models/docker_images.rb`, in `app/services/compose/service_collection.rb` and in `app/services/export/services/`. Copy the shape of `tibber_collector.rb`. The service needs `INFLUX_TOKEN_READWRITE`, as `power_splitter.rb` does, because it reads the start of the history at the start.
 - [ ] Document the environment variables in the `website` repository, which serves https://docs.solectrus.de/. A service gets a folder under `src/content/docs/docs/referenz/`. That page is the source of truth for every `INFLUX_*` and service variable, not this README.
-- [ ] Say in the README of `tibber-collector` that this collector is an alternative without an account. Name the difference: `tibber-collector` reports the price you pay, this collector reports the exchange price.
+- [ ] Mention this collector in the README of `tibber-collector`. Name the difference: `tibber-collector` reports the price you pay, this collector reports the exchange price. The exchange price is no replacement for the SENEC Charger, because its ratio of the best price to the average price differs without the fixed charges, and it fails for negative prices.
 - [ ] Show the other values in the `solectrus` dashboard. The dashboard reads `Fuel:price_petrol` and `Fuel:price_diesel` already, for the comparison with a combustion car (`Sensor::Query::FuelPrices`). It reads nothing else that this collector writes: not the day-ahead price, the renewable share, the CO2 intensity, the gas price, heating oil or LPG. The unit `percent` exists already.
-- [ ] Say in the README that the dashboard reads the fuel prices from fixed names. The measurement and the fields are not configurable there. If you change `FUEL_MEASUREMENT`, the comparison with a combustion car finds no price.
 
 ## Possible extensions
 
 ### Energy-Charts
 
-The collector reads `/v2/price` and `/v2/signal`, and of the second one only the share. For the history, it also reads the series `renewable_share_of_load` of `/v2/public_power`. For Germany, it computes the CO2 intensity from `/v2/total_power`. The API offers more. Each endpoint below needs a decision about its field names before anybody writes code. The measurement is settled: everything goes to `PUBLIC_GRID_MEASUREMENT`.
+The collector reads `/v2/price` and `/v2/signal`, and of the second one only the share. For the history, it also reads the series `renewable_share_of_load` of `/v2/public_power`. For Germany, it computes the CO2 intensity from `/v2/total_power`. The API offers more. Each endpoint below needs a decision about its field names before anybody writes code. The measurement is settled: everything goes to `PublicGrid`.
 
 - [ ] `/v2/ren_share_forecast`: forecast of the renewable, solar and wind share. On 2026-10-30, `/v2/ren_share_forecast` answered with HTTP 500, as on 2026-09-19. The path without `/v2`, `/ren_share_forecast`, sent data. Test both again before you plan work on it.
 - [ ] `/v2/public_power`: net electricity production per production type in MW. Many series, so this needs a rule about which series to write.

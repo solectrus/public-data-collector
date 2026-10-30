@@ -1,99 +1,56 @@
 require 'providers/energy_charts/settings'
 
 describe Providers::EnergyCharts::Settings do
-  let(:valid_options) do
-    {
-      bzn: 'DE-LU',
-      country: 'DE',
-      measurement: 'my-measurement',
-      field_price: 'amount',
-      field_share: 'share',
-      field_co2: 'co2',
-    }
-  end
-
   describe 'validation' do
-    describe 'the day-ahead price' do
-      it 'needs a bidding zone' do
-        expect { described_class.new(**valid_options, bzn: ' ') }
-          .to raise_error(Env::Error, /PUBLIC_GRID_BIDDING_ZONE is missing/)
-      end
-
-      it 'needs a measurement' do
-        expect { described_class.new(**valid_options, measurement: '') }
-          .to raise_error(Env::Error, /PUBLIC_GRID_MEASUREMENT is missing/)
-      end
-
-      it 'needs a field' do
-        expect { described_class.new(**valid_options, field_price: '') }
-          .to raise_error(Env::Error, /PUBLIC_GRID_FIELD_PRICE is missing/)
-      end
+    it 'needs a country' do
+      expect { described_class.new(country: '', bzn: 'DE-LU') }.to raise_error(Env::Error, /COUNTRY is missing/)
     end
 
-    describe 'the renewable share' do
-      it 'needs a country' do
-        expect { described_class.new(**valid_options, country: '') }
-          .to raise_error(Env::Error, /COUNTRY is missing/)
-      end
-
-      it 'needs a field' do
-        expect { described_class.new(**valid_options, field_share: '') }
-          .to raise_error(Env::Error, /PUBLIC_GRID_FIELD_RENEWABLE_SHARE is missing/)
-      end
-
-      it 'rejects one field name for the price and the share' do
-        expect { described_class.new(**valid_options, field_price: 'value', field_share: 'value') }
-          .to raise_error(Env::Error, /they must differ/)
-      end
-    end
-
-    describe 'the CO2 intensity' do
-      it 'needs a field' do
-        expect { described_class.new(**valid_options, field_co2: '') }
-          .to raise_error(Env::Error, /PUBLIC_GRID_FIELD_CO2_INTENSITY is missing/)
-      end
-
-      it 'rejects the field name of another value' do
-        expect { described_class.new(**valid_options, field_co2: 'share') }.to raise_error(
-          Env::Error,
-          'PUBLIC_GRID_FIELD_RENEWABLE_SHARE and PUBLIC_GRID_FIELD_CO2_INTENSITY are both share, they must differ',
-        )
-      end
+    it 'needs a bidding zone' do
+      expect { described_class.new(country: 'SE', bzn: nil) }.to raise_error(
+        Env::Error,
+        'BIDDING_ZONE is missing, because COUNTRY SE has no single bidding zone',
+      )
     end
   end
 
   describe '.from_env' do
-    it 'reads the settings' do
-      expect(described_class.from_env).to have_attributes(
-        bzn: 'DE-LU',
-        country: 'DE',
-        measurement: 'my-measurement',
-        field_price: 'my-price',
-        field_share: 'my-share',
-        field_co2: 'my-co2',
-      )
+    it 'finds the bidding zone of the country' do
+      expect(described_class.from_env).to have_attributes(country: 'DE', bzn: 'DE-LU')
     end
 
     it 'upcases the country' do
-      with_env(COUNTRY: 'at') { expect(described_class.from_env.country).to eq('AT') }
+      with_env(COUNTRY: 'at') { expect(described_class.from_env).to have_attributes(country: 'AT', bzn: 'AT') }
     end
 
-    it 'falls back to the defaults when a value is blank' do
-      blank = {
-        PUBLIC_GRID_MEASUREMENT: '',
-        PUBLIC_GRID_FIELD_PRICE: '',
-        PUBLIC_GRID_FIELD_RENEWABLE_SHARE: ' ',
-        PUBLIC_GRID_BIDDING_ZONE: '',
-      }
+    it 'reads the bidding zone of a country with more than one zone' do
+      with_env(COUNTRY: 'SE', BIDDING_ZONE: 'SE3') { expect(described_class.from_env.bzn).to eq('SE3') }
+    end
 
-      with_env(**blank) do
-        expect(described_class.from_env).to have_attributes(
-          measurement: 'PublicGrid',
-          field_price: 'price',
-          field_share: 'renewable_share',
-          bzn: 'DE-LU',
-        )
-      end
+    it 'finds the bidding zone when the value is blank' do
+      with_env(BIDDING_ZONE: ' ') { expect(described_class.from_env.bzn).to eq('DE-LU') }
+    end
+  end
+
+  describe Providers::EnergyCharts::BiddingZone do
+    it 'knows the zone that Germany shares with Luxembourg' do
+      expect([described_class.of('DE'), described_class.of('LU')]).to eq(%w[DE-LU DE-LU])
+    end
+
+    it 'knows the zone of a country with a zone of its own' do
+      expect(described_class.of('fr')).to eq('FR')
+    end
+
+    it 'knows Greece by both codes' do
+      expect([described_class.of('GR'), described_class.of('EL')]).to eq(%w[GR GR])
+    end
+
+    it 'knows the zone of Ireland' do
+      expect(described_class.of('IE')).to eq('IE(SEM)')
+    end
+
+    it 'has no zone for a country with more than one zone' do
+      expect(%w[DK IT NO SE].map { described_class.of(it) }).to all(be_nil)
     end
   end
 end

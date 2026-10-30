@@ -48,8 +48,9 @@ docker compose up
 | `INFLUX_ORG`    |         | Organization in your InfluxDB, required                         |
 | `INFLUX_BUCKET` |         | Bucket in your InfluxDB, required                               |
 | `TZ`            | `UTC`   | Timezone, for example `Europe/Berlin`                           |
+| `BIDDING_ZONE`  |         | Only for Denmark, Italy, Norway and Sweden, see below           |
 
-Each source has more settings, which start with `PUBLIC_GRID_`, `GAS_` or `FUEL_`. The page of each source lists them, and `.env.example` shows all of them.
+The collector needs no other settings. It finds the bidding zone of the electricity price from `COUNTRY`. Denmark, Italy, Norway and Sweden have more than one zone, so set `BIDDING_ZONE` there, for example to `SE3`. The [page of Energy-Charts](lib/providers/energy_charts/README.md#configuration) tells how to find your zone.
 
 ## Operation
 
@@ -80,7 +81,7 @@ The history of the electricity values is large. If your data begins in 2020, the
 | `Fuel`       | `price_heating_oil` | Heating oil price           | EUR/l   |
 | `Fuel`       | `price_lpg`         | LPG price                   | EUR/l   |
 
-The table shows the default names. You can change the names of the measurements, and for the electricity values also the names of the fields.
+The names are fixed, so SOLECTRUS finds the values without a configuration.
 
 ## Development
 

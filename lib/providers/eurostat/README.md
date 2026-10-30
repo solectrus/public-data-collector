@@ -10,7 +10,7 @@ Eurostat is the statistical office of the European Union. The API needs no accou
 | ----------- | ------- | ----------------- | ------- | ------------- |
 | `Gas`       | `price` | Natural gas price | EUR/kWh | month         |
 
-The table shows the default names. You can change the measurement. The field name is fixed.
+The names are fixed.
 
 ## The value
 
@@ -53,11 +53,7 @@ For Germany, the carried price differed from the price that Eurostat measured la
 
 ## Configuration
 
-| Variable          | Default | Description                 |
-| ----------------- | ------- | --------------------------- |
-| `GAS_MEASUREMENT` | `Gas`   | Measurement for natural gas |
-
-The collector also needs the general setting `COUNTRY`. Countries outside the European Union are not in Eurostat. For such a country, the log shows an error for the gas price, and the other values continue.
+The collector uses the general setting `COUNTRY`. Countries outside the European Union are not in Eurostat. For such a country, the log shows an error for the gas price, and the other values continue.
 
 ## When the collector reads
 

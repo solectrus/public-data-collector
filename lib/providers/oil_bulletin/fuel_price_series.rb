@@ -48,6 +48,7 @@ module Providers
 
       def label = 'fuel prices'
 
+      def measurement = MEASUREMENT
       def fields = FIELDS
 
       def window = WINDOW

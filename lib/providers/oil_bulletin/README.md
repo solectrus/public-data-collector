@@ -13,7 +13,7 @@ The European Commission collects the consumer prices of petroleum products from 
 | `Fuel`      | `price_heating_oil` | Heating oil price | EUR/l | week          |
 | `Fuel`      | `price_lpg`         | LPG price         | EUR/l | week          |
 
-The table shows the default names. You can change the measurement. The field names are fixed. If a country does not report a product, that product gets no value for the week.
+The names are fixed. If a country does not report a product, that product gets no value for the week.
 
 ## The values
 
@@ -23,11 +23,7 @@ The bulletin reports one petrol, Euro-super 95, and does not name the ethanol co
 
 ## Configuration
 
-| Variable           | Default | Description                                    |
-| ------------------ | ------- | ---------------------------------------------- |
-| `FUEL_MEASUREMENT` | `Fuel`  | Measurement for the products sold by the litre |
-
-The collector also needs the general setting `COUNTRY`. Countries outside the European Union are not in the bulletin. For such a country, the log shows an error for the fuel prices, and the other values continue.
+The collector uses the general setting `COUNTRY`. Countries outside the European Union are not in the bulletin. For such a country, the log shows an error for the fuel prices, and the other values continue.
 
 ## When the collector reads
 

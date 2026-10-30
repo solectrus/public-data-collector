@@ -10,6 +10,9 @@ module Providers
   module OilBulletin
     NAME = 'EU Weekly Oil Bulletin'.freeze
 
+    # The measurement of the fuel prices.
+    MEASUREMENT = 'Fuel'.freeze
+
     # Downloads the price history and reads it.
     #
     # The answer is an XLSX file of about 4 MB. It carries no ETag and no

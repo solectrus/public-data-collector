@@ -78,7 +78,8 @@ module Providers
 
       def label = 'CO2 intensities'
 
-      def fields = { co2: settings.field_co2 }
+      def measurement = MEASUREMENT
+      def fields = { co2: 'co2_intensity' }
 
       # Yesterday and today. The last quarter hours of a day have values
       # about two hours after midnight, so the read after midnight still

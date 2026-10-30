@@ -29,10 +29,8 @@ module Providers
         "#{label} for #{settings.bzn}"
       end
 
-      # The user can rename the field. `tibber-collector` writes the same
-      # kind of value under a name of its own, and a user who replaces it
-      # keeps their history that way.
-      def fields = { amount: settings.field_price }
+      def measurement = MEASUREMENT
+      def fields = { amount: 'price' }
 
       # Prices for today and tomorrow.
       #

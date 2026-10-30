@@ -14,13 +14,7 @@ services:
       - INFLUX_TOKEN
       - INFLUX_ORG
       - INFLUX_BUCKET
-      - PUBLIC_GRID_BIDDING_ZONE
-      - PUBLIC_GRID_MEASUREMENT
-      - PUBLIC_GRID_FIELD_PRICE
-      - PUBLIC_GRID_FIELD_RENEWABLE_SHARE
-      - PUBLIC_GRID_FIELD_CO2_INTENSITY
-      - GAS_MEASUREMENT
-      - FUEL_MEASUREMENT
+      - BIDDING_ZONE
     restart: unless-stopped
 
   influxdb:

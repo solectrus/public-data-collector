@@ -6,6 +6,9 @@ module Providers
   module Eurostat
     NAME = 'Eurostat'.freeze
 
+    # The measurement of the gas price.
+    MEASUREMENT = 'Gas'.freeze
+
     # One request asks for one dataset.
     class Client < JsonApi
       BASE_URL = 'https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data'.freeze

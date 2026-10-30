@@ -7,6 +7,9 @@ module Providers
   module EnergyCharts
     NAME = 'Energy-Charts'.freeze
 
+    # The measurement that every value of this source goes to.
+    MEASUREMENT = 'PublicGrid'.freeze
+
     # Every endpoint answers with the same envelope: a `data` array of
     # entries, each with a `timestamp` and a `values` hash keyed by the
     # series ids that `series` declares. This class knows the envelope,

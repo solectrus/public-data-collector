@@ -111,8 +111,8 @@ describe Providers::EnergyCharts::ShareSeries do
 
       expect(batch.rows).to eq(
         [
-          Batch::Row.new(time: Time.local(2026, 9, 1), fields: { 'my-share' => 75.7 }),
-          Batch::Row.new(time: Time.local(2026, 10, 10), fields: { 'my-share' => 110.8 })
+          Batch::Row.new(time: Time.local(2026, 9, 1), fields: { 'renewable_share' => 75.7 }),
+          Batch::Row.new(time: Time.local(2026, 10, 10), fields: { 'renewable_share' => 110.8 })
         ],
       )
     end

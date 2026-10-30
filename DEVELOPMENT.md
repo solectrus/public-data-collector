@@ -36,7 +36,7 @@ Every start repeats the first read. For the fuel and gas prices, it reads the wh
 
 ## Settings
 
-Every kind of value has its own group of settings: `PUBLIC_GRID_*`, `GAS_*` and `FUEL_*`. A group is named after the value, not after the provider. A later version can then read a value from a different source, and the configuration of the user stays the same.
+The collector needs as few settings as possible. The measurements and the fields are fixed in the code, so SOLECTRUS finds the values without a configuration. A provider reads a setting only for what it cannot find out itself. Energy-Charts, for example, finds the bidding zone from `COUNTRY` and reads `BIDDING_ZONE` only for a country with more than one zone.
 
 ## Layout
 
@@ -79,7 +79,7 @@ A batch is a measurement and a list of rows. Each row has a time and its fields.
 To add a provider, add a folder below `lib/providers`. Nothing outside the folder changes. The folder holds these files:
 
 1. `provider.rb` defines `Providers::<Name>::Provider`, a subclass of `Providers::Base`. It answers `.from_env`, `source`, and the private method `series`. If the provider does not read on every cycle, it also answers `schedule`, for example `Schedule::Weekly.new(WEEKDAY, HOUR)`.
-2. `settings.rb` defines `Providers::<Name>::Settings`, a `Data` object with `.from_env`. It reads the names of the measurement and the fields, and raises `Env::Error` for a missing value. Each variable starts with the name of the value, for example `GAS_`, never with the name of the provider.
+2. `settings.rb` defines `Providers::<Name>::Settings`, a `Data` object with `.from_env`. It reads the settings that the provider needs, and raises `Env::Error` for a missing value. The measurement and the fields are no settings: each series names them in the code.
 3. One subclass of `Providers::Series` per value. `lib/providers/series.rb` lists the methods that a series answers. A series with a long history also answers `window`, the number of days that a read covers after the first read.
 4. A client for the remote source, and a reader for the format of its answer if it is not JSON.
 5. `README.md` describes the values for the users, in the shape of the other providers: what the collector writes, the values, the configuration, when the collector reads, and the license.
