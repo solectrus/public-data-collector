@@ -24,7 +24,7 @@ services:
     restart: unless-stopped
 
   influxdb:
-    image: influxdb:2.7-alpine
+    image: influxdb:2.9-alpine
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUX_USERNAME}
