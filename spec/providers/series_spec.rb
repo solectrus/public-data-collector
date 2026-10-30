@@ -120,11 +120,11 @@ describe Providers::Series do
     end
   end
 
-  describe '#sensors' do
+  describe '#targets' do
     let(:records) { [] }
 
     it 'names the measurement and every field' do
-      expect(series.sensors).to eq(['my-measurement:my-price', 'my-measurement:my-volume'])
+      expect(series.targets).to eq([%w[my-measurement my-price], %w[my-measurement my-volume]])
     end
   end
 end

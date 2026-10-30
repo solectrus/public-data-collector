@@ -56,9 +56,11 @@ module Providers
     end
 
     # One line per series for the banner: what it reads, where it reads it,
-    # and which sensors it fills.
+    # and which fields it fills, as `measurement:field`.
     def descriptions
-      series.map { |one| "#{one.subject} from #{source} => #{one.sensors.join(', ')}" }
+      series.map do |one|
+        "#{one.subject} from #{source} => #{one.targets.map { it.join(':') }.join(', ')}"
+      end
     end
 
     # The measurements this provider writes to.

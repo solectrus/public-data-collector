@@ -46,7 +46,7 @@ describe Providers::EnergyCharts::Provider do
   end
 
   describe '#descriptions' do
-    it 'names each value, its source and its sensors' do
+    it 'names each value, its source and its fields' do
       expect(provider.descriptions).to eq(
         [
           'day-ahead prices for DE-LU from Energy-Charts => my-measurement:my-price',

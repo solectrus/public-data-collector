@@ -55,11 +55,6 @@ module Providers
       fields.values.map { |field| [measurement, field] }
     end
 
-    # The sensors this series fills, as `MEASUREMENT:field`.
-    def sensors
-      targets.map { |target| target.join(':') }
-    end
-
     # The time from which a read writes, or nil for everything.
     #
     # The first read writes the history from `history_start` on, where the
