@@ -44,7 +44,7 @@ describe Providers::Eurostat::GasPriceSeries do
         # months, the carried months follow the newest half year
         starts = prices.map(&:starts_at).sort
         expect(starts.first).to eq(Time.new(2007, 7, 1))
-        expect(starts.last).to eq(Time.new(2026, 8, 1))
+        expect(starts.last).to eq(Time.new(2026, 9, 1))
         expect(starts).to eq(months_between(starts.first, starts.last))
         expect(starts.last).to be > Time.new(2026, 1, 1)
       end
