@@ -2,7 +2,6 @@ name: Continuous integration
 
 permissions:
   contents: read
-  packages: write
 
 on:
   push:
@@ -29,6 +28,8 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -61,16 +62,22 @@ jobs:
 
     runs-on: ${{ matrix.runner }}
 
+    permissions:
+      contents: read
+      packages: write
+
     steps:
       - name: Prepare
+        env:
+          PLATFORM: ${{ matrix.platform }}
         run: |
-          platform=${{ matrix.platform }}
-          echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
+          echo "PLATFORM_PAIR=${PLATFORM//\//-}" >> $GITHUB_ENV
 
       - name: Checkout the code
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Set ENV values
         run: |
@@ -111,10 +118,11 @@ jobs:
           cache-to: type=gha,mode=max,scope=build-${{ env.PLATFORM_PAIR }}
 
       - name: Export digest
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
         run: |
           mkdir -p /tmp/digests
-          digest="${{ steps.build.outputs.digest }}"
-          touch "/tmp/digests/${digest#sha256:}"
+          touch "/tmp/digests/${DIGEST#sha256:}"
 
       - name: Upload digest
         uses: actions/upload-artifact@v7
@@ -127,6 +135,9 @@ jobs:
   merge:
     runs-on: ubuntu-26.04
     needs: build
+
+    permissions:
+      packages: write
 
     steps:
       - name: Download digests
@@ -164,5 +175,7 @@ jobs:
           docker buildx imagetools create $tags $images
 
       - name: Inspect image
+        env:
+          VERSION: ${{ steps.meta.outputs.version }}
         run: |
-          docker buildx imagetools inspect ghcr.io/solectrus/public-data-collector:${{ steps.meta.outputs.version }}
+          docker buildx imagetools inspect "ghcr.io/solectrus/public-data-collector:$VERSION"
