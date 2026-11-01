@@ -9,14 +9,6 @@
 - [ ] Copy `.github/workflows/automerge.yml` from `forecast-collector`. It reads the secret `PAT`.
 - [ ] Create `main` from `develop` and cut the first version with `/solectrus:release`. Until a version tag exists, the image has only the tag `develop`, and `compose.yml` finds no image.
 
-## README badges
-
-Copy the badges from the README of `forecast-collector`:
-
-- [ ] wakatime: needs the project ID from wakatime.
-- [ ] qlty maintainability: needs the repository in qlty.
-- [ ] qlty coverage: needs the step `qltysh/qlty-action/coverage` in `push.yml` and the secret `QLTY_COVERAGE_TOKEN`.
-
 ## Other repositories
 
 - [ ] `helios`: Add the service. Copy the shape of `tibber_collector.rb` in `app/models/docker_images.rb`, `app/services/compose/service_collection.rb` and `app/services/export/services/`. Use `INFLUX_TOKEN_READWRITE`, as `power_splitter.rb` does. Set up the service only when an electric car is configured, with `ENABLE_FUEL=true`.

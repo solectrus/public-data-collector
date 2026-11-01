@@ -41,6 +41,11 @@ jobs:
       - name: Run tests
         run: bundle exec rspec
 
+      - uses: qltysh/qlty-action/coverage@v2
+        with:
+          token: ${{ secrets.QLTY_COVERAGE_TOKEN }}
+          files: coverage/.resultset.json
+
   build:
     needs: test
     if: ${{ github.triggering_actor != 'dependabot[bot]' }}

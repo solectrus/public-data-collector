@@ -1,4 +1,7 @@
 [![Continuous integration](https://github.com/solectrus/public-data-collector/actions/workflows/push.yml/badge.svg)](https://github.com/solectrus/public-data-collector/actions/workflows/push.yml)
+[![Maintainability](https://qlty.sh/badges/109b5d7f-9e84-407f-8e90-4015d7ac54b5/maintainability.svg)](https://qlty.sh/gh/solectrus/projects/public-data-collector)
+[![wakatime](https://wakatime.com/badge/user/697af4f5-617a-446d-ba58-407e7f3e0243/project/488231c6-f912-4408-95fe-9d74ce0422b3.svg)](https://wakatime.com/badge/user/697af4f5-617a-446d-ba58-407e7f3e0243/project/488231c6-f912-4408-95fe-9d74ce0422b3)
+[![Code Coverage](https://qlty.sh/badges/109b5d7f-9e84-407f-8e90-4015d7ac54b5/coverage.svg)](https://qlty.sh/gh/solectrus/projects/public-data-collector)
 
 # Public-data collector
 
