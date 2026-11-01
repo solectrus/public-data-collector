@@ -2,13 +2,22 @@
 
 # Public-data collector
 
-The collector writes public prices and values into your InfluxDB. With them, you can compare the cost of a heat pump with a gas heating, or the cost of an electric car with a combustion car. You can also tell how much CO2 your grid import caused, and when the electricity from the grid is cheap or green.
+The collector writes public prices and values into your InfluxDB. SOLECTRUS uses them to compare your costs and your CO2 with other sources of energy.
 
-The collector reads these values:
+| Value                       | Name in InfluxDB             | Unit    | Use in SOLECTRUS                                          |
+| --------------------------- | ---------------------------- | ------- | --------------------------------------------------------- |
+| Petrol price                | `Fuel:price_petrol`          | EUR/l   | Compare the cost of an electric car with a combustion car |
+| Diesel price                | `Fuel:price_diesel`          | EUR/l   | Compare the cost of an electric car with a combustion car |
+| LPG price                   | `Fuel:price_lpg`             | EUR/l   | Compare the cost of an electric car with a combustion car |
+| Heating oil price           | `Fuel:price_heating_oil`     | EUR/l   | Compare the cost of a heat pump with an oil heating       |
+| Natural gas price           | `Gas:price`                  | EUR/kWh | Compare the cost of a heat pump with a gas heating        |
+| Day-ahead electricity price | `PublicGrid:price`           | EUR/kWh | Show when the electricity from the grid is cheap          |
+| Renewable share             | `PublicGrid:renewable_share` | percent | Show when the electricity from the grid is green          |
+| CO2 intensity               | `PublicGrid:co2_intensity`   | g/kWh   | Calculate the CO2 that your grid import caused            |
 
-- Electricity: the day-ahead price, the renewable share and the CO2 intensity, every hour
-- Natural gas: the price, every Friday
-- Fuel: the prices of petrol, diesel, heating oil and LPG, every Friday
+The day-ahead price is the price of electricity at the power exchange for the next day. The collector reads the electricity values every hour, and the gas and fuel prices every Friday. The names in InfluxDB are fixed, so SOLECTRUS finds the values without a configuration.
+
+SOLECTRUS v1.4 (beta) uses only the petrol, diesel and LPG price. The other uses in the table are planned. The collector writes these values already, so that their history is ready when SOLECTRUS uses them.
 
 Every source is free and needs no account. The sources cover Europe. Each source has a page with the details of its values: [Energy-Charts](lib/providers/energy_charts/README.md) for electricity, [Eurostat](lib/providers/eurostat/README.md) for natural gas, and the [EU Weekly Oil Bulletin](lib/providers/oil_bulletin/README.md) for fuel.
 
@@ -67,21 +76,6 @@ The collector writes this history only from the time where the other data in you
 For this, the token needs read permission for the bucket. Without it, the collector writes the newest values alone. If you import older data into the bucket later, restart the collector to fill the history.
 
 The history of the electricity values is large. If your data begins in 2020, the first start downloads about 260 MB and takes several minutes. A later start reads only the days that are missing.
-
-## What the collector writes
-
-| Measurement  | Field               | Value                       | Unit    |
-| ------------ | ------------------- | --------------------------- | ------- |
-| `PublicGrid` | `price`             | Day-ahead electricity price | EUR/kWh |
-| `PublicGrid` | `renewable_share`   | Renewable share             | percent |
-| `PublicGrid` | `co2_intensity`     | CO2 intensity               | g/kWh   |
-| `Gas`        | `price`             | Natural gas price           | EUR/kWh |
-| `Fuel`       | `price_petrol`      | Petrol price                | EUR/l   |
-| `Fuel`       | `price_diesel`      | Diesel price                | EUR/l   |
-| `Fuel`       | `price_heating_oil` | Heating oil price           | EUR/l   |
-| `Fuel`       | `price_lpg`         | LPG price                   | EUR/l   |
-
-The names are fixed, so SOLECTRUS finds the values without a configuration.
 
 ## Development
 
