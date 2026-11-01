@@ -4,22 +4,38 @@
 
 The collector writes public prices and values into your InfluxDB. SOLECTRUS uses them to compare your costs and your CO2 with other sources of energy.
 
-| Value                       | Name in InfluxDB             | Unit    | Use in SOLECTRUS                                          |
-| --------------------------- | ---------------------------- | ------- | --------------------------------------------------------- |
-| Petrol price                | `Fuel:price_petrol`          | EUR/l   | Compare the cost of an electric car with a combustion car |
-| Diesel price                | `Fuel:price_diesel`          | EUR/l   | Compare the cost of an electric car with a combustion car |
-| LPG price                   | `Fuel:price_lpg`             | EUR/l   | Compare the cost of an electric car with a combustion car |
-| Heating oil price           | `Fuel:price_heating_oil`     | EUR/l   | Compare the cost of a heat pump with an oil heating       |
-| Natural gas price           | `Gas:price`                  | EUR/kWh | Compare the cost of a heat pump with a gas heating        |
-| Day-ahead electricity price | `PublicGrid:price`           | EUR/kWh | Show when the electricity from the grid is cheap          |
-| Renewable share             | `PublicGrid:renewable_share` | percent | Show when the electricity from the grid is green          |
-| CO2 intensity               | `PublicGrid:co2_intensity`   | g/kWh   | Calculate the CO2 that your grid import caused            |
+| Value           | Name in InfluxDB             | Unit    | Use in SOLECTRUS                      |
+| --------------- | ---------------------------- | ------- | ------------------------------------- |
+| Petrol          | `Fuel:price_petrol`          | EUR/l   | Compare electric and combustion cars  |
+| Diesel          | `Fuel:price_diesel`          | EUR/l   | Compare electric and combustion cars  |
+| LPG             | `Fuel:price_lpg`             | EUR/l   | Compare electric and combustion cars  |
+| Heating oil     | `Fuel:price_heating_oil`     | EUR/l   | Compare heat pump and oil heating     |
+| Natural gas     | `Gas:price`                  | EUR/kWh | Compare heat pump and gas heating     |
+| Day-ahead price | `PublicGrid:price`           | EUR/kWh | Show when grid electricity is cheap   |
+| Renewable share | `PublicGrid:renewable_share` | percent | Show when grid electricity is green   |
+| CO2 intensity   | `PublicGrid:co2_intensity`   | g/kWh   | Calculate the CO2 of your grid import |
 
-The day-ahead price is the price of electricity at the power exchange for the next day. The collector reads the electricity values every hour, and the gas and fuel prices every Friday. The names in InfluxDB are fixed, so SOLECTRUS finds the values without a configuration.
+The day-ahead price is the price of electricity at the power exchange for the next day. The names in InfluxDB are fixed, so SOLECTRUS finds the values without a configuration.
 
-SOLECTRUS v1.4 (beta) uses only the petrol, diesel and LPG price. The other uses in the table are planned. Each source is off until you switch it on, see [Configuration](#configuration). If you switch on a source later, the collector writes its history from the time where your data begins.
+The collector reads three sources. Each source is free and needs no account:
 
-Every source is free and needs no account. The sources cover Europe. Each source has a page with the details of its values: [Energy-Charts](lib/providers/energy_charts/README.md) for electricity, [Eurostat](lib/providers/eurostat/README.md) for natural gas, and the [EU Weekly Oil Bulletin](lib/providers/oil_bulletin/README.md) for fuel.
+| Source                   | Values                           | Read   | Switch               |
+| ------------------------ | -------------------------------- | ------ | -------------------- |
+| [Weekly Oil Bulletin][1] | Petrol, diesel, LPG, heating oil | Weekly | `ENABLE_FUEL`        |
+| [Eurostat][2]            | Natural gas                      | Weekly | `ENABLE_GAS`         |
+| [Energy-Charts][3]       | Electricity                      | Hourly | `ENABLE_PUBLIC_GRID` |
+
+[1]: https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en
+[2]: https://ec.europa.eu/eurostat
+[3]: https://www.energy-charts.info/
+
+The European Commission publishes the Weekly Oil Bulletin. Eurostat is the statistical office of the European Union. Fraunhofer ISE, a German research institute, runs Energy-Charts. The sources cover the member states of the European Union. Eurostat and Energy-Charts also cover some other countries in Europe.
+
+Energy-Charts reports no CO2 intensity, so the collector calculates it for Germany. It uses the power generation of each type of power plant from Energy-Charts, and the emission factors of the Umweltbundesamt, the federal environment agency of Germany.
+
+Each source has a page with the details of its values: the [EU Weekly Oil Bulletin](lib/providers/oil_bulletin/README.md), [Eurostat](lib/providers/eurostat/README.md) and [Energy-Charts](lib/providers/energy_charts/README.md).
+
+SOLECTRUS v1.4 (beta) uses only the petrol, diesel and LPG price. The other uses in the first table are planned. Each source is off until you switch it on, see [Configuration](#configuration). If you switch on a source later, the collector writes its history from the time where your data begins.
 
 ## Usage
 
