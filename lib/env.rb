@@ -17,6 +17,16 @@ module Env
     self[key] || raise(Error, "#{key} is missing")
   end
 
+  # A switch: true for `true`, false for `false` or no value. Any other
+  # value raises, so a typo does not switch something off unnoticed.
+  def self.enabled?(key)
+    case self[key]&.downcase
+    when 'true' then true
+    when 'false', nil then false
+    else raise Error, "#{key} is invalid: #{self[key]} (true or false)"
+    end
+  end
+
   # Raises when a setting has no value.
   def self.validate_presence!(value, key)
     return unless value.to_s.strip.empty?

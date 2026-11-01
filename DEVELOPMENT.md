@@ -65,12 +65,13 @@ Every provider has the same interface, which `Providers::Base` defines:
 | Method         | Answers                                                  |
 | -------------- | -------------------------------------------------------- |
 | `.from_env`    | the provider, with its settings read from ENV            |
+| `.switch`      | the key in ENV that turns the provider on                |
 | `call`         | one `Batch` per value that arrived                       |
 | `schedule`     | when it reads after the start, see `Providers::Schedule` |
 | `descriptions` | one line per value for the banner                        |
 | `measurements` | the measurements it writes to                            |
 
-`Providers.from_env` loads every folder and builds every provider. The loop then calls `call` on each provider that is due, and gives every batch to `FluxWriter`. With each call, the loop passes the start of the history and tells whether it is the first read of the provider. At the first read, it also passes what the bucket holds of each field of the provider: the oldest point, and the newest point before today.
+`Providers.from_env` loads every folder and builds every provider whose switch is `true`. It reads no settings of a provider that is off. If no provider is on, it raises `Env::Error`. The loop then calls `call` on each provider that is due, and gives every batch to `FluxWriter`. With each call, the loop passes the start of the history and tells whether it is the first read of the provider. At the first read, it also passes what the bucket holds of each field of the provider: the oldest point, and the newest point before today.
 
 A batch is a measurement and a list of rows. Each row has a time and its fields. The writer therefore needs no knowledge of the records of a provider. A provider that reads more than one value keeps each value in a series of its own. The loop sees one provider and the batches that it answers, not the series.
 
@@ -78,7 +79,7 @@ A batch is a measurement and a list of rows. Each row has a time and its fields.
 
 To add a provider, add a folder below `lib/providers`. Nothing outside the folder changes. The folder holds these files:
 
-1. `provider.rb` defines `Providers::<Name>::Provider`, a subclass of `Providers::Base`. It answers `.from_env`, `source`, and the private method `series`. If the provider does not read on every cycle, it also answers `schedule`, for example `Schedule::Weekly.new(WEEKDAY, HOUR)`.
+1. `provider.rb` defines `Providers::<Name>::Provider`, a subclass of `Providers::Base`. It answers `.from_env`, `.switch`, `source`, and the private method `series`. The switch carries the name of the measurement, for example `ENABLE_FUEL` for `Fuel`. If the provider does not read on every cycle, it also answers `schedule`, for example `Schedule::Weekly.new(WEEKDAY, HOUR)`.
 2. `settings.rb` defines `Providers::<Name>::Settings`, a `Data` object with `.from_env`. It reads the settings that the provider needs, and raises `Env::Error` for a missing value. The measurement and the fields are no settings: each series names them in the code.
 3. One subclass of `Providers::Series` per value. `lib/providers/series.rb` lists the methods that a series answers. A series with a long history also answers `window`, the number of days that a read covers after the first read.
 4. A client for the remote source, and a reader for the format of its answer if it is not JSON.

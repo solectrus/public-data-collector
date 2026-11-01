@@ -17,7 +17,7 @@ The collector writes public prices and values into your InfluxDB. SOLECTRUS uses
 
 The day-ahead price is the price of electricity at the power exchange for the next day. The collector reads the electricity values every hour, and the gas and fuel prices every Friday. The names in InfluxDB are fixed, so SOLECTRUS finds the values without a configuration.
 
-SOLECTRUS v1.4 (beta) uses only the petrol, diesel and LPG price. The other uses in the table are planned. The collector writes these values already, so that their history is ready when SOLECTRUS uses them.
+SOLECTRUS v1.4 (beta) uses only the petrol, diesel and LPG price. The other uses in the table are planned. Each source is off until you switch it on, see [Configuration](#configuration). If you switch on a source later, the collector writes its history from the time where your data begins.
 
 Every source is free and needs no account. The sources cover Europe. Each source has a page with the details of its values: [Energy-Charts](lib/providers/energy_charts/README.md) for electricity, [Eurostat](lib/providers/eurostat/README.md) for natural gas, and the [EU Weekly Oil Bulletin](lib/providers/oil_bulletin/README.md) for fuel.
 
@@ -27,7 +27,7 @@ In the future, [HELIOS](https://github.com/solectrus/helios) will set up the col
 
 Until then, run the collector yourself next to your InfluxDB:
 
-1. Make a file `.env`. Copy `.env.example`, and set the `INFLUX_*` settings to your InfluxDB. Inside the container, `localhost` is the container itself, so `INFLUX_HOST` needs the name or the IP address of the host that runs your InfluxDB.
+1. Make a file `.env`. Copy `.env.example`, set the `INFLUX_*` settings to your InfluxDB, and switch on the sources that you need. Inside the container, `localhost` is the container itself, so `INFLUX_HOST` needs the name or the IP address of the host that runs your InfluxDB.
 2. Start the container:
 
    ```bash
@@ -46,24 +46,29 @@ docker compose up
 
 ## Configuration
 
-| Variable        | Default | Description                                                     |
-| --------------- | ------- | --------------------------------------------------------------- |
-| `COUNTRY`       |         | Country code, for example `DE`, required                        |
-| `INTERVAL`      | `3600`  | Seconds between two reads of the electricity values, minimum 60 |
-| `INFLUX_HOST`   |         | Host of your InfluxDB, required                                 |
-| `INFLUX_SCHEMA` | `http`  | `http` or `https`                                               |
-| `INFLUX_PORT`   | `8086`  | Port of your InfluxDB                                           |
-| `INFLUX_TOKEN`  |         | Token with read and write permission, required                  |
-| `INFLUX_ORG`    |         | Organization in your InfluxDB, required                         |
-| `INFLUX_BUCKET` |         | Bucket in your InfluxDB, required                               |
-| `TZ`            | `UTC`   | Timezone, for example `Europe/Berlin`                           |
-| `BIDDING_ZONE`  |         | Only for Denmark, Italy, Norway and Sweden, see below           |
+| Variable             | Default | Description                                                     |
+| -------------------- | ------- | --------------------------------------------------------------- |
+| `COUNTRY`            |         | Country code, for example `DE`, required                        |
+| `INTERVAL`           | `3600`  | Seconds between two reads of the electricity values, minimum 60 |
+| `INFLUX_HOST`        |         | Host of your InfluxDB, required                                 |
+| `INFLUX_SCHEMA`      | `http`  | `http` or `https`                                               |
+| `INFLUX_PORT`        | `8086`  | Port of your InfluxDB                                           |
+| `INFLUX_TOKEN`       |         | Token with read and write permission, required                  |
+| `INFLUX_ORG`         |         | Organization in your InfluxDB, required                         |
+| `INFLUX_BUCKET`      |         | Bucket in your InfluxDB, required                               |
+| `TZ`                 | `UTC`   | Timezone, for example `Europe/Berlin`                           |
+| `ENABLE_FUEL`        | `false` | `true` reads the fuel prices from the EU Weekly Oil Bulletin    |
+| `ENABLE_GAS`         | `false` | `true` reads the gas price from Eurostat                        |
+| `ENABLE_PUBLIC_GRID` | `false` | `true` reads the electricity values from Energy-Charts          |
+| `BIDDING_ZONE`       |         | Only for Denmark, Italy, Norway and Sweden, see below           |
 
-The collector needs no other settings. It finds the bidding zone of the electricity price from `COUNTRY`. Denmark, Italy, Norway and Sweden have more than one zone, so set `BIDDING_ZONE` there, for example to `SE3`. The [page of Energy-Charts](lib/providers/energy_charts/README.md#configuration) tells how to find your zone.
+At least one source must be on. Otherwise, the collector stops with an error. Switch on only the sources whose values SOLECTRUS uses. Each source that is on downloads data on its schedule, and Energy-Charts does so every hour. For SOLECTRUS v1.4 (beta), this is `ENABLE_FUEL`.
+
+The collector needs no other settings. If `ENABLE_PUBLIC_GRID` is `true`, it finds the bidding zone of the electricity price from `COUNTRY`. Denmark, Italy, Norway and Sweden have more than one zone, so set `BIDDING_ZONE` there, for example to `SE3`. The [page of Energy-Charts](lib/providers/energy_charts/README.md#configuration) tells how to find your zone.
 
 ## Operation
 
-At each start, the collector reads every source at once. After that, it reads the electricity values every `INTERVAL` seconds. It reads the gas and fuel prices on Friday at 06:00 in the timezone that `TZ` sets, because they change once a week or less.
+At each start, the collector reads every source that is on. After that, it reads the electricity values every `INTERVAL` seconds. It reads the gas and fuel prices on Friday at 06:00 in the timezone that `TZ` sets, because they change once a week or less.
 
 If a source has no value for your country, or does not answer, the log shows an error, and the other values continue. The collector tries again later, and less often after each further error.
 
@@ -75,7 +80,7 @@ The collector writes this history only from the time where the other data in you
 
 For this, the token needs read permission for the bucket. Without it, the collector writes the newest values alone. If you import older data into the bucket later, restart the collector to fill the history.
 
-The history of the electricity values is large. If your data begins in 2020, the first start downloads about 260 MB and takes several minutes. A later start reads only the days that are missing.
+The history of the electricity values is large. If `ENABLE_PUBLIC_GRID` is `true` and your data begins in 2020, the first start downloads about 260 MB and takes several minutes. A later start reads only the days that are missing.
 
 ## Development
 

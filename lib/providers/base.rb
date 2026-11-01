@@ -13,6 +13,8 @@ module Providers
   # A subclass answers these:
   #
   #   self.from_env      the provider, with its settings read from ENV
+  #   self.switch        the key in ENV that turns the provider on, named
+  #                      after its measurement, for example ENABLE_FUEL
   #   source             the name of the remote source, for the log
   #   series             the series it reads (private)
   #

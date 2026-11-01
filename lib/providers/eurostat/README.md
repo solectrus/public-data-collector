@@ -53,7 +53,7 @@ For Germany, the carried price differed from the price that Eurostat measured la
 
 ## Configuration
 
-The collector uses the general setting `COUNTRY`. Countries outside the European Union are not in Eurostat. For such a country, the log shows an error for the gas price, and the other values continue.
+Set `ENABLE_GAS` to `true` to switch on the gas price. The collector uses the general setting `COUNTRY`. Countries outside the European Union are not in Eurostat. For such a country, the log shows an error for the gas price, and the other values continue.
 
 ## When the collector reads
 

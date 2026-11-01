@@ -53,7 +53,7 @@ The saved CO2 is a low estimate. PV generates the most energy at noon in summer,
 
 ## Configuration
 
-The collector uses the general setting `COUNTRY`. The CO2 intensity exists only when `COUNTRY` is `DE`.
+Set `ENABLE_PUBLIC_GRID` to `true` to switch on the electricity values. The collector uses the general setting `COUNTRY`. The CO2 intensity exists only when `COUNTRY` is `DE`.
 
 The price needs the bidding zone of the country. The collector finds it from `COUNTRY`, for example `DE-LU` for `DE` and `AT` for `AT`. Denmark, Italy, Norway and Sweden have more than one zone. For these countries, set `BIDDING_ZONE` to your zone, for example `SE3`. To find the code of your zone, open https://api.energy-charts.info/v2 and read the allowed values of the parameter `bzn` of `/v2/price`.
 

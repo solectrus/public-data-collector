@@ -23,7 +23,7 @@ The bulletin reports one petrol, Euro-super 95, and does not name the ethanol co
 
 ## Configuration
 
-The collector uses the general setting `COUNTRY`. Countries outside the European Union are not in the bulletin. For such a country, the log shows an error for the fuel prices, and the other values continue.
+Set `ENABLE_FUEL` to `true` to switch on the fuel prices. The collector uses the general setting `COUNTRY`. Countries outside the European Union are not in the bulletin. For such a country, the log shows an error for the fuel prices, and the other values continue.
 
 ## When the collector reads
 

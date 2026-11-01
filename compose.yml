@@ -10,6 +10,9 @@ services:
       - TZ
       - COUNTRY
       - INTERVAL
+      - ENABLE_FUEL
+      - ENABLE_GAS
+      - ENABLE_PUBLIC_GRID
       - INFLUX_HOST=influxdb
       - INFLUX_TOKEN
       - INFLUX_ORG

@@ -28,6 +28,8 @@ module Providers
         new(Settings.from_env)
       end
 
+      def self.switch = 'ENABLE_FUEL'
+
       def source = NAME
       def schedule = Schedule::Weekly.new(WEEKDAY, HOUR)
 

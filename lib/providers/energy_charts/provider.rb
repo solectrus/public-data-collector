@@ -28,6 +28,8 @@ module Providers
         new(Settings.from_env)
       end
 
+      def self.switch = 'ENABLE_PUBLIC_GRID'
+
       def source = NAME
       def schedule = Schedule::EveryCycle.new(minimum_interval: MINIMUM_INTERVAL)
 
