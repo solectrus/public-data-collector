@@ -14,8 +14,10 @@ module Providers
     # upstream and without the trade balance.
     #
     # For 2015 to 2025, the yearly average differs from the value of the
-    # UBA by 1.6 percent at most. The factors describe the power plants of
-    # Germany, so the provider reads this series for Germany alone.
+    # UBA by 1.6 percent at most. The largest difference was in 2018, and
+    # the other years differed by 0.8 percent or less. The factors describe
+    # the power plants of Germany, so the provider reads this series for
+    # Germany alone.
     class Co2Series < Series
       include History
 
@@ -25,16 +27,46 @@ module Providers
       PATH = '/v2/total_power'.freeze
 
       # Gram CO2 per kWh of net generation, for every source that burns
-      # fuel. The UBA publishes the emissions per fuel and the energy per
-      # fuel (Climate Change 16/2026, tables 6 and 7). Their ratio, related
-      # to the energy that Energy-Charts reports for the same fuel, gave
-      # these values for 2023, 2024 and 2025. They differ by 1 percent or
-      # less between the years for coal and gas.
+      # fuel. Each factor is the CO2 of a fuel at the UBA, divided by the
+      # net generation that Energy-Charts reports for the same fuel. The
+      # values come from the years 2023, 2024 and 2025. For coal and gas,
+      # they differ by 1 percent or less between these years.
+      #
+      # The source is the yearly report "Entwicklung der spezifischen
+      # Treibhausgas-Emissionen des deutschen Strommix" of the UBA, here
+      # Climate Change 16/2026. Table 6 gives the CO2 per fuel in million
+      # tonnes. The columns map to the sources of Energy-Charts as follows:
+      #
+      #   Braunkohlen      fossil_brown_coal_lignite
+      #   Steinkohlen      fossil_hard_coal
+      #   Erdgas           fossil_gas
+      #   Mineralöle       fossil_oil
+      #   Müll (fossil)    waste
+      #   sonstige         others and fossil_coal_derived_gas together
       #
       # The factor for waste is about half of the UBA value per kWh of
       # waste. The UBA counts the fossil part of waste alone, and
       # Energy-Charts reports all of it. Coal-derived gas comes from steel
       # works and goes with the other sources, as at the UBA.
+      #
+      # The factors are the same for every year, by intent. The report
+      # rounds to whole million tonnes, so a factor of one year is coarse
+      # for a small fuel: the rounding of 3 million tonnes of oil is up to
+      # 17 percent. The report also marks its two newest years as preliminary
+      # and estimated. Three years together smooth both.
+      #
+      # The UBA publishes a new report every March. To update the factors:
+      #
+      # 1. Take table 6 of the new report for its three newest years.
+      # 2. Sum the net generation of each source for the same years from
+      #    `/v2/total_power?country=de`, one request per year.
+      # 3. For each row above, divide the CO2 of the three years by their
+      #    net generation. One million tonnes per TWh is 1000 grams per
+      #    kWh.
+      # 4. Update CONSUMPTION_SHARE, as its comment tells.
+      # 5. Compare the yearly average of the result since 2015 with table 1
+      #    of the report, and update the difference that the comment of
+      #    this class names.
       FACTORS = {
         'fossil_brown_coal_lignite' => 1100,
         'fossil_hard_coal' => 862,
@@ -71,6 +103,10 @@ module Providers
       # the losses of the grid. In 2023, 2024 and 2025, the consumption was
       # 94.7 percent of the net generation that Energy-Charts reports, less
       # pumping. 2025 gave 94.4 percent, the other two years 94.9 percent.
+      #
+      # To update it, take "Stromverbrauch insgesamt" of table 7 of the
+      # report for the same three years as FACTORS. Divide it by the net
+      # generation of Energy-Charts for these years, less pumping.
       CONSUMPTION_SHARE = 0.947
 
       # Gram CO2 per kWh for one quarter hour
