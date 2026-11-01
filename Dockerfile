@@ -15,11 +15,9 @@ FROM ruby:4.0.9-alpine
 LABEL org.opencontainers.image.authors="georg@ledermann.dev"
 LABEL org.opencontainers.image.description="Collects prices and values from public sources: electricity, petrol, diesel, heating oil and gas"
 
-# Add tzdata to get correct timezone
-RUN apk add --no-cache tzdata
-
-# Create non-root user
-RUN addgroup -g 1000 -S app && \
+# Add tzdata to get correct timezone, and create a non-root user
+RUN apk add --no-cache tzdata && \
+    addgroup -g 1000 -S app && \
     adduser -u 1000 -S app -G app
 
 # Move build arguments to environment variables
