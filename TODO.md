@@ -2,12 +2,7 @@
 
 ## First release
 
-- [ ] Switch the repository to public. A private repository hides the badges and blocks branch protection and auto-merge.
-- [ ] Make the GHCR package `public-data-collector` public. Its visibility does not follow the repository.
-- [ ] Set the default permission of the workflow token to read. Today it is write.
-- [ ] Protect `develop` with the status check `test`.
-- [ ] Copy `.github/workflows/automerge.yml` from `forecast-collector`. It reads the secret `PAT`.
-- [ ] Create `main` from `develop` and cut the first version with `/solectrus:release`. Until a version tag exists, the image has only the tag `develop`, and `compose.yml` finds no image.
+- [ ] Run `git flow init`, which creates `main`, and cut the first version with `/solectrus:release`. Until a version tag exists, the image has only the tag `develop`, and `compose.yml` finds no image.
 
 ## Other repositories
 
