@@ -42,9 +42,20 @@ SOLECTRUS v1.4 (beta) uses only the petrol, diesel and LPG price. The other uses
 
 ## Usage
 
-In the future, [HELIOS](https://github.com/solectrus/helios) will set up the collector in a SOLECTRUS installation. You will not have to do anything.
+### With HELIOS
 
-Until then, run the collector yourself next to your InfluxDB:
+[HELIOS](https://github.com/solectrus/helios) sets up the collector in a SOLECTRUS installation, from version 1.6.0. HELIOS adds the collector with `ENABLE_FUEL=true` when all of these conditions are true:
+
+- The dashboard runs on the development channel.
+- A car has a sensor for its odometer.
+- The country is a member state of the European Union.
+- The currency is the euro.
+
+After the update to HELIOS 1.6.0, you must start the collector once in HELIOS.
+
+### Without HELIOS
+
+Run the collector yourself next to your InfluxDB:
 
 1. Make a file `.env`. Copy `.env.example`, set the `INFLUX_*` settings to your InfluxDB, and switch on the sources that you need. Inside the container, `localhost` is the container itself, so `INFLUX_HOST` needs the name or the IP address of the host that runs your InfluxDB.
 2. Start the container:
