@@ -38,20 +38,20 @@ Energy-Charts reports no CO2 intensity, so the collector calculates it for Germa
 
 Each source has a page with the details of its values: the [EU Weekly Oil Bulletin](lib/providers/oil_bulletin/README.md), [Eurostat](lib/providers/eurostat/README.md) and [Energy-Charts](lib/providers/energy_charts/README.md).
 
-SOLECTRUS v1.4 (beta) uses only the petrol, diesel and LPG price. The other uses in the first table are planned. Each source is off until you switch it on, see [Configuration](#configuration). If you switch on a source later, the collector writes its history from the time where your data begins.
+SOLECTRUS v1.4 (beta) uses the prices of petrol, diesel, LPG, heating oil and natural gas. The uses of the electricity values are planned. Each source is off until you switch it on, see [Configuration](#configuration). If you switch on a source later, the collector writes its history from the time where your data begins.
 
 ## Usage
 
 ### With HELIOS
 
-[HELIOS](https://github.com/solectrus/helios) sets up the collector in a SOLECTRUS installation, from version 1.6.0. HELIOS adds the collector with `ENABLE_FUEL=true` when all of these conditions are true:
+[HELIOS](https://github.com/solectrus/helios) adds the collector to a SOLECTRUS installation when all of these conditions are true:
 
 - The dashboard runs on the development channel.
-- A car has a sensor for its odometer.
+- A car has a sensor for its odometer, or the heat pump has a sensor for the generated heat.
 - The country is a member state of the European Union.
 - The currency is the euro.
 
-After the update to HELIOS 1.6.0, you must start the collector once in HELIOS.
+HELIOS switches on only the sources that the dashboard needs: `ENABLE_FUEL` always, `ENABLE_GAS` for the heat pump. After HELIOS adds the collector, start it once in HELIOS.
 
 ### Without HELIOS
 
@@ -92,7 +92,7 @@ docker compose up
 | `ENABLE_PUBLIC_GRID` | `false` | `true` reads the electricity values from Energy-Charts          |
 | `BIDDING_ZONE`       |         | Only for Denmark, Italy, Norway and Sweden, see below           |
 
-At least one source must be on. Otherwise, the collector stops with an error. Switch on only the sources whose values SOLECTRUS uses. Each source that is on downloads data on its schedule, and Energy-Charts does so every hour. For SOLECTRUS v1.4 (beta), this is `ENABLE_FUEL`.
+At least one source must be on. Otherwise, the collector stops with an error. Switch on only the sources whose values SOLECTRUS uses. Each source that is on downloads data on its schedule, and Energy-Charts does so every hour. For SOLECTRUS v1.4 (beta), this is `ENABLE_FUEL`, and `ENABLE_GAS` for the comparison with a gas heating.
 
 The collector needs no other settings. If `ENABLE_PUBLIC_GRID` is `true`, it finds the bidding zone of the electricity price from `COUNTRY`. Denmark, Italy, Norway and Sweden have more than one zone, so set `BIDDING_ZONE` there, for example to `SE3`. The [page of Energy-Charts](lib/providers/energy_charts/README.md#configuration) tells how to find your zone.
 
