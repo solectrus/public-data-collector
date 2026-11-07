@@ -2,7 +2,7 @@
 
 ## Other repositories
 
-- [ ] `solectrus`: Show more values in the dashboard. Today `Sensor::Query::FuelPrices` reads only `Fuel:price_petrol`, `Fuel:price_diesel` and `Fuel:price_lpg`. The day-ahead price, the renewable share, the CO2 intensity, the gas price and heating oil are not used.
+- [ ] `solectrus`: Show the values of the public grid. Today `solectrus` reads only the fuel prices and the gas price, for the comparison with a car and a heat pump. It does not read the day-ahead price (`PublicGrid:price`) and the renewable share (`PublicGrid:renewable_share`).
 - [ ] `solectrus`: Use `PublicGrid:co2_intensity` instead of the static `CO2_EMISSION_FACTOR` (401 g/kWh). The collector writes this value only for Germany, so other countries keep the static factor.
 
 ## Possible extensions
