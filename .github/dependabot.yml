@@ -28,6 +28,11 @@ updates:
         patterns:
           - 'rubocop'
           - 'rubocop-*'
+      # rspec-core, -expectations, -mocks and -support release together
+      rspec:
+        patterns:
+          - 'rspec'
+          - 'rspec-*'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
@@ -40,3 +45,10 @@ updates:
     labels:
       - 'dependencies'
       - 'gh-action'
+    groups:
+      # Artifacts uploaded with one major version cannot be downloaded
+      # with another one
+      artifact:
+        patterns:
+          - 'actions/upload-artifact'
+          - 'actions/download-artifact'
